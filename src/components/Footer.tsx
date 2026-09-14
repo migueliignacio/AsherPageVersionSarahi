@@ -1,13 +1,51 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import { InstagramIcon, LinkedinIcon } from "./SocialIcons";
 import { brand, disciplines } from "@/data/asher";
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.1,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: [0.16, 1, 0.3, 1],
+    },
+  },
+};
+
 export default function Footer() {
   return (
-    <footer className="relative overflow-hidden bg-[var(--color-violet)] text-[var(--color-bg)]">
-      <div className="grid gap-12 px-5 pb-56 pt-20 md:grid-cols-12 md:gap-10 md:px-10 md:pb-72 md:pt-24">
-        <div className="space-y-5 text-sm leading-relaxed text-[var(--color-bg)]/80 md:col-span-4">
+    <motion.footer
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-100px" }}
+      variants={containerVariants}
+      className="relative overflow-hidden bg-[var(--color-violet)] text-[var(--color-bg)]"
+    >
+      <motion.div
+        className="grid gap-12 px-5 pb-56 pt-20 md:grid-cols-12 md:gap-10 md:px-10 md:pb-72 md:pt-24"
+        variants={containerVariants}
+      >
+        <motion.div
+          className="space-y-5 text-sm leading-relaxed text-[var(--color-bg)]/80 md:col-span-4"
+          variants={itemVariants}
+        >
           <div className="relative h-12 w-12">
             <Image
               src="/asher/asher-logo.png"
@@ -32,9 +70,9 @@ export default function Footer() {
               </span>
             ))}
           </div>
-        </div>
+        </motion.div>
 
-        <div className="space-y-8 text-sm md:col-span-3 md:col-start-6">
+        <motion.div className="space-y-8 text-sm md:col-span-3 md:col-start-6" variants={itemVariants}>
           <div>
             <h2 className="mb-2 font-medium">Contacto</h2>
             <p className="leading-relaxed text-[var(--color-bg)]/70">
@@ -81,9 +119,9 @@ export default function Footer() {
               Contacto
             </Link>
           </nav>
-        </div>
+        </motion.div>
 
-        <div className="text-sm md:col-span-4 md:col-start-9">
+        <motion.div className="text-sm md:col-span-4 md:col-start-9" variants={itemVariants}>
           <h2 className="mb-3">
             <span className="font-medium">Mantente cerca — </span>
             <span className="text-[var(--color-bg)]/70">
@@ -111,8 +149,8 @@ export default function Footer() {
               Unirme <span aria-hidden="true">→</span>
             </button>
           </form>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
 
       {/* Ghost wordmark: oversized, clipped by the viewport, sits behind content. */}
       <div className="pointer-events-none absolute inset-x-0 bottom-0 select-none" aria-hidden="true">
@@ -128,6 +166,6 @@ export default function Footer() {
         <p>{brand.copyright}</p>
         <p>{brand.disciplines}</p>
       </div>
-    </footer>
+    </motion.footer>
   );
 }
