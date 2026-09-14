@@ -12,11 +12,16 @@ export default function CustomCursor() {
   const [enabled, setEnabled] = useState(false);
 
   useEffect(() => {
-    const isFine = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+    const isFine = window.matchMedia(
+      "(hover: hover) and (pointer: fine)",
+    ).matches;
     setEnabled(isFine);
     if (!isFine) return;
 
-    let ringX = 0, ringY = 0, mouseX = 0, mouseY = 0;
+    let ringX = 0,
+      ringY = 0,
+      mouseX = 0,
+      mouseY = 0;
     let raf = 0;
 
     const onMove = (e: MouseEvent) => {
@@ -85,22 +90,40 @@ export default function CustomCursor() {
     <>
       <div
         ref={dotRef}
-        className="pointer-events-none fixed left-0 top-0 z-[9999] h-1.5 w-1.5 rounded-full bg-[var(--color-ink)] mix-blend-difference"
+        className="pointer-events-none fixed left-0 top-0 z-[9999] h-1.5 w-1.5 rounded-full bg-white mix-blend-difference"
         style={{ willChange: "transform" }}
       />
       <div
         ref={ringRef}
-        className="pointer-events-none fixed left-0 top-0 z-[9999] flex items-center justify-center rounded-full border border-[var(--color-ink)] text-center text-[10px] font-medium uppercase tracking-[0.1em] text-[var(--color-ink)] mix-blend-difference transition-[width,height,background-color] duration-300 ease-out"
+        className="pointer-events-none fixed left-0 top-0 z-[9999] flex items-center justify-center rounded-full border border-white text-center text-[10px] font-medium uppercase tracking-[0.1em] text-[var(--color-ink)] mix-blend-difference transition-[width,height,background-color] duration-300 ease-out"
         style={{
-          width: mode === "view" ? 84 : mode === "expand" ? 56 : mode === "drag" ? 70 : 30,
-          height: mode === "view" ? 84 : mode === "expand" ? 56 : mode === "drag" ? 70 : 30,
+          width:
+            mode === "view"
+              ? 84
+              : mode === "expand"
+                ? 56
+                : mode === "drag"
+                  ? 70
+                  : 30,
+          height:
+            mode === "view"
+              ? 84
+              : mode === "expand"
+                ? 56
+                : mode === "drag"
+                  ? 70
+                  : 30,
           background: mode === "expand" ? "var(--color-ink)" : "transparent",
           opacity: mode === "expand" ? 0.1 : 1,
           willChange: "transform, width, height",
         }}
       >
         <span className="mix-blend-difference">
-          {mode === "view" ? label || "VIEW →" : mode === "drag" ? label || "DRAG" : ""}
+          {mode === "view"
+            ? label || "VIEW →"
+            : mode === "drag"
+              ? label || "DRAG"
+              : ""}
         </span>
       </div>
     </>
