@@ -138,6 +138,32 @@ export const tiers: Tier[] = [
   },
 ];
 
+export interface CustomService {
+  id: string;
+  category: "Estrategia" | "Marca" | "Digital" | "Publicidad" | "Legal";
+  title: string;
+  description: string;
+  price: number;
+}
+
+/** 06 — Plan personalizado: servicios a la carta, cada uno con su precio. */
+export const customServices: CustomService[] = [
+  { id: "diagnostico-marca", category: "Estrategia", title: "Diagnóstico de marca", description: "Auditoría completa de tu marca y mercado.", price: 3500 },
+  { id: "plan-estrategico", category: "Estrategia", title: "Plan estratégico anual", description: "Hoja de ruta de crecimiento a 12 meses.", price: 8500 },
+  { id: "naming", category: "Marca", title: "Naming", description: "Nombre de marca con validación legal y de mercado.", price: 4500 },
+  { id: "identidad-visual", category: "Marca", title: "Identidad visual", description: "Logo, paleta, tipografía y manual de uso.", price: 12000 },
+  { id: "rebranding", category: "Marca", title: "Rebranding completo", description: "Renovación integral de identidad existente.", price: 18000 },
+  { id: "sitio-web", category: "Digital", title: "Sitio web a medida", description: "Diseño y desarrollo de sitio institucional.", price: 22000 },
+  { id: "ecommerce", category: "Digital", title: "Tienda en línea", description: "E-commerce completo con pasarela de pago.", price: 32000 },
+  { id: "automatizaciones", category: "Digital", title: "Automatizaciones", description: "Flujos y herramientas digitales a medida.", price: 9500 },
+  { id: "campania-digital", category: "Publicidad", title: "Campaña digital", description: "Estrategia y ejecución en redes y buscadores.", price: 15000 },
+  { id: "gestion-redes", category: "Publicidad", title: "Gestión de redes sociales", description: "Contenido y comunidad, mes a mes.", price: 6500 },
+  { id: "produccion-contenido", category: "Publicidad", title: "Producción de contenido", description: "Fotografía y video para campañas.", price: 11000 },
+  { id: "registro-marca", category: "Legal", title: "Registro de marca", description: "Trámite completo ante el instituto correspondiente.", price: 7000 },
+  { id: "contratos", category: "Legal", title: "Paquete de contratos", description: "Contratos base para operación y clientes.", price: 5500 },
+  { id: "cumplimiento", category: "Legal", title: "Cumplimiento regulatorio", description: "Revisión y blindaje normativo continuo.", price: 9000 },
+];
+
 /** Propuestas de valor repetidas a lo largo del sitio. */
 export const valueProps = [
   "Todo bajo un mismo techo",

@@ -5,6 +5,7 @@ import Routes from "@/components/Routes";
 import Process from "@/components/Process";
 import Vision from "@/components/Vision";
 import Tiers from "@/components/Tiers";
+import CustomPlan from "@/components/CustomPlan";
 import Contact from "@/components/Contact";
 import { marqueeItems } from "@/data/asher";
 
@@ -21,6 +22,7 @@ export default function Home() {
       <Process />
       <Vision />
       <Tiers />
+      <CustomPlan />
       <Contact />
     </>
   );
