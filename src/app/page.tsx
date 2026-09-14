@@ -7,6 +7,7 @@ import Vision from "@/components/Vision";
 import Tiers from "@/components/Tiers";
 import CustomPlan from "@/components/CustomPlan";
 import Contact from "@/components/Contact";
+import OurWorkSection from "@/components/OurWorkSection";
 import { marqueeItems } from "@/data/asher";
 
 export default function Home() {
@@ -18,6 +19,7 @@ export default function Home() {
         className="border-y border-[var(--color-line)] py-6"
       />
       <About />
+      <OurWorkSection />
       <Routes />
       <Process />
       <Vision />
