@@ -5,8 +5,10 @@ import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { MessageCircle, Mail } from "lucide-react";
 import { brand } from "@/data/asher";
+import { useLeadModal } from "./LeadModalProvider";
 
 export default function Contact() {
+  const { openModal } = useLeadModal();
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -36,13 +38,14 @@ export default function Contact() {
         </p>
 
         <div data-reveal className="mt-10 flex items-center gap-3">
-          <a
-            href={`mailto:${brand.email}`}
+          <button
+            type="button"
+            onClick={() => openModal("contacto")}
             data-cursor="expand"
             className="inline-flex items-center gap-2 rounded-full border border-[var(--color-ink)] px-7 py-4 text-sm font-medium uppercase tracking-[0.1em] transition-colors duration-300 hover:bg-[var(--color-ink)] hover:text-[var(--color-bg)]"
           >
             Reservar consultoría <span aria-hidden="true">→</span>
-          </a>
+          </button>
 
           <a
             href="https://wa.me/"

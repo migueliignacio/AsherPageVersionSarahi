@@ -8,6 +8,7 @@ import Navbar from "@/components/Navbar";
 import StickyNavPill from "@/components/StickyNavPill";
 import ImpactBadge from "@/components/ImpactBadge";
 import Footer from "@/components/Footer";
+import { LeadModalProvider } from "@/components/LeadModalProvider";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
@@ -41,14 +42,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={`${spaceGrotesk.variable} ${inter.variable} ${instrumentSerif.variable} h-full antialiased`}
     >
       <body className="min-h-full bg-[var(--color-bg)] text-[var(--color-ink)] cursor-none-desktop">
-        <SmoothScroll />
-        <CustomCursor />
-        <ScrollReveal />
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
-        <StickyNavPill />
-        <ImpactBadge />
+        <LeadModalProvider>
+          <SmoothScroll />
+          <CustomCursor />
+          <ScrollReveal />
+          <Navbar />
+          <main>{children}</main>
+          <Footer />
+          <StickyNavPill />
+          <ImpactBadge />
+        </LeadModalProvider>
       </body>
     </html>
   );

@@ -6,9 +6,11 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { Search } from "lucide-react";
 import MobileMenu from "./MobileMenu";
 import { InstagramIcon, LinkedinIcon } from "./SocialIcons";
+import { useLeadModal } from "./LeadModalProvider";
 
 export default function Navbar() {
   const { scrollY } = useScroll();
+  const { openModal } = useLeadModal();
 
   const logoOpacity = useTransform(scrollY, [0, 420, 620], [0, 0, 1]);
   const logoY = useTransform(scrollY, [0, 420, 620], [-12, -12, 0]);
@@ -33,13 +35,14 @@ export default function Navbar() {
       </motion.div>
 
       <div className="flex items-center gap-2">
-        <Link
-          href="#contacto"
+        <button
+          type="button"
+          onClick={() => openModal("navbar")}
           data-cursor="expand"
           className="hidden items-center gap-2 rounded-full border border-[var(--color-ink)] px-5 py-2.5 text-xs font-medium uppercase tracking-[0.1em] transition-colors duration-300 hover:bg-[var(--color-ink)] hover:text-[var(--color-bg)] md:inline-flex"
         >
           Reservar consultoría <span aria-hidden="true">→</span>
-        </Link>
+        </button>
 
         <a
           href="https://instagram.com"

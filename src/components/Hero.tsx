@@ -3,6 +3,7 @@
 import { useCallback, useRef } from "react";
 import GlyphPortal from "./GlyphPortal";
 import { brand } from "@/data/asher";
+import { useLeadModal } from "./LeadModalProvider";
 
 /** Fondo tras el cristal, una vez que el zoom revela el campo oscuro. */
 function PortalBackground() {
@@ -32,6 +33,7 @@ function PortalBackground() {
  * quiera esa sincronización más adelante.
  */
 export default function Hero() {
+  const { openModal } = useLeadModal();
   const isDarkRef = useRef(false);
   const handlePortalProgress = useCallback((p: number) => {
     // Punto de extensión: aquí se podría sincronizar el Navbar si en el
@@ -85,8 +87,9 @@ export default function Hero() {
             {brand.heroSub}
           </p>
           <div className="mt-2 flex flex-wrap items-center gap-x-8 gap-y-4">
-            <a
-              href="#contacto"
+            <button
+              type="button"
+              onClick={() => openModal("hero")}
               className="group inline-flex items-center gap-3 text-sm font-semibold sm:text-base"
               style={{ color: "var(--color-bg)" }}
             >
@@ -103,7 +106,7 @@ export default function Hero() {
               >
                 →
               </span>
-            </a>
+            </button>
             <a
               href="#servicios"
               className="text-sm underline underline-offset-4 sm:text-base"

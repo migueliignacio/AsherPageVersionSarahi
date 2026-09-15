@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { customServices, type CustomService } from "@/data/asher";
+import { useLeadModal } from "./LeadModalProvider";
 
 const categories = ["Estrategia", "Marca", "Digital", "Publicidad", "Legal"] as const;
 
@@ -13,6 +14,7 @@ const currency = new Intl.NumberFormat("es-MX", {
 });
 
 export default function CustomPlan() {
+  const { openModal } = useLeadModal();
   const [selected, setSelected] = useState<string[]>([]);
   const [expanded, setExpanded] = useState<string[]>([]);
 
@@ -199,17 +201,19 @@ export default function CustomPlan() {
               </motion.span>
             </div>
 
-            <a
-              href="#contacto"
+            <button
+              type="button"
+              disabled={selectedServices.length === 0}
+              onClick={() => openModal("custom_plan")}
               data-cursor="expand"
-              className={`mt-6 flex items-center justify-center gap-2 rounded-full px-5 py-3 text-xs font-medium uppercase tracking-[0.1em] transition-transform duration-300 hover:-translate-y-0.5 ${
+              className={`mt-6 flex items-center justify-center gap-2 rounded-full px-5 py-3 text-xs font-medium uppercase tracking-[0.1em] transition-transform duration-300 hover:-translate-y-0.5 disabled:pointer-events-none ${
                 selectedServices.length === 0
-                  ? "pointer-events-none bg-[var(--color-line)] text-[var(--color-ink-soft)]"
+                  ? "bg-[var(--color-line)] text-[var(--color-ink-soft)]"
                   : "bg-[var(--color-ink)] text-[var(--color-bg)]"
               }`}
             >
               Solicitar este pack <span aria-hidden="true">→</span>
-            </a>
+            </button>
           </div>
         </div>
       </div>

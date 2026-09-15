@@ -1,7 +1,10 @@
-import Link from "next/link";
+"use client";
+
 import { tiers } from "@/data/asher";
+import { useLeadModal } from "./LeadModalProvider";
 
 export default function Tiers() {
+  const { openModal } = useLeadModal();
   return (
     <section id="planes" className="border-t border-[var(--color-line)] px-5 py-28 md:px-10 md:py-40">
       <p data-reveal className="mb-10 text-xs font-medium uppercase tracking-[0.18em] text-[var(--color-ink-soft)]">
@@ -58,8 +61,9 @@ export default function Tiers() {
               ))}
             </ul>
 
-            <Link
-              href="#contacto"
+            <button
+              type="button"
+              onClick={() => openModal(`tier_${tier.name}`)}
               data-cursor="expand"
               className={`mt-10 inline-flex items-center justify-center gap-2 rounded-full px-6 py-4 text-xs font-medium uppercase tracking-[0.1em] transition-transform duration-300 hover:-translate-y-0.5 ${
                 tier.featured
@@ -68,7 +72,7 @@ export default function Tiers() {
               }`}
             >
               Solicitar propuesta <span aria-hidden="true">→</span>
-            </Link>
+            </button>
           </article>
         ))}
       </div>
