@@ -8,6 +8,7 @@ import Tiers from "@/components/Tiers";
 import CustomPlan from "@/components/CustomPlan";
 import Contact from "@/components/Contact";
 import OurWorkSection from "@/components/OurWorkSection";
+import InversionCircleScrollAnimation from "@/components/ui/inversion-circle-scroll-animation";
 import { marqueeItems } from "@/data/asher";
 
 export default function Home() {
@@ -20,6 +21,7 @@ export default function Home() {
       />
       <About />
       <OurWorkSection />
+      <InversionCircleScrollAnimation />
       <Routes />
       <Process />
       <Vision />

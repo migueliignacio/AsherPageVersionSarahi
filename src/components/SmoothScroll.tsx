@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import Lenis from "lenis";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export default function SmoothScroll() {
   useEffect(() => {
@@ -20,6 +21,12 @@ export default function SmoothScroll() {
     };
     raf = requestAnimationFrame(loop);
 
+    // Other sections (e.g. OurWorkSection) register their own ScrollTrigger
+    // pins on mount, measured against whatever the page height was at that
+    // exact moment. Once every section below has mounted too, refresh once
+    // so those pins are measured against the final, complete layout.
+    const refreshFrame = requestAnimationFrame(() => ScrollTrigger.refresh());
+
     // Let in-page anchors (the sticky pill nav) route through Lenis.
     const onClick = (e: MouseEvent) => {
       const anchor = (e.target as HTMLElement)?.closest?.('a[href^="#"]');
@@ -36,6 +43,7 @@ export default function SmoothScroll() {
     return () => {
       document.removeEventListener("click", onClick);
       cancelAnimationFrame(raf);
+      cancelAnimationFrame(refreshFrame);
       lenis.destroy();
     };
   }, []);
