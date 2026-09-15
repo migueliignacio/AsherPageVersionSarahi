@@ -1,86 +1,119 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
-import Blob from "./Blob";
+import { useCallback, useRef } from "react";
+import GlyphPortal from "./GlyphPortal";
 import { brand } from "@/data/asher";
 
+/** Fondo tras el cristal, una vez que el zoom revela el campo oscuro. */
+function PortalBackground() {
+  return (
+    <div
+      style={{
+        position: "absolute",
+        inset: 0,
+        background: `
+          radial-gradient(circle at 20% 15%, rgba(255,70,32,0.16), transparent 45%),
+          radial-gradient(circle at 82% 75%, rgba(61,59,255,0.14), transparent 50%),
+          linear-gradient(150deg, #121210 0%, #1d1c19 55%, #121210 100%)
+        `,
+      }}
+    />
+  );
+}
+
+/**
+ * Hero — cámara de scroll a través de la palabra Asher (Glyph Portal).
+ *
+ * El Navbar (ver Navbar.tsx) no tiene un estado claro/oscuro propio — su
+ * mini-logo solo aparece/desaparece según `scrollY`. El portal no expone
+ * zonas claras/oscuras separadas en el DOM (todo pasa dentro de un mismo pin
+ * vía canvas/clip-path), así que este componente no intenta sincronizar nada
+ * extra ahí; el prop `onProgress` de GlyphPortal queda disponible para quien
+ * quiera esa sincronización más adelante.
+ */
 export default function Hero() {
-  const ref = useRef<HTMLDivElement>(null);
-
-  // Progress runs 0 → 1 while the tall wrapper scrolls past a pinned viewport.
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end start"],
-  });
-
-  // The wordmark shrinks toward the top-left header slot. transformOrigin is
-  // pinned to "left top" so scale and translate converge on the same point
-  // instead of fighting each other; the final crossfade hands off to the
-  // Navbar's mini logo, which fades in over the same scroll range.
-  const scale = useTransform(scrollYProgress, [0, 0.72], [1, 0.11]);
-  const x = useTransform(scrollYProgress, [0, 0.72], ["0%", "1.5%"]);
-  const y = useTransform(scrollYProgress, [0, 0.72], ["0%", "-6%"]);
-  const markOpacity = useTransform(scrollYProgress, [0, 0.6, 0.74], [1, 1, 0]);
-
-  const copyOpacity = useTransform(scrollYProgress, [0, 0.28], [1, 0]);
-  const copyY = useTransform(scrollYProgress, [0, 0.28], [0, -40]);
-
-  // Warm blob recedes as the violet one rises — the brand's colour turn.
-  const warmOpacity = useTransform(scrollYProgress, [0, 0.55], [1, 0]);
-  const warmY = useTransform(scrollYProgress, [0, 1], ["0%", "18%"]);
-  const violetOpacity = useTransform(scrollYProgress, [0.35, 0.85], [0, 1]);
-  const violetY = useTransform(scrollYProgress, [0.35, 1], ["24%", "-4%"]);
+  const isDarkRef = useRef(false);
+  const handlePortalProgress = useCallback((p: number) => {
+    // Punto de extensión: aquí se podría sincronizar el Navbar si en el
+    // futuro necesita saber si el fondo bajo la barra es oscuro.
+    isDarkRef.current = p > 0.55;
+  }, []);
 
   return (
-    <section ref={ref} className="relative h-[220svh]">
-      <div className="sticky top-0 flex h-svh flex-col justify-between overflow-hidden">
-        <motion.div style={{ opacity: warmOpacity, y: warmY }} className="absolute inset-0">
-          <Blob
-            from="#ffd9c9"
-            to="#ff8a5c"
-            className="left-[-14%] top-[-10%] h-[70vh] w-[70vh] md:h-[88vh] md:w-[88vh]"
-            blur="70px"
-          />
-        </motion.div>
-
-        <motion.div style={{ opacity: violetOpacity, y: violetY }} className="absolute inset-0">
-          <Blob
-            from="#d9d5f7"
-            to="#6d5bc4"
-            className="left-1/2 top-[-24%] h-[62vh] w-[62vh] -translate-x-1/2 md:h-[80vh] md:w-[80vh]"
-            blur="80px"
-            delay="-7s"
-          />
-        </motion.div>
-
-        {/* Giant wordmark — acts as the page header until it collapses. */}
-        <motion.div
-          style={{ scale, x, y, opacity: markOpacity, transformOrigin: "left top" }}
-          className="relative z-10 select-none px-5 pt-20 leading-[0.78] md:px-10 md:pt-24"
-        >
-          <p
-            aria-hidden="true"
-            className="font-display block whitespace-nowrap font-medium tracking-[-0.04em]"
-            style={{ fontSize: "clamp(5rem, 26vw, 26rem)" }}
-          >
-            <span className="font-serif-italic italic">A</span>sher
-            <span className="align-super text-[0.14em] tracking-normal">™</span>
+    <div id="top">
+      <GlyphPortal
+        word={brand.name}
+        focusChar="s"
+        scrollLength={2.2}
+        enterLabel="Entrar"
+        onProgress={handlePortalProgress}
+        background={<PortalBackground />}
+        style={{
+          "--gp-paper": "var(--color-bg)",
+          "--gp-ink": "var(--color-ink)",
+          "--gp-field": "var(--color-ink)",
+          "--gp-foreground": "var(--color-bg)",
+        }}
+        front={
+          <>
+            <p
+              className="absolute left-1/2 -translate-x-1/2 text-center font-mono text-[10px] uppercase tracking-[0.25em] sm:text-xs"
+              style={{ top: "calc(var(--gp-word-top, 30%) - 40px)", color: "var(--color-ink-soft)" }}
+            >
+              {brand.disciplines}
+            </p>
+            <p
+              className="absolute left-1/2 -translate-x-1/2 px-6 text-center text-sm sm:text-base"
+              style={{ top: "calc(var(--gp-word-bottom, 60%) + 20px)", color: "var(--color-ink-soft)" }}
+            >
+              {brand.heroSub}
+            </p>
+          </>
+        }
+      >
+        <div className="mx-auto flex max-w-2xl flex-col items-start gap-6">
+          <p className="font-mono text-[10px] uppercase tracking-[0.25em]" style={{ color: "rgba(245,243,238,0.55)" }}>
+            Estás dentro de {brand.name}
           </p>
-        </motion.div>
-
-        <motion.div
-          style={{ opacity: copyOpacity, y: copyY }}
-          className="relative z-10 mx-auto max-w-2xl px-6 pb-32 text-center md:pb-40"
-        >
-          <h1 className="font-display text-balance text-2xl font-medium leading-tight tracking-tight md:text-4xl">
-            {brand.heroHeadline}
-          </h1>
-          <p className="mx-auto mt-4 max-w-xl text-balance text-sm leading-relaxed text-[var(--color-ink-soft)] md:text-base">
+          <h2
+            className="font-display font-medium tracking-tight"
+            style={{ fontSize: "clamp(1.75rem,4vw,3rem)", color: "var(--color-bg)", lineHeight: 1.1 }}
+          >
+            {brand.heroHeadline}.
+          </h2>
+          <p className="max-w-lg text-sm leading-relaxed sm:text-base" style={{ color: "rgba(245,243,238,0.75)" }}>
             {brand.heroSub}
           </p>
-        </motion.div>
-      </div>
-    </section>
+          <div className="mt-2 flex flex-wrap items-center gap-x-8 gap-y-4">
+            <a
+              href="#contacto"
+              className="group inline-flex items-center gap-3 text-sm font-semibold sm:text-base"
+              style={{ color: "var(--color-bg)" }}
+            >
+              <span className="relative pb-1">
+                Reservar consultoría
+                <span
+                  className="absolute -bottom-0.5 left-0 h-px w-full origin-right scale-x-0 transition-transform duration-500 ease-out group-hover:origin-left group-hover:scale-x-100"
+                  style={{ background: "var(--color-bg)" }}
+                />
+              </span>
+              <span
+                className="relative flex h-7 w-7 flex-shrink-0 items-center justify-center overflow-hidden rounded-full transition-transform duration-300 ease-out group-hover:translate-x-1"
+                style={{ background: "rgba(245,243,238,0.15)" }}
+              >
+                →
+              </span>
+            </a>
+            <a
+              href="#servicios"
+              className="text-sm underline underline-offset-4 sm:text-base"
+              style={{ color: "rgba(245,243,238,0.75)" }}
+            >
+              Ver servicios
+            </a>
+          </div>
+        </div>
+      </GlyphPortal>
+    </div>
   );
 }
