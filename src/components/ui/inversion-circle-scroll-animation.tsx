@@ -135,6 +135,12 @@ function ContentSection() {
     const el = ref.current;
     if (!el) return;
 
+    // Arriving straight at this section (e.g. the "Quiénes somos" mega menu
+    // links point here) can land the page's forced scroll-correction here
+    // without the observer ever seeing a genuine crossing to react to —
+    // reveal immediately in that case instead of staying stuck pre-reveal.
+    if (window.location.hash === `#${el.id}`) setOn(true);
+
     const io = new IntersectionObserver(
       ([e]) => { if (e.isIntersecting) setOn(true); },
       { threshold: 0.35 },
@@ -144,7 +150,7 @@ function ContentSection() {
   }, []);
 
   return (
-    <section ref={ref} className={`icsa-cs${on ? " on" : ""}`}>
+    <section ref={ref} id="construye-con-intencion" className={`icsa-cs${on ? " on" : ""}`}>
       <div className="icsa-inner">
         <span className="icsa-label icsa-reveal">Lo que sigue</span>
         <h2 className="icsa-reveal">Construye con intención.<br />Crece con confianza.</h2>
