@@ -5,7 +5,7 @@ import CustomCursor from "@/components/CustomCursor";
 import ScrollReveal from "@/components/ScrollReveal";
 import SmoothScroll from "@/components/SmoothScroll";
 import Navbar from "@/components/Navbar";
-import StickyNavPill from "@/components/StickyNavPill";
+import BottomNav from "@/components/BottomNav";
 import ImpactBadge from "@/components/ImpactBadge";
 import Footer from "@/components/Footer";
 import { LeadModalProvider } from "@/components/LeadModalProvider";
@@ -49,7 +49,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Navbar />
           <main>{children}</main>
           <Footer />
-          <StickyNavPill />
+          <BottomNav />
           <ImpactBadge />
         </LeadModalProvider>
       </body>

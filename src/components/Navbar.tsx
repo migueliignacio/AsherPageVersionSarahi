@@ -3,54 +3,9 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { Search, BookOpen, Target, Eye, HeartHandshake } from "lucide-react";
-import MobileMenu from "./MobileMenu";
+import { Search } from "lucide-react";
 import { InstagramIcon, LinkedinIcon } from "./SocialIcons";
 import { useLeadModal } from "./LeadModalProvider";
-import MegaMenu, { type MegaMenuItem } from "./ui/mega-menu";
-
-const NAV_ITEMS: MegaMenuItem[] = [
-  {
-    id: 1,
-    label: "Quiénes somos",
-    subMenus: [
-      {
-        title: "Nuestra empresa",
-        items: [
-          {
-            label: "Historia",
-            description: "Cómo llegamos hasta aquí",
-            icon: BookOpen,
-            href: "/#construye-con-intencion",
-          },
-          {
-            label: "Misión",
-            description: "Por qué existimos",
-            icon: Target,
-            href: "/#construye-con-intencion",
-          },
-          {
-            label: "Visión",
-            description: "Hacia dónde vamos",
-            icon: Eye,
-            href: "/#construye-con-intencion",
-          },
-          {
-            label: "Valores",
-            description: "Cómo trabajamos",
-            icon: HeartHandshake,
-            href: "/#construye-con-intencion",
-          },
-        ],
-      },
-    ],
-  },
-  { id: 2, label: "Servicios", href: "/servicios" },
-  { id: 3, label: "Proceso", href: "/proceso" },
-  { id: 4, label: "Visión", href: "/vision" },
-  { id: 5, label: "Planes", href: "/planes" },
-  { id: 6, label: "Contacto", href: "/contacto" },
-];
 
 export default function Navbar() {
   const { scrollY } = useScroll();
@@ -61,26 +16,22 @@ export default function Navbar() {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 flex items-center justify-between px-5 py-5 md:px-10 md:py-6">
-      <div className="flex items-center gap-6">
-        <motion.div style={{ opacity: logoOpacity, y: logoY }}>
-          <Link
-            href="/"
-            data-cursor="expand"
-            aria-label="ASHER — inicio"
-            className="relative h-8 w-8 md:h-10 md:w-10"
-          >
-            <Image
-              src="/asher/asher-logo.png"
-              alt="ASHER"
-              fill
-              className="object-contain"
-              priority
-            />
-          </Link>
-        </motion.div>
-
-        <MegaMenu items={NAV_ITEMS} className="hidden lg:flex" />
-      </div>
+      <motion.div style={{ opacity: logoOpacity, y: logoY }}>
+        <Link
+          href="/"
+          data-cursor="expand"
+          aria-label="ASHER — inicio"
+          className="relative h-8 w-8 md:h-10 md:w-10"
+        >
+          <Image
+            src="/asher/asher-logo.png"
+            alt="ASHER"
+            fill
+            className="object-contain"
+            priority
+          />
+        </Link>
+      </motion.div>
 
       <div className="flex items-center gap-2">
         <button
@@ -120,8 +71,6 @@ export default function Navbar() {
         >
           <Search size={16} strokeWidth={1.6} />
         </button>
-
-        <MobileMenu />
       </div>
     </header>
   );

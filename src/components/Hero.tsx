@@ -65,7 +65,7 @@ export default function Hero() {
               {brand.disciplines}
             </p>
             <p
-              className="absolute left-1/2 -translate-x-1/2 px-6 text-center text-sm sm:text-base"
+              className="absolute left-1/2 hidden -translate-x-1/2 px-6 text-center text-sm sm:block sm:text-base"
               style={{ top: "calc(var(--gp-word-bottom, 60%) + 20px)", color: "var(--color-ink-soft)" }}
             >
               {brand.heroSub}
