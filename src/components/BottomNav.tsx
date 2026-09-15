@@ -10,6 +10,7 @@ import {
   Target,
   Eye,
   HeartHandshake,
+  Compass,
   PenTool,
   Globe,
   Scale,
@@ -54,6 +55,7 @@ const NAV_ITEMS: NavItem[] = [
       {
         title: "Lo que hacemos",
         items: [
+          { label: "Cinco rutas claras", description: "Todo lo que hacemos, de un vistazo", icon: Compass, href: "/servicios" },
           { label: "Branding", description: "Identidad de marca", icon: PenTool, href: "/servicios" },
           { label: "Digital Web", description: "Sitios y productos digitales", icon: Globe, href: "/servicios" },
           { label: "Legal", description: "Respaldo desde el día uno", icon: Scale, href: "/servicios" },
