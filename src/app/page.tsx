@@ -4,6 +4,7 @@ import ClientLogos from "@/components/ClientLogos";
 import About from "@/components/About";
 import OurWorkSection from "@/components/OurWorkSection";
 import InversionCircleScrollAnimation from "@/components/ui/inversion-circle-scroll-animation";
+import Routes from "@/components/Routes";
 import { marqueeItems } from "@/data/asher";
 
 export default function Home() {
@@ -18,6 +19,7 @@ export default function Home() {
       <About />
       <OurWorkSection />
       <InversionCircleScrollAnimation />
+      <Routes />
     </>
   );
 }

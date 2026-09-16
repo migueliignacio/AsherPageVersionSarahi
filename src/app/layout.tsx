@@ -4,8 +4,7 @@ import "./globals.css";
 import CustomCursor from "@/components/CustomCursor";
 import ScrollReveal from "@/components/ScrollReveal";
 import SmoothScroll from "@/components/SmoothScroll";
-import Navbar from "@/components/Navbar";
-import BottomNav from "@/components/BottomNav";
+import TopNav from "@/components/TopNav";
 import ImpactBadge from "@/components/ImpactBadge";
 import Footer from "@/components/Footer";
 import { LeadModalProvider } from "@/components/LeadModalProvider";
@@ -46,10 +45,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <SmoothScroll />
           <CustomCursor />
           <ScrollReveal />
-          <Navbar />
+          <TopNav />
           <main>{children}</main>
           <Footer />
-          <BottomNav />
           <ImpactBadge />
         </LeadModalProvider>
       </body>

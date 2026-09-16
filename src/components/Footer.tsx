@@ -115,7 +115,7 @@ export default function Footer() {
             <Link href="/terminos" data-cursor="expand" className="hover:text-[var(--color-bg)]">
               Términos de Uso
             </Link>
-            <Link href="#contacto" data-cursor="expand" className="hover:text-[var(--color-bg)]">
+            <Link href="/contacto" data-cursor="expand" className="hover:text-[var(--color-bg)]">
               Contacto
             </Link>
           </nav>

@@ -83,7 +83,7 @@ export default function Routes() {
         {routes.map((route) => (
           <Link
             key={route.index}
-            href="#contacto"
+            href="/contacto"
             data-reveal
             data-cursor="view"
             className="group relative flex items-center justify-between gap-6 overflow-hidden border-b border-[var(--color-line)] py-8 md:py-10"
@@ -126,7 +126,7 @@ export default function Routes() {
           </p>
         </div>
         <Link
-          href="#contacto"
+          href="/contacto"
           data-cursor="expand"
           className="inline-flex shrink-0 items-center gap-2 rounded-full bg-[var(--color-bg)] px-7 py-4 text-xs font-medium uppercase tracking-[0.1em] text-[var(--color-ink)] transition-transform duration-300 hover:-translate-y-0.5"
         >
