@@ -56,11 +56,11 @@ const NAV_ITEMS: NavItem[] = [
         title: "Lo que hacemos",
         items: [
           { label: "Cinco rutas claras", description: "Todo lo que hacemos, de un vistazo", icon: Compass, href: "/servicios" },
-          { label: "Branding", description: "Identidad de marca", icon: PenTool, href: "/servicios" },
-          { label: "Digital Web", description: "Sitios y productos digitales", icon: Globe, href: "/servicios" },
-          { label: "Legal", description: "Respaldo desde el día uno", icon: Scale, href: "/servicios" },
-          { label: "Marca", description: "Estrategia y posicionamiento", icon: Tag, href: "/servicios" },
-          { label: "Marketing", description: "Campañas y contenido", icon: Megaphone, href: "/servicios" },
+          { label: "Branding", description: "Identidad de marca", icon: PenTool, href: "/servicios/branding" },
+          { label: "Digital Web", description: "Sitios y productos digitales", icon: Globe, href: "/servicios/digital-web" },
+          { label: "Legal", description: "Respaldo desde el día uno", icon: Scale, href: "/servicios/legal" },
+          { label: "Marca", description: "Estrategia y posicionamiento", icon: Tag, href: "/servicios/marca" },
+          { label: "Marketing", description: "Campañas y contenido", icon: Megaphone, href: "/servicios/marketing" },
         ],
       },
     ],
@@ -138,9 +138,13 @@ export default function BottomNav() {
                             <ul className="space-y-3">
                               {sub.items.map((sub2) => {
                                 const Icon = sub2.icon;
+                                // Hash targets go through SmoothScroll's Lenis-aware
+                                // click handler (needs a plain <a>); real routes get
+                                // next/link for a client-side transition.
+                                const SubLink = sub2.href.includes("#") ? "a" : Link;
                                 return (
                                   <li key={sub2.label}>
-                                    <a
+                                    <SubLink
                                       href={sub2.href}
                                       data-cursor="expand"
                                       onClick={() => setOpenId(null)}
@@ -155,7 +159,7 @@ export default function BottomNav() {
                                           {sub2.description}
                                         </p>
                                       </div>
-                                    </a>
+                                    </SubLink>
                                   </li>
                                 );
                               })}

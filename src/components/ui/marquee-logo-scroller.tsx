@@ -74,7 +74,7 @@ const MarqueeLogoScroller = React.forwardRef<HTMLDivElement, MarqueeLogoScroller
               {[...logos, ...logos].map((logo, index) => (
                 <div
                   key={index}
-                  className="group relative h-40 w-64 shrink-0 flex items-center justify-center rounded-xl bg-[var(--color-surface)] overflow-hidden"
+                  className="group relative h-40 w-64 shrink-0 flex items-center justify-center overflow-hidden"
                 >
                   <div
                     style={
