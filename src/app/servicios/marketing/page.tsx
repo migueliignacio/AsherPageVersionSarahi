@@ -21,7 +21,7 @@ export default function MarketingPage() {
         { icon: "linkedin", href: "https://linkedin.com" },
       ]}
       locationText="Ecuador"
-      circleClassName="bg-[var(--color-accent-3)]/90"
+      circleClassName="bg-[#f1562c]/90"
     />
   );
 }

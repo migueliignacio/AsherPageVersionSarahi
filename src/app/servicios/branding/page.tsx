@@ -21,7 +21,7 @@ export default function BrandingPage() {
         { icon: "linkedin", href: "https://linkedin.com" },
       ]}
       locationText="Ecuador"
-      circleClassName="bg-[var(--color-accent)]/90"
+      circleClassName="bg-[#fb1b7c]/90"
     />
   );
 }

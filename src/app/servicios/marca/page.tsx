@@ -21,7 +21,7 @@ export default function MarcaPage() {
         { icon: "linkedin", href: "https://linkedin.com" },
       ]}
       locationText="Ecuador"
-      circleClassName="bg-[var(--color-lavender)]/90"
+      circleClassName="bg-[#aa7ef6]/90"
     />
   );
 }

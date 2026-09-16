@@ -2,36 +2,44 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { usePathname } from "next/navigation";
 import { Search } from "lucide-react";
 import { InstagramIcon, LinkedinIcon } from "./SocialIcons";
 import { useLeadModal } from "./LeadModalProvider";
 
-export default function Navbar() {
-  const { scrollY } = useScroll();
-  const { openModal } = useLeadModal();
+const SERVICE_LOGOS: Record<string, string> = {
+  "/servicios/branding": "/asher/logos/branding.png",
+  "/servicios/digital-web": "/asher/logos/digital-web.png",
+  "/servicios/legal": "/asher/logos/legal.png",
+  "/servicios/marca": "/asher/logos/marca.png",
+  "/servicios/marketing": "/asher/logos/marketing.png",
+};
+const DEFAULT_LOGO = "/asher/logos/asher-consulting.png";
 
-  const logoOpacity = useTransform(scrollY, [0, 420, 620], [0, 0, 1]);
-  const logoY = useTransform(scrollY, [0, 420, 620], [-12, -12, 0]);
+export default function Navbar() {
+  const pathname = usePathname();
+  const { openModal } = useLeadModal();
+  const logoSrc = SERVICE_LOGOS[pathname] ?? DEFAULT_LOGO;
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 flex items-center justify-between px-5 py-5 md:px-10 md:py-6">
-      <motion.div style={{ opacity: logoOpacity, y: logoY }}>
+      <div>
         <Link
           href="/"
           data-cursor="expand"
           aria-label="ASHER — inicio"
-          className="relative h-8 w-8 md:h-10 md:w-10"
+          className="relative block h-8 w-8 md:h-10 md:w-10"
         >
           <Image
-            src="/asher/asher-logo.png"
-            alt="ASHER"
+            key={logoSrc}
+            src={logoSrc}
+            alt="ASHER Consulting"
             fill
             className="object-contain"
             priority
           />
         </Link>
-      </motion.div>
+      </div>
 
       <div className="flex items-center gap-2">
         <button

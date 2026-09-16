@@ -21,7 +21,7 @@ export default function DigitalWebPage() {
         { icon: "linkedin", href: "https://linkedin.com" },
       ]}
       locationText="Ecuador"
-      circleClassName="bg-[var(--color-accent-2)]/90"
+      circleClassName="bg-[#79b826]/90"
     />
   );
 }

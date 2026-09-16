@@ -21,7 +21,7 @@ export default function LegalPage() {
         { icon: "linkedin", href: "https://linkedin.com" },
       ]}
       locationText="Ecuador"
-      circleClassName="bg-[var(--color-violet)]/80"
+      circleClassName="bg-[#84172e]/90"
     />
   );
 }
