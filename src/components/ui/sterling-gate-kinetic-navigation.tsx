@@ -211,7 +211,7 @@ export function SterlingGateKineticNavigation({
 
   return (
     <>
-      <header className="fixed inset-x-0 top-0 z-50 flex items-center justify-between px-5 py-5 md:px-10 md:py-6">
+      <header className="fixed inset-x-0 top-0 z-50 flex items-center justify-between px-5 py-5 md:hidden">
         {renderLink(
           { href: logoHref, label: "Inicio" },
           {
