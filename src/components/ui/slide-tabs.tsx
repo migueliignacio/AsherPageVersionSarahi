@@ -64,10 +64,14 @@ export function SlideTabs({ tabs, activeHref, renderLink, className }: SlideTabs
   }, []);
 
   return (
+    // Scrolls horizontally instead of wrapping on narrow screens, so the
+    // pill shape holds even with 7 items and small thumbs can swipe to the
+    // rest — wrapping onto a second line would break the rounded-full look.
+    <div className="min-w-0 max-w-full flex-1 overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
     <ul
       ref={rootRef}
       onMouseLeave={resetToActive}
-      className={`relative mx-auto flex w-fit items-center rounded-full border border-[var(--color-ink)] bg-[var(--color-bg)] p-1 ${className ?? ""}`}
+      className={`relative mx-auto flex w-max flex-nowrap items-center rounded-full border border-[var(--color-ink)] bg-[var(--color-bg)] p-1 ${className ?? ""}`}
     >
       {tabs.map((tab, i) => {
         const isOpen = openIndex === i;
@@ -150,6 +154,7 @@ export function SlideTabs({ tabs, activeHref, renderLink, className }: SlideTabs
 
       <Cursor position={position} />
     </ul>
+    </div>
   );
 }
 

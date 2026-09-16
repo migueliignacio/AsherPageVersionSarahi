@@ -3,11 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import {
-  SterlingGateKineticNavigation,
-  type KineticNavItem,
-} from "@/components/ui/sterling-gate-kinetic-navigation";
-import { SlideTabs } from "@/components/ui/slide-tabs";
+import { SlideTabs, type SlideTabItem } from "@/components/ui/slide-tabs";
 import { InstagramIcon, LinkedinIcon } from "./SocialIcons";
 import { useLeadModal } from "./LeadModalProvider";
 
@@ -20,7 +16,7 @@ const SERVICE_LOGOS: Record<string, string> = {
 };
 const DEFAULT_LOGO = "/asher/logos/asher-consulting.png";
 
-const NAV_ITEMS: KineticNavItem[] = [
+const NAV_ITEMS: SlideTabItem[] = [
   { label: "Inicio", href: "/" },
   {
     label: "Quiénes somos",
@@ -78,96 +74,52 @@ export default function TopNav() {
   );
 
   return (
-    <>
-      {/* Desktop: the nav bar itself is always visible up top, styled as a
-          sliding-cursor pill — items with children expand a dropdown on
-          click instead of navigating. */}
-      <header className="fixed inset-x-0 top-0 z-50 hidden items-center justify-between px-10 py-6 md:flex">
-        <Link
-          href="/"
+    // The nav bar itself is always visible up top on every breakpoint,
+    // styled as a sliding-cursor pill — items with children expand a
+    // dropdown on click instead of navigating. There's no separate
+    // hamburger/fullscreen menu on mobile anymore; this is the only nav.
+    <header className="fixed inset-x-0 top-0 z-50 flex items-center justify-between gap-3 px-5 py-5 md:px-10 md:py-6">
+      <Link
+        href="/"
+        data-cursor="expand"
+        aria-label="ASHER — inicio"
+        className="relative block h-8 w-8 shrink-0 md:h-10 md:w-10"
+      >
+        {logo}
+      </Link>
+
+      <SlideTabs tabs={NAV_ITEMS} activeHref={pathname} renderLink={renderNavLink} />
+
+      <div className="hidden items-center gap-2 md:flex">
+        <button
+          type="button"
+          onClick={() => openModal("nav")}
           data-cursor="expand"
-          aria-label="ASHER — inicio"
-          className="relative block h-10 w-10"
+          className="inline-flex items-center gap-2 rounded-full border border-[var(--color-ink)] px-5 py-2.5 text-xs font-medium uppercase tracking-[0.1em] text-[var(--color-ink)] transition-colors duration-300 hover:bg-[var(--color-ink)] hover:text-[var(--color-bg)]"
         >
-          {logo}
-        </Link>
-
-        <SlideTabs tabs={NAV_ITEMS} activeHref={pathname} renderLink={renderNavLink} />
-
-        <div className="flex items-center gap-2">
-          <button
-            type="button"
-            onClick={() => openModal("nav")}
-            data-cursor="expand"
-            className="inline-flex items-center gap-2 rounded-full border border-[var(--color-ink)] px-5 py-2.5 text-xs font-medium uppercase tracking-[0.1em] text-[var(--color-ink)] transition-colors duration-300 hover:bg-[var(--color-ink)] hover:text-[var(--color-bg)]"
-          >
-            Reservar consultoría <span aria-hidden="true">→</span>
-          </button>
-          <a
-            href="https://instagram.com"
-            target="_blank"
-            rel="noreferrer"
-            aria-label="Instagram"
-            data-cursor="expand"
-            className="grid h-10 w-10 place-items-center rounded-full border border-[var(--color-ink)] transition-colors duration-300 hover:bg-[var(--color-ink)] hover:text-[var(--color-bg)]"
-          >
-            <InstagramIcon />
-          </a>
-          <a
-            href="https://linkedin.com"
-            target="_blank"
-            rel="noreferrer"
-            aria-label="LinkedIn"
-            data-cursor="expand"
-            className="grid h-10 w-10 place-items-center rounded-full border border-[var(--color-ink)] transition-colors duration-300 hover:bg-[var(--color-ink)] hover:text-[var(--color-bg)]"
-          >
-            <LinkedinIcon />
-          </a>
-        </div>
-      </header>
-
-      {/* Mobile: logo left, toggle right, opening the fullscreen kinetic menu. */}
-      <div className="md:hidden">
-        <SterlingGateKineticNavigation
-          logo={logo}
-          items={NAV_ITEMS}
-          menuFooter={
-            <div className="flex flex-wrap items-center gap-6">
-              <button
-                type="button"
-                onClick={() => openModal("nav-menu")}
-                data-cursor="expand"
-                className="inline-flex items-center gap-2 rounded-full bg-[var(--color-bg)] px-6 py-3.5 text-xs font-medium uppercase tracking-[0.1em] text-[var(--color-ink)] transition-transform duration-300 hover:-translate-y-0.5"
-              >
-                Reservar consultoría <span aria-hidden="true">→</span>
-              </button>
-              <div className="flex items-center gap-4">
-                <a
-                  href="https://instagram.com"
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label="Instagram"
-                  data-cursor="expand"
-                  className="text-[var(--color-bg)]/60 transition-colors duration-300 hover:text-[var(--color-bg)]"
-                >
-                  <InstagramIcon className="text-xl" />
-                </a>
-                <a
-                  href="https://linkedin.com"
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label="LinkedIn"
-                  data-cursor="expand"
-                  className="text-[var(--color-bg)]/60 transition-colors duration-300 hover:text-[var(--color-bg)]"
-                >
-                  <LinkedinIcon className="text-xl" />
-                </a>
-              </div>
-            </div>
-          }
-          renderLink={renderNavLink}
-        />
+          Reservar consultoría <span aria-hidden="true">→</span>
+        </button>
+        <a
+          href="https://instagram.com"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="Instagram"
+          data-cursor="expand"
+          className="grid h-10 w-10 place-items-center rounded-full border border-[var(--color-ink)] transition-colors duration-300 hover:bg-[var(--color-ink)] hover:text-[var(--color-bg)]"
+        >
+          <InstagramIcon />
+        </a>
+        <a
+          href="https://linkedin.com"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="LinkedIn"
+          data-cursor="expand"
+          className="grid h-10 w-10 place-items-center rounded-full border border-[var(--color-ink)] transition-colors duration-300 hover:bg-[var(--color-ink)] hover:text-[var(--color-bg)]"
+        >
+          <LinkedinIcon />
+        </a>
       </div>
-    </>
+    </header>
   );
 }

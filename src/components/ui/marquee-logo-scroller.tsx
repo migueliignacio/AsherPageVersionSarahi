@@ -28,7 +28,7 @@ const MarqueeLogoScroller = React.forwardRef<HTMLDivElement, MarqueeLogoScroller
     const durationMap = {
       normal: "40s",
       slow: "80s",
-      fast: "5s",
+      fast: "14s",
     };
     const animationDuration = durationMap[speed];
 
