@@ -25,7 +25,7 @@ const SERVICE_LOGOS: Record<string, string> = {
   "/servicios/marca": "/asher/logos/marca.png",
   "/servicios/marketing": "/asher/logos/marketing.png",
 };
-const DEFAULT_LOGO = "/asher/logos/asher-badge.png";
+const DEFAULT_LOGO = "/asher/logos/asher-consulting.png";
 
 const NAV_ITEMS: SlideTabItem[] = [
   { label: "Inicio", href: "/" },
@@ -232,7 +232,7 @@ export default function TopNav() {
       src={logoSrc}
       alt="ASHER Consulting"
       fill
-      className="object-contain opacity-90"
+      className="object-contain"
       priority
     />
   );
@@ -247,7 +247,7 @@ export default function TopNav() {
         href="/"
         data-cursor="expand"
         aria-label="ASHER — inicio"
-        className="relative block h-11 w-11 shrink-0 md:h-14 md:w-14"
+        className="relative block h-8 w-8 shrink-0 md:h-10 md:w-10"
       >
         {logo}
       </Link>
