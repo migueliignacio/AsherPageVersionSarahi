@@ -9,6 +9,14 @@ export const brand = {
     "Elige una ruta, cuéntanos tu proyecto, y tu marca empieza a moverse esta semana — con respaldo legal desde el día uno.",
   email: "asherlegalbranding@gmail.com",
   copyright: "© 2026 ASHER",
+  socialLinks: {
+    instagram: "https://www.instagram.com/asherconsulting?stkn=MTY0NTlpOTM1cHNraA==",
+    facebook: "https://www.facebook.com/Asherconsult593",
+    tiktok: "https://www.tiktok.com/@asherconsulting?_r=1&_t=ZS-99XgCxyAFW9",
+    whatsapp: `https://wa.me/593992198798?text=${encodeURIComponent(
+      "Hola, quiero agendar una consultoría con ASHER."
+    )}`,
+  },
 };
 
 export interface Route {

@@ -5,6 +5,7 @@ import BentoGrid from "@/components/ui/bento-grid-01";
 import { ServiceCatalog } from "@/components/ui/service-catalog";
 import { TextColor } from "@/components/ui/text-color";
 import { serviceAddons } from "@/data/service-addons";
+import { brand } from "@/data/asher";
 
 export const metadata: Metadata = {
   title: "Branding — ASHER",
@@ -21,8 +22,10 @@ export default function BrandingPage() {
         imageAlt="TEÍTO — mascota de ASHER"
         overlayText={{ part1: "marca", part2: "con carácter" }}
         socialLinks={[
-          { icon: "instagram", href: "https://instagram.com" },
-          { icon: "linkedin", href: "https://linkedin.com" },
+          { icon: "instagram", href: brand.socialLinks.instagram },
+          { icon: "facebook", href: brand.socialLinks.facebook },
+          { icon: "tiktok", href: brand.socialLinks.tiktok },
+          { icon: "whatsapp", href: brand.socialLinks.whatsapp },
         ]}
         locationText="Ecuador"
         circleClassName="bg-[#fb1b7c]/90"

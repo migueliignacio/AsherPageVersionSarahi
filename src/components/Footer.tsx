@@ -3,8 +3,15 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { InstagramIcon, LinkedinIcon } from "./SocialIcons";
+import { InstagramIcon, FacebookIcon, TiktokIcon, WhatsappIcon } from "./SocialIcons";
 import { brand, disciplines } from "@/data/asher";
+
+const SOCIAL_LINKS = [
+  { icon: InstagramIcon, href: brand.socialLinks.instagram, label: "Instagram" },
+  { icon: FacebookIcon, href: brand.socialLinks.facebook, label: "Facebook" },
+  { icon: TiktokIcon, href: brand.socialLinks.tiktok, label: "TikTok" },
+  { icon: WhatsappIcon, href: brand.socialLinks.whatsapp, label: "WhatsApp" },
+];
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -85,26 +92,19 @@ export default function Footer() {
           <div>
             <h2 className="mb-3 font-medium">Conecta</h2>
             <div className="flex gap-2">
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="Instagram"
-                data-cursor="expand"
-                className="grid h-9 w-9 place-items-center rounded-full border border-[var(--color-bg)]/40 text-sm transition-colors duration-300 hover:bg-[var(--color-bg)] hover:text-[var(--color-violet)]"
-              >
-                <InstagramIcon />
-              </a>
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="LinkedIn"
-                data-cursor="expand"
-                className="grid h-9 w-9 place-items-center rounded-full border border-[var(--color-bg)]/40 text-sm transition-colors duration-300 hover:bg-[var(--color-bg)] hover:text-[var(--color-violet)]"
-              >
-                <LinkedinIcon />
-              </a>
+              {SOCIAL_LINKS.map(({ icon: Icon, href, label }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={label}
+                  data-cursor="expand"
+                  className="grid h-9 w-9 place-items-center rounded-full border border-[var(--color-bg)]/40 text-sm transition-colors duration-300 hover:bg-[var(--color-bg)] hover:text-[var(--color-violet)]"
+                >
+                  <Icon />
+                </a>
+              ))}
             </div>
           </div>
 

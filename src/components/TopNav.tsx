@@ -7,8 +7,16 @@ import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { SlideTabs, type SlideTabItem } from "@/components/ui/slide-tabs";
-import { InstagramIcon, LinkedinIcon } from "./SocialIcons";
+import { InstagramIcon, FacebookIcon, TiktokIcon, WhatsappIcon } from "./SocialIcons";
 import { useLeadModal } from "./LeadModalProvider";
+import { brand } from "@/data/asher";
+
+const SOCIAL_LINKS = [
+  { icon: InstagramIcon, href: brand.socialLinks.instagram, label: "Instagram" },
+  { icon: FacebookIcon, href: brand.socialLinks.facebook, label: "Facebook" },
+  { icon: TiktokIcon, href: brand.socialLinks.tiktok, label: "TikTok" },
+  { icon: WhatsappIcon, href: brand.socialLinks.whatsapp, label: "WhatsApp" },
+];
 
 const SERVICE_LOGOS: Record<string, string> = {
   "/servicios/branding": "/asher/logos/branding.png",
@@ -191,26 +199,19 @@ function MobileNav({ onReservar }: { onReservar: () => void }) {
                 Reservar consultoría <span aria-hidden="true">→</span>
               </button>
               <div className="flex items-center gap-3">
-                <a
-                  href="https://instagram.com"
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label="Instagram"
-                  data-cursor="expand"
-                  className="text-[var(--color-ink)]/60 transition-colors duration-300 hover:text-[var(--color-ink)]"
-                >
-                  <InstagramIcon className="text-lg" />
-                </a>
-                <a
-                  href="https://linkedin.com"
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label="LinkedIn"
-                  data-cursor="expand"
-                  className="text-[var(--color-ink)]/60 transition-colors duration-300 hover:text-[var(--color-ink)]"
-                >
-                  <LinkedinIcon className="text-lg" />
-                </a>
+                {SOCIAL_LINKS.map(({ icon: Icon, href, label }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={label}
+                    data-cursor="expand"
+                    className="text-[var(--color-ink)]/60 transition-colors duration-300 hover:text-[var(--color-ink)]"
+                  >
+                    <Icon className="text-lg" />
+                  </a>
+                ))}
               </div>
             </div>
           </motion.div>
@@ -257,26 +258,19 @@ export default function TopNav() {
         >
           Reservar consultoría <span aria-hidden="true">→</span>
         </button>
-        <a
-          href="https://instagram.com"
-          target="_blank"
-          rel="noreferrer"
-          aria-label="Instagram"
-          data-cursor="expand"
-          className="grid h-10 w-10 place-items-center rounded-full border border-[var(--color-ink)] transition-colors duration-300 hover:bg-[var(--color-ink)] hover:text-[var(--color-bg)]"
-        >
-          <InstagramIcon />
-        </a>
-        <a
-          href="https://linkedin.com"
-          target="_blank"
-          rel="noreferrer"
-          aria-label="LinkedIn"
-          data-cursor="expand"
-          className="grid h-10 w-10 place-items-center rounded-full border border-[var(--color-ink)] transition-colors duration-300 hover:bg-[var(--color-ink)] hover:text-[var(--color-bg)]"
-        >
-          <LinkedinIcon />
-        </a>
+        {SOCIAL_LINKS.map(({ icon: Icon, href, label }) => (
+          <a
+            key={label}
+            href={href}
+            target="_blank"
+            rel="noreferrer"
+            aria-label={label}
+            data-cursor="expand"
+            className="grid h-10 w-10 place-items-center rounded-full border border-[var(--color-ink)] transition-colors duration-300 hover:bg-[var(--color-ink)] hover:text-[var(--color-bg)]"
+          >
+            <Icon />
+          </a>
+        ))}
       </div>
 
       <MobileNav onReservar={() => openModal("nav-mobile")} />

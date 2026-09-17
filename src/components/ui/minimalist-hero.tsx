@@ -4,14 +4,16 @@ import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { InstagramIcon, LinkedinIcon } from "@/components/SocialIcons";
+import { InstagramIcon, FacebookIcon, TiktokIcon, WhatsappIcon } from "@/components/SocialIcons";
 
 // Server page components can't hand a component reference across the
 // server/client boundary as a prop, so social icons are picked by key here
 // instead of passed in as components.
 const SOCIAL_ICONS = {
   instagram: InstagramIcon,
-  linkedin: LinkedinIcon,
+  facebook: FacebookIcon,
+  tiktok: TiktokIcon,
+  whatsapp: WhatsappIcon,
 } as const;
 
 type SocialKey = keyof typeof SOCIAL_ICONS;
