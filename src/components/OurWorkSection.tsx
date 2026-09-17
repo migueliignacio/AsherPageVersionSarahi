@@ -311,7 +311,7 @@ export default function OurWorkSection() {
             select-none
             whitespace-nowrap
             text-center
-            text-[13vw]
+            text-[19vw]
             font-black
             uppercase
             leading-[0.7]
