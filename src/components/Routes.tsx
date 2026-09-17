@@ -6,12 +6,23 @@ import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { routes, disciplines } from "@/data/asher";
 
+// The site's real per-service logos + accent colors (from the /servicios
+// pages), not the mismatched maroon/navy/photo-card mix the discipline
+// data used to point at before.
 const disciplineImages: Record<string, string> = {
-  Estrategia: "/asher/disciplinas/estrategia-maroon.png",
-  Marca: "/asher/disciplinas/marca-branding.png",
-  Digital: "/asher/disciplinas/digital-verde.png",
-  Publicidad: "/asher/disciplinas/publicidad-naranja.png",
-  Legal: "/asher/disciplinas/legal-navy.png",
+  Estrategia: "/asher/logos/branding.png",
+  Marca: "/asher/logos/marca.png",
+  Digital: "/asher/logos/digital-web.png",
+  Publicidad: "/asher/logos/marketing.png",
+  Legal: "/asher/logos/legal.png",
+};
+
+const disciplineColors: Record<string, string> = {
+  Estrategia: "#fb1b7c",
+  Marca: "#aa7ef6",
+  Digital: "#79b826",
+  Publicidad: "#f1562c",
+  Legal: "#84172e",
 };
 
 export default function Routes() {
@@ -40,28 +51,28 @@ export default function Routes() {
 
       <div className="relative mx-auto mb-24 max-w-[1400px] md:mb-32">
         {/* Discipline pills scattered behind the headline. */}
-        {disciplines.slice(0, 4).map((d, i) => {
+        {disciplines.map((d, i) => {
           const imageSrc = disciplineImages[d.title];
+          const color = disciplineColors[d.title];
           return (
             <div
               key={d.title}
               aria-hidden="true"
-              className={`group absolute z-0 hidden h-32 w-32 overflow-hidden rounded-full transition-transform duration-500 hover:scale-110 md:block ${
+              className={`group absolute z-0 hidden h-32 w-32 overflow-hidden rounded-full p-6 transition-transform duration-500 hover:scale-110 md:block ${
                 [
                   "left-[4%] top-[18%] -rotate-[7deg]",
                   "left-[20%] bottom-[6%] rotate-[5deg]",
                   "right-[8%] bottom-[2%] -rotate-[4deg]",
                   "right-[14%] top-[10%] rotate-[8deg]",
+                  "left-[42%] top-[2%] rotate-[3deg]",
                 ][i]
               }`}
+              style={{ background: `color-mix(in srgb, ${color} 14%, var(--color-bg))` }}
             >
               {imageSrc && (
-                <Image
-                  src={imageSrc}
-                  alt={d.title}
-                  fill
-                  className="object-cover"
-                />
+                <div className="relative h-full w-full">
+                  <Image src={imageSrc} alt={d.title} fill className="object-contain" />
+                </div>
               )}
             </div>
           );
