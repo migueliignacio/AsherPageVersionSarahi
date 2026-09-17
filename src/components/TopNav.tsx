@@ -24,10 +24,10 @@ const NAV_ITEMS: SlideTabItem[] = [
   {
     label: "Quiénes somos",
     children: [
-      { label: "Historia", href: "/#construye-con-intencion" },
-      { label: "Misión", href: "/#construye-con-intencion" },
-      { label: "Visión", href: "/#construye-con-intencion" },
-      { label: "Valores", href: "/#construye-con-intencion" },
+      { label: "Historia", href: "/quienes-somos#historia" },
+      { label: "Misión", href: "/quienes-somos#mision" },
+      { label: "Visión", href: "/quienes-somos#vision" },
+      { label: "Valores", href: "/quienes-somos#valores" },
     ],
   },
   {
