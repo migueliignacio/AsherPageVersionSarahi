@@ -18,8 +18,6 @@ export default function MarcaPage() {
       <MinimalistHero
         mainText="Definimos la estrategia y el posicionamiento de tu marca: a quién le hablas, qué te hace distinto y cómo se nota en todo lo que haces."
         readMoreLink="/contacto"
-        imageSrc="/asher/teito-mascota.png"
-        imageAlt="TEÍTO — mascota de ASHER"
         title="Marca"
         socialLinks={[
           { icon: "instagram", href: brand.socialLinks.instagram },

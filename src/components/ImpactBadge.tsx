@@ -12,7 +12,7 @@ export default function ImpactBadge() {
         className="spin-slow absolute inset-0 rounded-3xl"
         style={{
           background:
-            "conic-gradient(from 0deg, #ffd45c, #ff8a3d, #ff4620, #b6b0ea, #3b1f79, #cfff5c, #ffd45c)",
+            "conic-gradient(from 0deg, #ffd45c, #ff8a3d, #ff4620, #8b9fd4, #0b1956, #cfff5c, #ffd45c)",
         }}
         aria-hidden="true"
       />

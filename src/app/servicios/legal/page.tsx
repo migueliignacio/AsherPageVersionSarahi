@@ -18,8 +18,6 @@ export default function LegalPage() {
       <MinimalistHero
         mainText="Respaldo legal desde el día uno: registro de marca, contratos y protección para que tu negocio crezca sin sobresaltos."
         readMoreLink="/contacto"
-        imageSrc="/asher/teito-mascota.png"
-        imageAlt="TEÍTO — mascota de ASHER"
         title="Legal"
         socialLinks={[
           { icon: "instagram", href: brand.socialLinks.instagram },

@@ -15,9 +15,9 @@
   --color-accent-3: #cfff5c;
 
   /* deep brand field used by the footer + ghost wordmark */
-  --color-violet: #3b1f79;
-  --color-violet-deep: #2c1459;
-  --color-lavender: #b6b0ea;
+  --color-violet: #0b1956;
+  --color-violet-deep: #060e2e;
+  --color-lavender: #8b9fd4;
 
   /* navy from the primary logo badge — used wherever the "Asher" wordmark
      itself is rendered as text, to match the logo's own ink color */

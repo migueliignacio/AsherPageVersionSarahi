@@ -4,7 +4,12 @@ import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { InstagramIcon, FacebookIcon, TiktokIcon, WhatsappIcon } from "@/components/SocialIcons";
+import {
+  InstagramIcon,
+  FacebookIcon,
+  TiktokIcon,
+  WhatsappIcon,
+} from "@/components/SocialIcons";
 
 // Server page components can't hand a component reference across the
 // server/client boundary as a prop, so social icons are picked by key here
@@ -21,8 +26,6 @@ type SocialKey = keyof typeof SOCIAL_ICONS;
 interface MinimalistHeroProps {
   mainText: string;
   readMoreLink: string;
-  imageSrc: string;
-  imageAlt: string;
   /** Rendered uppercase — just the service name (e.g. "Branding"). */
   title: string;
   socialLinks: { icon: SocialKey; href: string }[];
@@ -48,8 +51,6 @@ const SocialIcon = ({ href, icon }: { href: string; icon: SocialKey }) => {
 export const MinimalistHero = ({
   mainText,
   readMoreLink,
-  imageSrc,
-  imageAlt,
   title,
   socialLinks,
   locationText,
@@ -60,7 +61,7 @@ export const MinimalistHero = ({
     <div
       className={cn(
         "relative flex min-h-screen w-full flex-col items-center justify-between overflow-hidden bg-[var(--color-bg)] p-8 font-sans md:p-12",
-        className
+        className,
       )}
     >
       {/* No internal logo/nav header here — the global fixed <TopNav> already
@@ -92,23 +93,21 @@ export const MinimalistHero = ({
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
             className={cn(
               "absolute z-0 h-[300px] w-[300px] rounded-full md:h-[400px] md:w-[400px] lg:h-[500px] lg:w-[500px]",
-              circleClassName ?? "bg-[var(--color-accent)]/90"
+              circleClassName ?? "bg-[var(--color-accent)]/90",
             )}
           ></motion.div>
           <motion.div
-            className="relative z-10 w-56 scale-150 md:w-64 lg:w-72"
+            className="relative z-10 h-48 w-48 md:h-64 md:w-64 lg:h-80 lg:w-80"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.4 }}
           >
             <Image
-              src={imageSrc}
-              alt={imageAlt}
-              width={400}
-              height={400}
+              src="/asher/logos/logo-beige.webp"
+              alt="ASHER"
+              fill
+              className="object-contain"
               priority
-              sizes="(min-width: 1024px) 288px, (min-width: 768px) 256px, 224px"
-              className="h-auto w-full object-cover"
             />
           </motion.div>
         </div>

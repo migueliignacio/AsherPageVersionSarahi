@@ -18,8 +18,6 @@ export default function DigitalWebPage() {
       <MinimalistHero
         mainText="Diseñamos y construimos sitios y productos digitales rápidos, claros y listos para convertir visitas en clientes."
         readMoreLink="/contacto"
-        imageSrc="/asher/teito-mascota.png"
-        imageAlt="TEÍTO — mascota de ASHER"
         title="Digital Web"
         socialLinks={[
           { icon: "instagram", href: brand.socialLinks.instagram },

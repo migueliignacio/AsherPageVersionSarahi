@@ -18,8 +18,6 @@ export default function MarketingPage() {
       <MinimalistHero
         mainText="Campañas y contenido pensados para que tu marca se mueva: más alcance, más conversaciones, más clientes."
         readMoreLink="/contacto"
-        imageSrc="/asher/teito-mascota.png"
-        imageAlt="TEÍTO — mascota de ASHER"
         title="Marketing"
         socialLinks={[
           { icon: "instagram", href: brand.socialLinks.instagram },

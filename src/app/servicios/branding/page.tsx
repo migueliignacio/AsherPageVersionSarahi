@@ -18,8 +18,6 @@ export default function BrandingPage() {
       <MinimalistHero
         mainText="Construimos identidades de marca con carácter: naming, sistemas visuales y guías que se sostienen en el tiempo."
         readMoreLink="/contacto"
-        imageSrc="/asher/teito-mascota.png"
-        imageAlt="TEÍTO — mascota de ASHER"
         title="Branding"
         socialLinks={[
           { icon: "instagram", href: brand.socialLinks.instagram },
