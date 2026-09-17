@@ -67,7 +67,7 @@ export const MinimalistHero = ({
           covers every page, and this hero used to render its own "ASHER"
           wordmark on top of it, colliding in the corner on both mobile and
           desktop. */}
-      <div className="relative mt-16 grid w-full max-w-7xl flex-grow grid-cols-1 items-center md:mt-0 md:grid-cols-3">
+      <div className="relative mt-16 grid w-full max-w-7xl flex-grow grid-cols-1 items-center gap-y-8 md:mt-0 md:grid-cols-3 md:gap-y-0">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -85,7 +85,7 @@ export const MinimalistHero = ({
           </a>
         </motion.div>
 
-        <div className="relative order-1 md:order-2 flex h-full items-center justify-center">
+        <div className="relative order-1 md:order-2 flex items-center justify-center md:h-full">
           <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}

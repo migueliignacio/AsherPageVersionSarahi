@@ -2,21 +2,10 @@
 
 import { useRef } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { routes, disciplines } from "@/data/asher";
 
-// The site's real per-service logos + accent colors (from the /servicios
-// pages), not the mismatched maroon/navy/photo-card mix the discipline
-// data used to point at before.
-const disciplineImages: Record<string, string> = {
-  Estrategia: "/asher/logos/branding.png",
-  Marca: "/asher/logos/marca.png",
-  Digital: "/asher/logos/digital-web.png",
-  Publicidad: "/asher/logos/marketing.png",
-  Legal: "/asher/logos/legal.png",
-};
-
+// The site's real per-service accent colors (from the /servicios pages).
 const disciplineColors: Record<string, string> = {
   Estrategia: "#fb1b7c",
   Marca: "#aa7ef6",
@@ -50,43 +39,36 @@ export default function Routes() {
       </p>
 
       <div className="relative mx-auto mb-24 max-w-[1400px] md:mb-32">
-        {/* Discipline pills scattered behind the headline. */}
+        {/* Discipline dots scattered behind the headline — plain color, no
+            logo mark and no blend-through-the-text effect. */}
         {disciplines.map((d, i) => {
-          const imageSrc = disciplineImages[d.title];
           const color = disciplineColors[d.title];
           return (
             <div
               key={d.title}
               aria-hidden="true"
-              className={`group absolute z-0 block h-14 w-14 overflow-hidden rounded-full p-3 transition-transform duration-500 hover:scale-110 sm:h-20 sm:w-20 sm:p-4 md:h-32 md:w-32 md:p-6 ${
+              className={`absolute z-0 block h-14 w-14 rounded-full transition-transform duration-500 hover:scale-110 sm:h-20 sm:w-20 md:h-32 md:w-32 ${
+                // The headline is much shorter on mobile (2 tight lines) than
+                // desktop, so reusing the same percentages crammed them on
+                // top of each other — mobile gets its own, more spread out
+                // positions (allowed to poke slightly outside the text box),
+                // desktop keeps the original layout via the md: overrides.
                 [
-                  "left-[4%] top-[18%] -rotate-[7deg]",
-                  "left-[20%] bottom-[6%] rotate-[5deg]",
-                  "right-[8%] bottom-[2%] -rotate-[4deg]",
-                  "right-[14%] top-[10%] rotate-[8deg]",
-                  "left-[42%] top-[2%] rotate-[3deg]",
+                  "-left-[6%] top-[4%] md:left-[4%] md:top-[18%]",
+                  "left-[4%] -bottom-[10%] md:left-[20%] md:bottom-[6%]",
+                  "-right-[8%] -bottom-[6%] md:right-[8%] md:bottom-[2%]",
+                  "right-[2%] -top-[10%] md:right-[14%] md:top-[10%]",
+                  "left-[38%] -top-[18%] md:left-[42%] md:top-[2%]",
                 ][i]
               }`}
               style={{ background: `color-mix(in srgb, ${color} 14%, var(--color-bg))` }}
-            >
-              {imageSrc && (
-                <div className="relative h-full w-full">
-                  <Image
-                    src={imageSrc}
-                    alt={d.title}
-                    fill
-                    sizes="(min-width: 768px) 128px, (min-width: 640px) 80px, 56px"
-                    className="object-contain"
-                  />
-                </div>
-              )}
-            </div>
+            />
           );
         })}
 
         <motion.h2
           style={{ clipPath }}
-          className="font-display relative z-10 text-center font-medium uppercase leading-[0.85] tracking-[-0.03em] mix-blend-multiply"
+          className="font-display relative z-10 text-center font-medium uppercase leading-[0.85] tracking-[-0.03em]"
         >
           <span className="block" style={{ fontSize: "clamp(2.6rem, 12vw, 11rem)" }}>
             Cinco rutas
@@ -112,7 +94,10 @@ export default function Routes() {
             />
 
             <span className="relative z-10 flex items-baseline gap-5 transition-transform duration-500 ease-[cubic-bezier(.16,1,.3,1)] group-hover:translate-x-4 md:gap-10">
-              <span className="text-xs text-[var(--color-ink-soft)] transition-colors duration-500 group-hover:text-[var(--color-bg)]/70">
+              <span
+                className="text-xs font-medium text-[color:var(--route-accent)] transition-colors duration-500 md:font-normal md:text-[var(--color-ink-soft)] group-hover:text-[var(--color-bg)]/70"
+                style={{ "--route-accent": route.accent } as React.CSSProperties}
+              >
                 {route.index}
               </span>
               <span className="font-display text-2xl font-medium tracking-tight transition-colors duration-500 group-hover:text-[var(--color-bg)] md:text-5xl">
