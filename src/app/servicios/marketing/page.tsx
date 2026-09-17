@@ -20,7 +20,7 @@ export default function MarketingPage() {
         readMoreLink="/contacto"
         imageSrc="/asher/teito-mascota.png"
         imageAlt="TEÍTO — mascota de ASHER"
-        overlayText={{ part1: "más", part2: "alcance" }}
+        title="Marketing"
         socialLinks={[
           { icon: "instagram", href: brand.socialLinks.instagram },
           { icon: "facebook", href: brand.socialLinks.facebook },

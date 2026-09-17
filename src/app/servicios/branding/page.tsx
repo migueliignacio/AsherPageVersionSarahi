@@ -20,7 +20,7 @@ export default function BrandingPage() {
         readMoreLink="/contacto"
         imageSrc="/asher/teito-mascota.png"
         imageAlt="TEÍTO — mascota de ASHER"
-        overlayText={{ part1: "marca", part2: "con carácter" }}
+        title="Branding"
         socialLinks={[
           { icon: "instagram", href: brand.socialLinks.instagram },
           { icon: "facebook", href: brand.socialLinks.facebook },

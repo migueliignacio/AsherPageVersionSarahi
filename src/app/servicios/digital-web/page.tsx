@@ -20,7 +20,7 @@ export default function DigitalWebPage() {
         readMoreLink="/contacto"
         imageSrc="/asher/teito-mascota.png"
         imageAlt="TEÍTO — mascota de ASHER"
-        overlayText={{ part1: "presencia", part2: "digital" }}
+        title="Digital Web"
         socialLinks={[
           { icon: "instagram", href: brand.socialLinks.instagram },
           { icon: "facebook", href: brand.socialLinks.facebook },

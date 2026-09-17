@@ -20,7 +20,7 @@ export default function LegalPage() {
         readMoreLink="/contacto"
         imageSrc="/asher/teito-mascota.png"
         imageAlt="TEÍTO — mascota de ASHER"
-        overlayText={{ part1: "respaldo", part2: "legal" }}
+        title="Legal"
         socialLinks={[
           { icon: "instagram", href: brand.socialLinks.instagram },
           { icon: "facebook", href: brand.socialLinks.facebook },

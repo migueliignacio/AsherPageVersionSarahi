@@ -23,10 +23,8 @@ interface MinimalistHeroProps {
   readMoreLink: string;
   imageSrc: string;
   imageAlt: string;
-  overlayText: {
-    part1: string;
-    part2: string;
-  };
+  /** Rendered uppercase — just the service name (e.g. "Branding"). */
+  title: string;
   socialLinks: { icon: SocialKey; href: string }[];
   locationText: string;
   circleClassName?: string;
@@ -52,7 +50,7 @@ export const MinimalistHero = ({
   readMoreLink,
   imageSrc,
   imageAlt,
-  overlayText,
+  title,
   socialLinks,
   locationText,
   circleClassName,
@@ -121,10 +119,8 @@ export const MinimalistHero = ({
           transition={{ duration: 0.6, delay: 1.2 }}
           className="z-20 order-3 flex items-center justify-center text-center md:justify-start"
         >
-          <h1 className="font-display text-7xl font-medium tracking-tight text-[var(--color-ink)] md:text-8xl lg:text-9xl">
-            {overlayText.part1}
-            <br />
-            {overlayText.part2}
+          <h1 className="font-display uppercase text-7xl font-medium tracking-tight text-[var(--color-ink)] md:text-8xl lg:text-9xl">
+            {title}
           </h1>
         </motion.div>
       </div>
