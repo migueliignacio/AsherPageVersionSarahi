@@ -18,16 +18,20 @@ export function GooeyText({
   className,
   textClassName,
 }: GooeyTextProps) {
+  const containerRef = React.useRef<HTMLDivElement>(null);
   const text1Ref = React.useRef<HTMLSpanElement>(null);
   const text2Ref = React.useRef<HTMLSpanElement>(null);
   const filterId = React.useId().replace(/:/g, "");
 
   React.useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
     let textIndex = texts.length - 1;
     let time = new Date();
     let morph = 0;
     let cooldown = cooldownTime;
-    let frame: number;
+    let frame: number | null = null;
 
     const setMorph = (fraction: number) => {
       if (text1Ref.current && text2Ref.current) {
@@ -86,13 +90,27 @@ export function GooeyText({
       }
     }
 
-    animate();
+    // Only spend rAF/CPU on this while it's actually on screen — it used to
+    // run forever the moment the page mounted, even scrolled far away.
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting && frame === null) {
+        time = new Date();
+        animate();
+      } else if (!entry.isIntersecting && frame !== null) {
+        cancelAnimationFrame(frame);
+        frame = null;
+      }
+    });
+    observer.observe(container);
 
-    return () => cancelAnimationFrame(frame);
+    return () => {
+      observer.disconnect();
+      if (frame !== null) cancelAnimationFrame(frame);
+    };
   }, [texts, morphTime, cooldownTime]);
 
   return (
-    <div className={cn("relative", className)}>
+    <div ref={containerRef} className={cn("relative", className)}>
       <svg className="absolute h-0 w-0" aria-hidden="true" focusable="false">
         <defs>
           <filter id={filterId}>

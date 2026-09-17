@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { InstagramIcon, LinkedinIcon } from "@/components/SocialIcons";
@@ -94,14 +95,22 @@ export const MinimalistHero = ({
               circleClassName ?? "bg-[var(--color-accent)]/90"
             )}
           ></motion.div>
-          <motion.img
-            src={imageSrc}
-            alt={imageAlt}
-            className="relative z-10 h-auto w-56 scale-150 object-cover md:w-64 lg:w-72"
+          <motion.div
+            className="relative z-10 w-56 scale-150 md:w-64 lg:w-72"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.4 }}
-          />
+          >
+            <Image
+              src={imageSrc}
+              alt={imageAlt}
+              width={400}
+              height={400}
+              priority
+              sizes="(min-width: 1024px) 288px, (min-width: 768px) 256px, 224px"
+              className="h-auto w-full object-cover"
+            />
+          </motion.div>
         </div>
 
         <motion.div

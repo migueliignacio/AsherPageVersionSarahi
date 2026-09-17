@@ -309,8 +309,9 @@ export default function OurWorkSection() {
           ref={titleRef}
           className="
             select-none
+            whitespace-nowrap
             text-center
-            text-[24vw]
+            text-[13vw]
             font-black
             uppercase
             leading-[0.7]

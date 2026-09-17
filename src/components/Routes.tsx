@@ -58,7 +58,7 @@ export default function Routes() {
             <div
               key={d.title}
               aria-hidden="true"
-              className={`group absolute z-0 hidden h-32 w-32 overflow-hidden rounded-full p-6 transition-transform duration-500 hover:scale-110 md:block ${
+              className={`group absolute z-0 block h-14 w-14 overflow-hidden rounded-full p-3 transition-transform duration-500 hover:scale-110 sm:h-20 sm:w-20 sm:p-4 md:h-32 md:w-32 md:p-6 ${
                 [
                   "left-[4%] top-[18%] -rotate-[7deg]",
                   "left-[20%] bottom-[6%] rotate-[5deg]",
@@ -71,7 +71,13 @@ export default function Routes() {
             >
               {imageSrc && (
                 <div className="relative h-full w-full">
-                  <Image src={imageSrc} alt={d.title} fill className="object-contain" />
+                  <Image
+                    src={imageSrc}
+                    alt={d.title}
+                    fill
+                    sizes="(min-width: 768px) 128px, (min-width: 640px) 80px, 56px"
+                    className="object-contain"
+                  />
                 </div>
               )}
             </div>
