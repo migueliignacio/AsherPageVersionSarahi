@@ -20,6 +20,11 @@ export default function Home() {
       <OurWorkSection />
       <InversionCircleScrollAnimation />
       <Routes />
+      <Marquee
+        text="Branding ✦ Legal ✦ Digital Web ✦ Marca ✦ Marketing ✦"
+        reverse
+        className="border-t border-[var(--color-line)] py-6"
+      />
     </>
   );
 }

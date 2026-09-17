@@ -11,7 +11,7 @@ export default function TrabajosPage() {
     <>
       <BackToHome />
       <section className="px-5 pb-28 pt-10 md:px-10 md:pb-40">
-        <p className="mb-10 text-xs font-medium uppercase tracking-[0.18em] text-[var(--color-ink-soft)]">
+        <p className="mb-10 whitespace-nowrap text-xs font-medium uppercase tracking-[0.18em] text-[var(--color-ink-soft)]">
           Nuestro trabajo
         </p>
         <h1 className="font-display max-w-3xl text-balance text-4xl font-medium leading-[0.95] tracking-tight md:text-7xl">

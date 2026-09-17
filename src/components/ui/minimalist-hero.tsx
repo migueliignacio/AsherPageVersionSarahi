@@ -16,8 +16,6 @@ const SOCIAL_ICONS = {
 type SocialKey = keyof typeof SOCIAL_ICONS;
 
 interface MinimalistHeroProps {
-  logoText: string;
-  navLinks: { label: string; href: string }[];
   mainText: string;
   readMoreLink: string;
   imageSrc: string;
@@ -31,15 +29,6 @@ interface MinimalistHeroProps {
   circleClassName?: string;
   className?: string;
 }
-
-const NavLink = ({ href, children }: { href: string; children: React.ReactNode }) => (
-  <a
-    href={href}
-    className="text-sm font-medium tracking-widest text-[var(--color-ink)]/60 transition-colors hover:text-[var(--color-ink)]"
-  >
-    {children}
-  </a>
-);
 
 const SocialIcon = ({ href, icon }: { href: string; icon: SocialKey }) => {
   const Icon = SOCIAL_ICONS[icon];
@@ -56,8 +45,6 @@ const SocialIcon = ({ href, icon }: { href: string; icon: SocialKey }) => {
 };
 
 export const MinimalistHero = ({
-  logoText,
-  navLinks,
   mainText,
   readMoreLink,
   imageSrc,
@@ -75,36 +62,11 @@ export const MinimalistHero = ({
         className
       )}
     >
-      <header className="z-30 flex w-full max-w-7xl items-center justify-between">
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-xl font-bold tracking-wider"
-        >
-          {logoText}
-        </motion.div>
-        <div className="hidden items-center space-x-8 md:flex">
-          {navLinks.map((link) => (
-            <NavLink key={link.label} href={link.href}>
-              {link.label}
-            </NavLink>
-          ))}
-        </div>
-        <motion.button
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5 }}
-          className="flex flex-col space-y-1.5 md:hidden"
-          aria-label="Open menu"
-        >
-          <span className="block h-0.5 w-6 bg-[var(--color-ink)]"></span>
-          <span className="block h-0.5 w-6 bg-[var(--color-ink)]"></span>
-          <span className="block h-0.5 w-5 bg-[var(--color-ink)]"></span>
-        </motion.button>
-      </header>
-
-      <div className="relative grid w-full max-w-7xl flex-grow grid-cols-1 items-center md:grid-cols-3">
+      {/* No internal logo/nav header here — the global fixed <TopNav> already
+          covers every page, and this hero used to render its own "ASHER"
+          wordmark on top of it, colliding in the corner on both mobile and
+          desktop. */}
+      <div className="relative mt-16 grid w-full max-w-7xl flex-grow grid-cols-1 items-center md:mt-0 md:grid-cols-3">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import { MinimalistHero } from "@/components/ui/minimalist-hero";
+import { GooeyText } from "@/components/ui/gooey-text-morphing";
 import BentoGrid from "@/components/ui/bento-grid-01";
+import { ServiceCatalog } from "@/components/ui/service-catalog";
 import { TextColor } from "@/components/ui/text-color";
+import { serviceAddons } from "@/data/service-addons";
 
 export const metadata: Metadata = {
   title: "Branding — ASHER",
@@ -12,8 +15,6 @@ export default function BrandingPage() {
   return (
     <>
       <MinimalistHero
-        logoText="ASHER"
-        navLinks={[]}
         mainText="Construimos identidades de marca con carácter: naming, sistemas visuales y guías que se sostienen en el tiempo."
         readMoreLink="/contacto"
         imageSrc="/asher/teito-mascota.png"
@@ -27,6 +28,15 @@ export default function BrandingPage() {
         circleClassName="bg-[#fb1b7c]/90"
       />
 
+      <div className="flex h-[220px] items-center justify-center px-5 md:h-[280px]">
+        <GooeyText
+          texts={["Identidad", "Estilo", "Carácter", "Marca"]}
+          morphTime={1}
+          cooldownTime={0.4}
+          className="font-display font-medium"
+        />
+      </div>
+
       <BentoGrid
         eyebrow="Branding"
         speedValue="5 días"
@@ -38,6 +48,14 @@ export default function BrandingPage() {
           { title: "Marca registrada", description: "Protegemos tu nombre y tu identidad desde el primer día." },
           { title: "Lista para cualquier pantalla", description: "Assets de marca optimizados para redes, web e impresos." },
         ]}
+      />
+
+      <ServiceCatalog
+        eyebrow="Adicionales — Branding"
+        title="Suma extras a tu identidad de marca"
+        items={serviceAddons.branding.items}
+        accent={serviceAddons.branding.accent}
+        origin="servicios_branding_addons"
       />
 
       <TextColor

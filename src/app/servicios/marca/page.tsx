@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import { MinimalistHero } from "@/components/ui/minimalist-hero";
+import { GooeyText } from "@/components/ui/gooey-text-morphing";
 import BentoGrid from "@/components/ui/bento-grid-01";
+import { ServiceCatalog } from "@/components/ui/service-catalog";
 import { TextColor } from "@/components/ui/text-color";
+import { serviceAddons } from "@/data/service-addons";
 
 export const metadata: Metadata = {
   title: "Marca — ASHER",
@@ -12,8 +15,6 @@ export default function MarcaPage() {
   return (
     <>
       <MinimalistHero
-        logoText="ASHER"
-        navLinks={[]}
         mainText="Definimos la estrategia y el posicionamiento de tu marca: a quién le hablas, qué te hace distinto y cómo se nota en todo lo que haces."
         readMoreLink="/contacto"
         imageSrc="/asher/teito-mascota.png"
@@ -27,14 +28,14 @@ export default function MarcaPage() {
         circleClassName="bg-[#aa7ef6]/90"
       />
 
-      <TextColor
-        className="bg-[var(--color-bg)] px-6 py-20 md:py-28"
-        words={[
-          { text: "Estrategia.", from: "#7c3aed", to: "#aa7ef6" },
-          { text: "Posicionamiento.", from: "#aa7ef6", to: "#f0abfc" },
-          { text: "Claridad.", from: "#c084fc", to: "#aa7ef6" },
-        ]}
-      />
+      <div className="flex h-[220px] items-center justify-center px-5 md:h-[280px]">
+        <GooeyText
+          texts={["Estrategia", "Posicionamiento", "Claridad", "Marca"]}
+          morphTime={1}
+          cooldownTime={0.4}
+          className="font-display font-medium"
+        />
+      </div>
 
       <BentoGrid
         eyebrow="Marca"
@@ -46,6 +47,23 @@ export default function MarcaPage() {
           { title: "Diagnóstico en 3 pasos", description: "Entendemos tu marca actual antes de mover una sola pieza." },
           { title: "Marca protegida", description: "Consistencia y respaldo legal en cada decisión de marca." },
           { title: "Coherencia en todos lados", description: "La misma marca, reconocible en cualquier canal." },
+        ]}
+      />
+
+      <ServiceCatalog
+        eyebrow="Adicionales — Marca"
+        title="Suma extras a tu estrategia de marca"
+        items={serviceAddons.marca.items}
+        accent={serviceAddons.marca.accent}
+        origin="servicios_marca_addons"
+      />
+
+      <TextColor
+        className="bg-[var(--color-bg)] px-6 py-20 md:py-28"
+        words={[
+          { text: "Estrategia.", from: "#7c3aed", to: "#aa7ef6" },
+          { text: "Posicionamiento.", from: "#aa7ef6", to: "#f0abfc" },
+          { text: "Claridad.", from: "#c084fc", to: "#aa7ef6" },
         ]}
       />
     </>

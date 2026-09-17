@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import { MinimalistHero } from "@/components/ui/minimalist-hero";
+import { GooeyText } from "@/components/ui/gooey-text-morphing";
 import BentoGrid from "@/components/ui/bento-grid-01";
+import { ServiceCatalog } from "@/components/ui/service-catalog";
 import { TextColor } from "@/components/ui/text-color";
+import { serviceAddons } from "@/data/service-addons";
 
 export const metadata: Metadata = {
   title: "Marketing — ASHER",
@@ -12,8 +15,6 @@ export default function MarketingPage() {
   return (
     <>
       <MinimalistHero
-        logoText="ASHER"
-        navLinks={[]}
         mainText="Campañas y contenido pensados para que tu marca se mueva: más alcance, más conversaciones, más clientes."
         readMoreLink="/contacto"
         imageSrc="/asher/teito-mascota.png"
@@ -27,6 +28,15 @@ export default function MarketingPage() {
         circleClassName="bg-[#f1562c]/90"
       />
 
+      <div className="flex h-[220px] items-center justify-center px-5 md:h-[280px]">
+        <GooeyText
+          texts={["Contenido", "Campañas", "Alcance", "Marca"]}
+          morphTime={1}
+          cooldownTime={0.4}
+          className="font-display font-medium"
+        />
+      </div>
+
       <BentoGrid
         eyebrow="Marketing"
         speedValue="+40%"
@@ -38,6 +48,14 @@ export default function MarketingPage() {
           { title: "Datos protegidos", description: "Campañas que respetan la privacidad de tus clientes." },
           { title: "Contenido para cada canal", description: "Instagram, WhatsApp, email — todo coordinado." },
         ]}
+      />
+
+      <ServiceCatalog
+        eyebrow="Adicionales — Marketing"
+        title="Suma extras a tu campaña"
+        items={serviceAddons.marketing.items}
+        accent={serviceAddons.marketing.accent}
+        origin="servicios_marketing_addons"
       />
 
       <TextColor
