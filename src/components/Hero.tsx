@@ -13,9 +13,9 @@ function PortalBackground() {
         position: "absolute",
         inset: 0,
         background: `
-          radial-gradient(circle at 20% 15%, rgba(255,70,32,0.16), transparent 45%),
-          radial-gradient(circle at 82% 75%, rgba(61,59,255,0.14), transparent 50%),
-          linear-gradient(150deg, #121210 0%, #1d1c19 55%, #121210 100%)
+          radial-gradient(circle at 20% 15%, rgba(111,132,183,0.22), transparent 45%),
+          radial-gradient(circle at 82% 75%, rgba(216,203,184,0.10), transparent 50%),
+          linear-gradient(150deg, #0b1956 0%, #14226b 55%, #0b1956 100%)
         `,
       }}
     />

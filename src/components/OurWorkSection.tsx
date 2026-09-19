@@ -14,27 +14,27 @@ interface BadgeData {
 const badges: BadgeData[] = [
   {
     text: "WEB DESIGN",
-    className: "badge-1 left-[5%] top-[18%] rotate-[-8deg] bg-[#c8ff00]",
+    className: "badge-1 left-[5%] top-[18%] rotate-[-8deg] bg-[#d8cbb8]",
   },
   {
     text: "BRANDING",
-    className: "badge-2 right-[8%] top-[20%] rotate-[7deg] bg-[#ff725c]",
+    className: "badge-2 right-[8%] top-[20%] rotate-[7deg] bg-[#6f84b7]",
   },
   {
     text: "DIGITAL",
-    className: "badge-3 left-[15%] top-[48%] rotate-[5deg] bg-[#c6bdf2]",
+    className: "badge-3 left-[15%] top-[48%] rotate-[5deg] bg-[#b9c4de]",
   },
   {
     text: "DEVELOPMENT",
-    className: "badge-4 right-[12%] top-[52%] rotate-[-6deg] bg-[#ffd447]",
+    className: "badge-4 right-[12%] top-[52%] rotate-[-6deg] bg-[#e9e1d2]",
   },
   {
     text: "CREATIVE",
-    className: "badge-5 left-[7%] bottom-[17%] rotate-[8deg] bg-[#ff8bd1]",
+    className: "badge-5 left-[7%] bottom-[17%] rotate-[8deg] bg-[#9aa9cf]",
   },
   {
     text: "STRATEGY",
-    className: "badge-6 right-[6%] bottom-[15%] rotate-[-8deg] bg-[#9be7ff]",
+    className: "badge-6 right-[6%] bottom-[15%] rotate-[-8deg] bg-[#c9d2e6]",
   },
 ];
 
@@ -259,7 +259,7 @@ export default function OurWorkSection() {
         h-screen
         w-full
         overflow-hidden
-        bg-[#f4f3ee]
+        bg-[var(--color-bg)]
       "
     >
       {/* ==========================================
@@ -280,15 +280,15 @@ export default function OurWorkSection() {
               whitespace-nowrap
               rounded-full
               border
-              border-black
+              border-[var(--color-ink)]
               px-5
               py-2.5
               text-[11px]
               font-bold
               uppercase
               tracking-[0.12em]
-              text-black
-              shadow-[4px_4px_0px_#000]
+              text-[var(--color-ink)]
+              shadow-[4px_4px_0px_var(--color-navy)]
               md:px-7
               md:py-3
               md:text-xs
@@ -316,7 +316,7 @@ export default function OurWorkSection() {
             uppercase
             leading-[0.7]
             tracking-[-0.09em]
-            text-black
+            text-[var(--color-ink)]
             md:text-[17vw]
           "
         >

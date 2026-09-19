@@ -38,7 +38,7 @@ export const routes: Route[] = [
     index: "02",
     title: "Mejorar marca",
     description: "Para marcas que ya existen pero merecen verse mejor.",
-    accent: "var(--color-lavender)",
+    accent: "var(--color-slate-deep)",
   },
   {
     index: "03",
@@ -56,7 +56,7 @@ export const routes: Route[] = [
     index: "05",
     title: "Blindaje legal",
     description: "Respaldo legal como base de todo lo que construyes.",
-    accent: "var(--color-violet)",
+    accent: "var(--color-navy-mid)",
   },
 ];
 

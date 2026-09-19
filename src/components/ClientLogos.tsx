@@ -4,22 +4,22 @@ const marcas = [
   {
     src: "/marcas/spc.png",
     alt: "Social Padel Club",
-    gradient: { from: "#FF6FB5", via: "#E6007A", to: "#99004F" },
+    gradient: { from: "#9aa9cf", via: "#6f84b7", to: "#4a5f95" },
   },
   {
     src: "/marcas/batidoos.png",
     alt: "Batidoos",
-    gradient: { from: "#D6FF5C", via: "#AFFF01", to: "#7A9900" },
+    gradient: { from: "#e9e1d2", via: "#d8cbb8", to: "#b5a88f" },
   },
   {
     src: "/marcas/velez-guevara.png",
     alt: "Vélez Guevara Abogados",
-    gradient: { from: "#6690FF", via: "#1E3A8A", to: "#0F1F45" },
+    gradient: { from: "#4a5f95", via: "#0b1956", to: "#070f3a" },
   },
   {
     src: "/marcas/barak-maniquies.png",
     alt: "Barak Maniquíes",
-    gradient: { from: "#FFD98A", via: "#C9A227", to: "#7A5B0E" },
+    gradient: { from: "#7d846e", via: "#4c5340", to: "#2f3427" },
   },
 ];
 

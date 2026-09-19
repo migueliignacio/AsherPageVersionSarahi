@@ -29,6 +29,7 @@ export default function MascotaAsherPage() {
         </p>
       </section>
 
+      <div className="px-5 md:px-10">
       <div className="relative mx-auto aspect-[6/7] w-full max-w-xl overflow-hidden rounded-3xl bg-[var(--color-surface)] md:aspect-[4/5]">
         <Image
           src="/asher/trabajos/mascota-asher/cover.png"
@@ -39,6 +40,7 @@ export default function MascotaAsherPage() {
           sizes="(min-width: 768px) 576px, 90vw"
           className="object-cover"
         />
+      </div>
       </div>
 
       <section className="border-t border-[var(--color-line)] px-5 py-20 md:px-10 md:py-28">
@@ -129,12 +131,13 @@ export default function MascotaAsherPage() {
         </div>
         <QuoteBlock
           eyebrow="Quién es AS"
-          accent="#fb1b7c"
+          accent="#6f84b7"
           lines={[
             { bold: "Curioso,", thin: "cercano" },
             { bold: "y siempre", thin: "en movimiento." },
           ]}
         />
+        <div className="px-5 md:px-10">
         <div className="relative mx-auto aspect-[8/5] w-full max-w-2xl overflow-hidden rounded-2xl bg-[var(--color-surface)]">
           <Image
             src="/asher/trabajos/mascota-asher/action.png"
@@ -144,6 +147,7 @@ export default function MascotaAsherPage() {
             quality={100}
             className="object-cover"
           />
+        </div>
         </div>
       </section>
 

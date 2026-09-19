@@ -49,7 +49,7 @@ export default function QuienesSomosPage() {
         </p>
         <QuoteBlock
           eyebrow="Nuestra misión"
-          accent="#3d3bff"
+          accent="#0b1956"
           lines={[
             { bold: "Construimos marca", thin: "sin fricciones," },
             { bold: "con respaldo legal", thin: "desde el día uno —" },
@@ -64,7 +64,7 @@ export default function QuienesSomosPage() {
         </p>
         <QuoteBlock
           eyebrow="Nuestra visión"
-          accent="#79b826"
+          accent="#4c5340"
           lines={[
             { bold: "Un mañana mejor,", thin: "construido entre todos." },
             { bold: "Cinco disciplinas,", thin: "un solo equipo detrás de cada marca." },
@@ -78,7 +78,7 @@ export default function QuienesSomosPage() {
         </p>
         <QuoteBlock
           eyebrow="Nuestros valores"
-          accent="#fb1b7c"
+          accent="#6f84b7"
           lines={[
             { bold: "Todo bajo", thin: "un mismo techo." },
             { bold: "Construimos", thin: "para crecer." },
