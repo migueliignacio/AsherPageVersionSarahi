@@ -52,8 +52,8 @@ export default function Hero() {
         background={<PortalBackground />}
         style={{
           "--gp-paper": "var(--color-bg)",
-          "--gp-ink": "var(--color-ink)",
-          "--gp-field": "var(--color-ink)",
+          "--gp-ink": "var(--color-navy)",
+          "--gp-field": "var(--color-navy)",
           "--gp-foreground": "var(--color-bg)",
         }}
         front={
