@@ -37,6 +37,14 @@ html {
   background: var(--color-bg);
 }
 
+/* Parts of the site that use the ASHER palette: navy ink instead of the
+   near-black base. Anything inside just reads the overridden variables. */
+.palette-asher {
+  --color-ink: var(--color-navy);
+  --color-ink-soft: #56618a;
+  color: var(--color-ink);
+}
+
 /* Lenis drives scrolling; native smooth would fight it. */
 html.lenis, html.lenis body {
   height: auto;

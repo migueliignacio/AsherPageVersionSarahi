@@ -38,6 +38,8 @@ const badges: BadgeData[] = [
   },
 ];
 
+const TITLE_LINES = ["NUESTROS", "CLIENTES"];
+
 export default function OurWorkSection() {
   const sectionRef = useRef<HTMLElement | null>(null);
   const titleRef = useRef<HTMLHeadingElement | null>(null);
@@ -311,32 +313,24 @@ export default function OurWorkSection() {
             select-none
             whitespace-nowrap
             text-center
-            text-[19vw]
+            text-[16vw]
             font-black
             uppercase
             leading-[0.7]
             tracking-[-0.09em]
             text-black
-            md:text-[17vw]
+            md:text-[15vw]
           "
         >
-          <span className="letter inline-block">N</span>
-          <span className="letter inline-block">U</span>
-          <span className="letter inline-block">E</span>
-          <span className="letter inline-block">S</span>
-          <span className="letter inline-block">T</span>
-          <span className="letter inline-block">R</span>
-          <span className="letter inline-block">O</span>
-
-          <br />
-
-          <span className="letter inline-block">T</span>
-          <span className="letter inline-block">R</span>
-          <span className="letter inline-block">A</span>
-          <span className="letter inline-block">B</span>
-          <span className="letter inline-block">A</span>
-          <span className="letter inline-block">J</span>
-          <span className="letter inline-block">O</span>
+          {TITLE_LINES.map((line) => (
+            <span key={line} className="block">
+              {line.split("").map((char, j) => (
+                <span key={j} className="letter inline-block">
+                  {char}
+                </span>
+              ))}
+            </span>
+          ))}
         </h2>
       </div>
 

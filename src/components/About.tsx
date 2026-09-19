@@ -2,7 +2,7 @@ import { valueProps } from "@/data/asher";
 
 export default function About() {
   return (
-    <section id="quienes-somos" className="px-5 py-28 md:px-10 md:py-40">
+    <section id="quienes-somos" className="px-5 py-16 md:px-10 md:py-24">
       <p data-reveal className="mb-10 text-xs font-medium uppercase tracking-[0.18em] text-[var(--color-ink-soft)]">
         01 — Quiénes somos
       </p>

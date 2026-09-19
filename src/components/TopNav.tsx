@@ -50,7 +50,7 @@ const NAV_ITEMS: SlideTabItem[] = [
     ],
   },
   { label: "Proceso", href: "/proceso" },
-  { label: "Trabajos", href: "/trabajos" },
+  { label: "Clientes", href: "/clientes" },
   { label: "Planes", href: "/planes" },
   { label: "Contacto", href: "/contacto" },
 ];
@@ -243,7 +243,7 @@ export default function TopNav() {
     // a classic 3-line toggle that opens a compact dropdown card instead —
     // trying to cram the same pill into a narrow screen (even scrollable)
     // looked broken, so mobile gets its own simpler, reliable layout.
-    <header className="fixed inset-x-0 top-0 z-50 flex items-center justify-between gap-3 px-5 py-5 md:px-10 md:py-6">
+    <header className="fixed inset-x-0 top-0 z-50 palette-asher flex items-center justify-between gap-3 px-5 py-5 md:px-10 md:py-6">
       <Link
         href="/"
         data-cursor="expand"

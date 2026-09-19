@@ -119,7 +119,7 @@ export default function Routes() {
       <div
         id="diagnostico"
         data-reveal
-        className="relative z-10 mt-16 flex flex-col items-start gap-5 rounded-3xl bg-[var(--color-ink)] px-8 py-12 text-[var(--color-bg)] md:flex-row md:items-center md:justify-between md:px-12"
+        className="palette-asher relative z-10 mt-16 flex flex-col items-start gap-5 rounded-3xl bg-[var(--color-ink)] px-8 py-12 text-[var(--color-bg)] md:flex-row md:items-center md:justify-between md:px-12"
       >
         <div>
           <h3 className="font-display text-2xl font-medium tracking-tight md:text-4xl">Diagnóstico</h3>

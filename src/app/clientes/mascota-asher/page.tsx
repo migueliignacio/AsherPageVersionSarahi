@@ -5,19 +5,19 @@ import BackToHome from "@/components/BackToHome";
 import { QuoteBlock } from "@/components/ui/quote-block";
 
 export const metadata: Metadata = {
-  title: "AS, la mascota de ASHER — Trabajos",
+  title: "AS, la mascota de ASHER — Clientes",
   description:
     "Cómo diseñamos a AS, el personaje de marca de ASHER Consulting.",
 };
 
 export default function MascotaAsherPage() {
   return (
-    <>
+    <div className="palette-asher">
       <BackToHome />
 
       <section className="px-5 pb-12 pt-10 md:px-10 md:pb-16">
         <p className="mb-8 text-xs font-medium uppercase tracking-[0.18em] text-[var(--color-ink-soft)]">
-          Trabajo — Branding
+          Caso — Branding
         </p>
         <h1 className="font-display max-w-3xl text-balance text-4xl font-medium leading-[0.95] tracking-tight md:text-7xl">
           AS, la mascota de ASHER
@@ -191,6 +191,6 @@ export default function MascotaAsherPage() {
           </Link>
         </div>
       </section>
-    </>
+    </div>
   );
 }

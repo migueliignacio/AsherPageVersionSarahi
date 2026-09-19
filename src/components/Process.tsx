@@ -2,7 +2,7 @@ import { phases } from "@/data/asher";
 
 export default function Process() {
   return (
-    <section id="proceso" className="border-t border-[var(--color-line)] px-5 py-28 md:px-10 md:py-40">
+    <section id="proceso" className="palette-asher border-t border-[var(--color-line)] px-5 py-28 md:px-10 md:py-40">
       <p data-reveal className="mb-10 text-xs font-medium uppercase tracking-[0.18em] text-[var(--color-ink-soft)]">
         03 — Cómo trabajamos
       </p>

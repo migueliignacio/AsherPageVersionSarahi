@@ -5,24 +5,23 @@ import BackToHome from "@/components/BackToHome";
 import { caseStudies } from "@/data/work";
 
 export const metadata: Metadata = {
-  title: "Trabajos — ASHER",
-  description: "Los proyectos en los que hemos trabajado.",
+  title: "Clientes — ASHER",
+  description: "Las marcas que confían en ASHER y los casos que hemos construido con ellas.",
 };
 
-export default function TrabajosPage() {
+export default function ClientesPage() {
   return (
-    <>
+    <div className="palette-asher">
       <BackToHome />
       <section className="px-5 pb-16 pt-10 md:px-10 md:pb-20">
         <p className="mb-10 whitespace-nowrap text-xs font-medium uppercase tracking-[0.18em] text-[var(--color-ink-soft)]">
-          Nuestro trabajo
+          Nuestros clientes
         </p>
         <h1 className="font-display max-w-3xl text-balance text-4xl font-medium leading-[0.95] tracking-tight md:text-7xl">
-          Algunos de los proyectos que hemos construido.
+          Marcas que ya se mueven con ASHER.
         </h1>
         <p className="mt-8 max-w-xl text-sm leading-relaxed text-[var(--color-ink-soft)]">
-          Seguimos sumando casos a esta página. Mientras tanto, cuéntanos tu proyecto y con gusto te
-          compartimos ejemplos relevantes por tu ruta de interés.
+          Historias de marcas que construimos, mejoramos y protegemos. Seguimos sumando casos; mientras tanto, cuéntanos tu proyecto y te compartimos ejemplos de tu ruta de interés.
         </p>
       </section>
 
@@ -30,7 +29,7 @@ export default function TrabajosPage() {
         {caseStudies.map((project) => (
           <Link
             key={project.slug}
-            href={`/trabajos/${project.slug}`}
+            href={`/clientes/${project.slug}`}
             data-cursor="view"
             className="group relative flex flex-col gap-5 bg-[var(--color-bg)] p-6 transition-colors duration-300 md:p-8"
           >
@@ -55,6 +54,6 @@ export default function TrabajosPage() {
           </Link>
         ))}
       </section>
-    </>
+    </div>
   );
 }
