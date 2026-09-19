@@ -7,16 +7,17 @@ export interface ServiceAddon {
 
 export interface ServiceCatalogEntry {
   slug: string;
+  label: string;
   accent: string;
   items: ServiceAddon[];
 }
 
-// Additional à-la-carte services per area — separate from the bigger
-// packages in `customServices` (src/data/asher.ts). Shown on each
-// /servicios/[area] page so clients can add extras on top of a plan.
+// Single catalog behind the cart: shown on each /servicios/[area] page and,
+// all together, in "Arma tu propio pack" on /planes.
 export const serviceAddons: Record<string, ServiceCatalogEntry> = {
   branding: {
     slug: "branding",
+    label: "Branding",
     accent: "#fb1b7c",
     items: [
       { id: "branding-auditoria-logo", title: "Auditoría de logo", description: "Revisión de tu logo actual: legibilidad, versatilidad y uso correcto.", price: 1200 },
@@ -33,6 +34,7 @@ export const serviceAddons: Record<string, ServiceCatalogEntry> = {
   },
   legal: {
     slug: "legal",
+    label: "Legal",
     accent: "#84172e",
     items: [
       { id: "legal-aviso-privacidad", title: "Aviso de privacidad", description: "Documento a la medida para el manejo de datos de tus clientes.", price: 1800 },
@@ -49,6 +51,7 @@ export const serviceAddons: Record<string, ServiceCatalogEntry> = {
   },
   "digital-web": {
     slug: "digital-web",
+    label: "Digital Web",
     accent: "#79b826",
     items: [
       { id: "digital-landing", title: "Landing page adicional", description: "Página enfocada en un solo objetivo: captar o vender.", price: 4500 },
@@ -65,6 +68,7 @@ export const serviceAddons: Record<string, ServiceCatalogEntry> = {
   },
   marca: {
     slug: "marca",
+    label: "Marca",
     accent: "#aa7ef6",
     items: [
       { id: "marca-competencia", title: "Análisis de competencia", description: "Cómo se posicionan tus competidores y dónde hay espacio para ti.", price: 2200 },
@@ -81,6 +85,7 @@ export const serviceAddons: Record<string, ServiceCatalogEntry> = {
   },
   marketing: {
     slug: "marketing",
+    label: "Marketing",
     accent: "#f1562c",
     items: [
       { id: "marketing-fotos-producto", title: "Sesión de fotos de producto", description: "Fotografía profesional lista para catálogo y redes.", price: 2800 },

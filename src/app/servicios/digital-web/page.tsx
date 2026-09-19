@@ -56,7 +56,6 @@ export default function DigitalWebPage() {
         title="Suma extras a tu presencia digital"
         items={serviceAddons["digital-web"].items}
         accent={serviceAddons["digital-web"].accent}
-        origin="servicios_digital-web_addons"
       />
 
       <TextColor

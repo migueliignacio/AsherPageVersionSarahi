@@ -1,10 +1,49 @@
 "use client";
 
-import { tiers } from "@/data/asher";
-import { useLeadModal } from "./LeadModalProvider";
+import { tiers, type Tier } from "@/data/asher";
+import { planId } from "@/data/catalog";
+import { useCart } from "./CartProvider";
+
+function PlanButton({ tier }: { tier: Tier }) {
+  const { has, toggle, setOpen } = useCart();
+  const id = planId(tier.id);
+  const inCart = has(id);
+
+  const filled = tier.featured
+    ? "bg-[var(--color-bg)] text-[var(--color-violet)]"
+    : "bg-[var(--color-ink)] text-[var(--color-bg)]";
+  const outlined = tier.featured
+    ? "border border-[var(--color-bg)] text-[var(--color-bg)]"
+    : "border border-[var(--color-ink)] text-[var(--color-ink)]";
+
+  return (
+    <div className="mt-10 flex flex-col items-stretch gap-2">
+      <button
+        type="button"
+        onClick={() => toggle(id)}
+        aria-pressed={inCart}
+        data-cursor="expand"
+        className={`inline-flex items-center justify-center gap-2 rounded-full px-6 py-4 text-xs font-medium uppercase tracking-[0.1em] transition-transform duration-300 hover:-translate-y-0.5 ${
+          inCart ? outlined : filled
+        }`}
+      >
+        {inCart ? "En tu carrito ✓" : "Añadir al carrito +"}
+      </button>
+      {inCart && (
+        <button
+          type="button"
+          onClick={() => setOpen(true)}
+          data-cursor="expand"
+          className="text-xs uppercase tracking-[0.1em] underline underline-offset-4 opacity-70 hover:opacity-100"
+        >
+          Ver carrito
+        </button>
+      )}
+    </div>
+  );
+}
 
 export default function Tiers() {
-  const { openModal } = useLeadModal();
   return (
     <section id="planes" className="border-t border-[var(--color-line)] px-5 py-28 md:px-10 md:py-40">
       <p data-reveal className="mb-10 text-xs font-medium uppercase tracking-[0.18em] text-[var(--color-ink-soft)]">
@@ -61,18 +100,7 @@ export default function Tiers() {
               ))}
             </ul>
 
-            <button
-              type="button"
-              onClick={() => openModal(`tier_${tier.name}`)}
-              data-cursor="expand"
-              className={`mt-10 inline-flex items-center justify-center gap-2 rounded-full px-6 py-4 text-xs font-medium uppercase tracking-[0.1em] transition-transform duration-300 hover:-translate-y-0.5 ${
-                tier.featured
-                  ? "bg-[var(--color-bg)] text-[var(--color-violet)]"
-                  : "bg-[var(--color-ink)] text-[var(--color-bg)]"
-              }`}
-            >
-              Solicitar propuesta <span aria-hidden="true">→</span>
-            </button>
+            <PlanButton tier={tier} />
           </article>
         ))}
       </div>

@@ -56,7 +56,6 @@ export default function MarketingPage() {
         title="Suma extras a tu campaña"
         items={serviceAddons.marketing.items}
         accent={serviceAddons.marketing.accent}
-        origin="servicios_marketing_addons"
       />
 
       <TextColor

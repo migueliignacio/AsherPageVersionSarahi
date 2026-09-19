@@ -6,7 +6,7 @@ import { X, Loader2 } from "lucide-react";
 import { brand } from "@/data/asher";
 
 interface LeadModalContextValue {
-  openModal: (origen?: string) => void;
+  openModal: (origen?: string, mensaje?: string) => void;
 }
 
 const LeadModalContext = createContext<LeadModalContextValue | null>(null);
@@ -28,8 +28,8 @@ export function LeadModalProvider({ children }: { children: ReactNode }) {
   const [loading, setLoading] = useState(false);
   const [enviado, setEnviado] = useState(false);
 
-  const openModal = useCallback((o?: string) => {
-    setCampos(CAMPOS_INIT);
+  const openModal = useCallback((o?: string, mensaje?: string) => {
+    setCampos({ ...CAMPOS_INIT, mensaje: mensaje ?? "" });
     setErrors({});
     setEnviado(false);
     setOrigen(o);

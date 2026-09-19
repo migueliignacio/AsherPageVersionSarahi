@@ -9,6 +9,7 @@ import { ChevronDown } from "lucide-react";
 import { SlideTabs, type SlideTabItem } from "@/components/ui/slide-tabs";
 import { InstagramIcon, FacebookIcon, TiktokIcon, WhatsappIcon } from "./SocialIcons";
 import { useLeadModal } from "./LeadModalProvider";
+import CartButton from "./CartButton";
 import { brand } from "@/data/asher";
 
 const SOCIAL_LINKS = [
@@ -265,6 +266,7 @@ export default function TopNav() {
         >
           Reservar consultoría <span aria-hidden="true">→</span>
         </button>
+        <CartButton className="h-10 w-10" />
         {SOCIAL_LINKS.map(({ icon: Icon, href, label }) => (
           <a
             key={label}
@@ -280,7 +282,10 @@ export default function TopNav() {
         ))}
       </div>
 
-      <MobileNav onReservar={() => openModal("nav-mobile")} />
+      <div className="flex items-center gap-2 md:hidden">
+        <CartButton className="h-10 w-10" />
+        <MobileNav onReservar={() => openModal("nav-mobile")} />
+      </div>
     </header>
   );
 }

@@ -56,7 +56,6 @@ export default function MarcaPage() {
         title="Suma extras a tu estrategia de marca"
         items={serviceAddons.marca.items}
         accent={serviceAddons.marca.accent}
-        origin="servicios_marca_addons"
       />
 
       <TextColor

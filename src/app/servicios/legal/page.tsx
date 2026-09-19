@@ -56,7 +56,6 @@ export default function LegalPage() {
         title="Suma extras a tu blindaje legal"
         items={serviceAddons.legal.items}
         accent={serviceAddons.legal.accent}
-        origin="servicios_legal_addons"
       />
 
       <TextColor

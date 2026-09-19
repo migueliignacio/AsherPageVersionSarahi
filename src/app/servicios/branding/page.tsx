@@ -56,7 +56,6 @@ export default function BrandingPage() {
         title="Suma extras a tu identidad de marca"
         items={serviceAddons.branding.items}
         accent={serviceAddons.branding.accent}
-        origin="servicios_branding_addons"
       />
 
       <TextColor

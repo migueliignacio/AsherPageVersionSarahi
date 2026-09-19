@@ -8,6 +8,8 @@ import TopNav from "@/components/TopNav";
 import ImpactBadge from "@/components/ImpactBadge";
 import Footer from "@/components/Footer";
 import { LeadModalProvider } from "@/components/LeadModalProvider";
+import { CartProvider } from "@/components/CartProvider";
+import CartDrawer from "@/components/CartDrawer";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
@@ -42,13 +44,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     >
       <body className="min-h-full bg-[var(--color-bg)] text-[var(--color-ink)] cursor-none-desktop">
         <LeadModalProvider>
-          <SmoothScroll />
-          <CustomCursor />
-          <ScrollReveal />
-          <TopNav />
-          <main>{children}</main>
-          <Footer />
-          <ImpactBadge />
+          <CartProvider>
+            <SmoothScroll />
+            <CustomCursor />
+            <ScrollReveal />
+            <TopNav />
+            <main>{children}</main>
+            <Footer />
+            <ImpactBadge />
+            <CartDrawer />
+          </CartProvider>
         </LeadModalProvider>
       </body>
     </html>
