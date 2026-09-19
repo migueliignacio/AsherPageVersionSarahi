@@ -8,16 +8,22 @@ export interface ServiceAddon {
 export interface ServiceCatalogEntry {
   slug: string;
   label: string;
+  /** One-line summary for the /servicios hub. */
+  blurb: string;
   accent: string;
   items: ServiceAddon[];
 }
 
 // Single catalog behind the cart: shown on each /servicios/[area] page and,
 // all together, in "Arma tu propio pack" on /planes.
+/** Display order used by the nav, the hub, and "Arma tu propio pack". */
+export const serviceOrder = ["branding", "digital-web", "legal", "marca", "marketing"] as const;
+
 export const serviceAddons: Record<string, ServiceCatalogEntry> = {
   branding: {
     slug: "branding",
     label: "Branding",
+    blurb: "Identidades de marca con carácter: naming, sistemas visuales y guías que se sostienen en el tiempo.",
     accent: "#fb1b7c",
     items: [
       { id: "branding-auditoria-logo", title: "Auditoría de logo", description: "Revisión de tu logo actual: legibilidad, versatilidad y uso correcto.", price: 1200 },
@@ -35,6 +41,7 @@ export const serviceAddons: Record<string, ServiceCatalogEntry> = {
   legal: {
     slug: "legal",
     label: "Legal",
+    blurb: "Respaldo legal desde el día uno: registro de marca, contratos y protección para crecer sin sobresaltos.",
     accent: "#84172e",
     items: [
       { id: "legal-aviso-privacidad", title: "Aviso de privacidad", description: "Documento a la medida para el manejo de datos de tus clientes.", price: 1800 },
@@ -52,6 +59,7 @@ export const serviceAddons: Record<string, ServiceCatalogEntry> = {
   "digital-web": {
     slug: "digital-web",
     label: "Digital Web",
+    blurb: "Sitios y productos digitales rápidos, claros y listos para convertir visitas en clientes.",
     accent: "#79b826",
     items: [
       { id: "digital-landing", title: "Landing page adicional", description: "Página enfocada en un solo objetivo: captar o vender.", price: 4500 },
@@ -69,6 +77,7 @@ export const serviceAddons: Record<string, ServiceCatalogEntry> = {
   marca: {
     slug: "marca",
     label: "Marca",
+    blurb: "Estrategia y posicionamiento: a quién le hablas, qué te hace distinto y cómo se nota.",
     accent: "#aa7ef6",
     items: [
       { id: "marca-competencia", title: "Análisis de competencia", description: "Cómo se posicionan tus competidores y dónde hay espacio para ti.", price: 2200 },
@@ -86,6 +95,7 @@ export const serviceAddons: Record<string, ServiceCatalogEntry> = {
   marketing: {
     slug: "marketing",
     label: "Marketing",
+    blurb: "Campañas y contenido para que tu marca se mueva: más alcance, más conversaciones, más clientes.",
     accent: "#f1562c",
     items: [
       { id: "marketing-fotos-producto", title: "Sesión de fotos de producto", description: "Fotografía profesional lista para catálogo y redes.", price: 2800 },

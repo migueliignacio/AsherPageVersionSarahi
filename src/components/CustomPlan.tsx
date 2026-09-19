@@ -1,10 +1,8 @@
 "use client";
 
-import { serviceAddons } from "@/data/service-addons";
+import { serviceAddons, serviceOrder } from "@/data/service-addons";
 import { CatalogGrid } from "./CatalogGrid";
 import CartSummary from "./CartSummary";
-
-const areas = ["branding", "digital-web", "legal", "marca", "marketing"] as const;
 
 export default function CustomPlan() {
   return (
@@ -31,7 +29,7 @@ export default function CustomPlan() {
 
       <div className="grid gap-10 md:grid-cols-3 md:gap-16">
         <div className="space-y-8 md:col-span-2">
-          {areas.map((slug) => {
+          {serviceOrder.map((slug) => {
             const area = serviceAddons[slug];
             return (
               <div key={slug} data-reveal>
