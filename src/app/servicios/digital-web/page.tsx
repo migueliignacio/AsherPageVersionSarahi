@@ -26,7 +26,7 @@ export default function DigitalWebPage() {
           { icon: "whatsapp", href: brand.socialLinks.whatsapp },
         ]}
         locationText="Ecuador"
-        circleClassName="bg-[#79b826]/90"
+        circleClassName="bg-[#8fb0e3]"
       />
 
       <div className="flex h-[220px] items-center justify-center px-5 md:h-[280px]">
@@ -56,14 +56,15 @@ export default function DigitalWebPage() {
         title="Suma extras a tu presencia digital"
         items={serviceAddons["digital-web"].items}
         accent={serviceAddons["digital-web"].accent}
+        onAccent={serviceAddons["digital-web"].onAccent}
       />
 
       <TextColor
         className="bg-[var(--color-bg)] px-6 py-20 md:py-28"
         words={[
-          { text: "Diseño.", from: "#79b826", to: "#baf76a" },
-          { text: "Código.", from: "#06b6d4", to: "#79b826" },
-          { text: "Resultados.", from: "#22c55e", to: "#79b826" },
+          { text: "Diseño.", from: "#0b1956", to: "#8fb0e3" },
+          { text: "Código.", from: "#8fb0e3", to: "#0b1956" },
+          { text: "Resultados.", from: "#0b1956", to: "#8fb0e3" },
         ]}
       />
     </>

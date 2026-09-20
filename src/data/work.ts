@@ -14,6 +14,6 @@ export const caseStudies: CaseStudy[] = [
     title: "AS, la mascota de ASHER",
     summary: "Diseñamos un personaje de marca para darle una cara amigable a una consultora que reúne cuatro disciplinas distintas.",
     cover: "/asher/trabajos/mascota-asher/badge.png",
-    accent: "#fb1b7c",
+    accent: "#520000",
   },
 ];

@@ -92,7 +92,7 @@ function SpeedIndicator({ label, value }: { label: string; value: string }) {
           )}
         </AnimatePresence>
       </div>
-      <span className="text-sm text-gray-400">{label}</span>
+      <span className="text-sm text-[#a9b4d6]">{label}</span>
       <div className="w-full max-w-[120px] h-1.5 bg-white/10 rounded-full overflow-hidden">
         <motion.div
           className="h-full bg-white rounded-full"
@@ -136,7 +136,7 @@ function SecurityBadge() {
           animate={{ scale: shield.active ? 1.1 : 1 }}
           transition={{ duration: 0.3 }}
         >
-          <Lock className={`w-5 h-5 ${shield.active ? "text-white" : "text-gray-600"}`} />
+          <Lock className={`w-5 h-5 ${shield.active ? "text-white" : "text-[#5b6795]"}`} />
         </motion.div>
       ))}
     </div>
@@ -184,10 +184,10 @@ export default function BentoGrid({ eyebrow = "Features", cards, speedValue = "1
   const [c1, c2, c3, c4, c5, c6] = cards;
 
   return (
-    <section className={`bg-zinc-950 px-6 py-24 ${className ?? ""}`}>
+    <section className={`bg-[#060e2e] px-6 py-24 ${className ?? ""}`}>
       <div className="max-w-7xl w-full mx-auto">
         <motion.p
-          className="text-gray-400 text-sm uppercase tracking-widest mb-8"
+          className="text-[#a9b4d6] text-sm uppercase tracking-widest mb-8"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -197,23 +197,23 @@ export default function BentoGrid({ eyebrow = "Features", cards, speedValue = "1
 
         <div className="grid grid-cols-1 md:grid-cols-6 gap-4 auto-rows-[200px]">
           <motion.div
-            className="md:col-span-2 md:row-span-2 bg-zinc-900 border border-zinc-800 rounded-xl p-8 flex flex-col hover:border-zinc-700 transition-colors cursor-pointer overflow-hidden"
+            className="md:col-span-2 md:row-span-2 bg-[#0b1956] border border-[#26346f] rounded-xl p-8 flex flex-col hover:border-[#3d4d8f] transition-colors cursor-pointer overflow-hidden"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            whileHover={{ scale: 1.02, backgroundColor: "rgba(39, 39, 42, 1)" }}
+            whileHover={{ scale: 1.02, backgroundColor: "rgba(31, 47, 115, 1)" }}
           >
             <div className="flex-1">
               <TypeTester />
             </div>
             <div className="mt-4">
               <h3 className="font-serif text-xl text-white font-medium">{c1.title}</h3>
-              <p className="text-gray-400 text-sm mt-1">{c1.description}</p>
+              <p className="text-[#a9b4d6] text-sm mt-1">{c1.description}</p>
             </div>
           </motion.div>
 
           <motion.div
-            className="md:col-span-2 bg-zinc-900 border border-zinc-800 rounded-xl p-8 flex flex-col hover:border-zinc-700 transition-colors cursor-pointer overflow-hidden"
+            className="md:col-span-2 bg-[#0b1956] border border-[#26346f] rounded-xl p-8 flex flex-col hover:border-[#3d4d8f] transition-colors cursor-pointer overflow-hidden"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -225,12 +225,12 @@ export default function BentoGrid({ eyebrow = "Features", cards, speedValue = "1
             </div>
             <div className="mt-4">
               <h3 className="font-serif text-xl text-white font-medium">{c2.title}</h3>
-              <p className="text-gray-400 text-sm mt-1">{c2.description}</p>
+              <p className="text-[#a9b4d6] text-sm mt-1">{c2.description}</p>
             </div>
           </motion.div>
 
           <motion.div
-            className="md:col-span-2 md:row-span-2 bg-zinc-900 border border-zinc-800 rounded-xl p-6 flex flex-col hover:border-zinc-700 transition-colors cursor-pointer overflow-hidden"
+            className="md:col-span-2 md:row-span-2 bg-[#0b1956] border border-[#26346f] rounded-xl p-6 flex flex-col hover:border-[#3d4d8f] transition-colors cursor-pointer overflow-hidden"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -242,17 +242,17 @@ export default function BentoGrid({ eyebrow = "Features", cards, speedValue = "1
                 <GlobalNetwork />
               </div>
             </div>
-            <div className="mt-auto relative z-20 bg-zinc-900/50 backdrop-blur-sm rounded-lg p-2">
+            <div className="mt-auto relative z-20 bg-[#0b1956]/50 backdrop-blur-sm rounded-lg p-2">
               <h3 className="font-serif text-xl text-white flex items-center gap-2 font-medium">
                 <Globe className="w-5 h-5" />
                 {c3.title}
               </h3>
-              <p className="text-gray-400 text-sm mt-1">{c3.description}</p>
+              <p className="text-[#a9b4d6] text-sm mt-1">{c3.description}</p>
             </div>
           </motion.div>
 
           <motion.div
-            className="md:col-span-2 bg-zinc-900 border border-zinc-800 rounded-xl p-8 flex flex-col hover:border-zinc-700 transition-colors cursor-pointer overflow-hidden"
+            className="md:col-span-2 bg-[#0b1956] border border-[#26346f] rounded-xl p-8 flex flex-col hover:border-[#3d4d8f] transition-colors cursor-pointer overflow-hidden"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -264,12 +264,12 @@ export default function BentoGrid({ eyebrow = "Features", cards, speedValue = "1
             </div>
             <div className="mt-4">
               <h3 className="font-serif text-xl text-white font-medium">{c4.title}</h3>
-              <p className="text-gray-400 text-sm mt-1">{c4.description}</p>
+              <p className="text-[#a9b4d6] text-sm mt-1">{c4.description}</p>
             </div>
           </motion.div>
 
           <motion.div
-            className="md:col-span-3 bg-zinc-900 border border-zinc-800 rounded-xl p-8 flex flex-col hover:border-zinc-700 transition-colors cursor-pointer overflow-hidden"
+            className="md:col-span-3 bg-[#0b1956] border border-[#26346f] rounded-xl p-8 flex flex-col hover:border-[#3d4d8f] transition-colors cursor-pointer overflow-hidden"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -284,12 +284,12 @@ export default function BentoGrid({ eyebrow = "Features", cards, speedValue = "1
                 <Lock className="w-5 h-5" />
                 {c5.title}
               </h3>
-              <p className="text-gray-400 text-sm mt-1">{c5.description}</p>
+              <p className="text-[#a9b4d6] text-sm mt-1">{c5.description}</p>
             </div>
           </motion.div>
 
           <motion.div
-            className="md:col-span-3 bg-zinc-900 border border-zinc-800 rounded-xl p-8 flex flex-col hover:border-zinc-700 transition-colors cursor-pointer overflow-hidden"
+            className="md:col-span-3 bg-[#0b1956] border border-[#26346f] rounded-xl p-8 flex flex-col hover:border-[#3d4d8f] transition-colors cursor-pointer overflow-hidden"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -301,7 +301,7 @@ export default function BentoGrid({ eyebrow = "Features", cards, speedValue = "1
             </div>
             <div className="mt-4">
               <h3 className="font-serif text-xl text-white font-medium">{c6.title}</h3>
-              <p className="text-gray-400 text-sm mt-1">{c6.description}</p>
+              <p className="text-[#a9b4d6] text-sm mt-1">{c6.description}</p>
             </div>
           </motion.div>
         </div>

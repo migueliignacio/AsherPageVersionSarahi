@@ -26,7 +26,7 @@ export default function MarcaPage() {
           { icon: "whatsapp", href: brand.socialLinks.whatsapp },
         ]}
         locationText="Ecuador"
-        circleClassName="bg-[#aa7ef6]/90"
+        circleClassName="bg-[#0b1956]"
       />
 
       <div className="flex h-[220px] items-center justify-center px-5 md:h-[280px]">
@@ -56,14 +56,15 @@ export default function MarcaPage() {
         title="Suma extras a tu estrategia de marca"
         items={serviceAddons.marca.items}
         accent={serviceAddons.marca.accent}
+        onAccent={serviceAddons.marca.onAccent}
       />
 
       <TextColor
         className="bg-[var(--color-bg)] px-6 py-20 md:py-28"
         words={[
-          { text: "Estrategia.", from: "#7c3aed", to: "#aa7ef6" },
-          { text: "Posicionamiento.", from: "#aa7ef6", to: "#f0abfc" },
-          { text: "Claridad.", from: "#c084fc", to: "#aa7ef6" },
+          { text: "Estrategia.", from: "#0b1956", to: "#858cab" },
+          { text: "Posicionamiento.", from: "#858cab", to: "#0b1956" },
+          { text: "Claridad.", from: "#0b1956", to: "#858cab" },
         ]}
       />
     </>

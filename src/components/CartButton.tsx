@@ -11,7 +11,7 @@ export default function CartButton({ className = "" }: { className?: string }) {
       onClick={() => setOpen(true)}
       aria-label={count > 0 ? `Abrir carrito, ${count} elementos` : "Abrir carrito"}
       data-cursor="expand"
-      className={`relative grid place-items-center rounded-full border border-[var(--color-ink)] bg-[var(--color-bg)] transition-colors duration-300 hover:bg-[var(--color-ink)] hover:text-[var(--color-bg)] ${className}`}
+      className={`relative grid place-items-center rounded-full border border-[var(--color-ink)] bg-white transition-colors duration-300 hover:bg-[var(--color-ink)] hover:text-white ${className}`}
     >
       <ShoppingBag className="h-[1.1rem] w-[1.1rem]" strokeWidth={1.6} />
       {count > 0 && (

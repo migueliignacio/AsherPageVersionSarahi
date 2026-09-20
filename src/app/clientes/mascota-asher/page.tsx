@@ -131,7 +131,7 @@ export default function MascotaAsherPage() {
         </div>
         <QuoteBlock
           eyebrow="Quién es AS"
-          accent="#fb1b7c"
+          accent="#520000"
           lines={[
             { bold: "Curioso,", thin: "cercano" },
             { bold: "y siempre", thin: "en movimiento." },

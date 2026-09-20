@@ -5,30 +5,26 @@
   --font-body: var(--font-inter), "Helvetica Neue", sans-serif;
   --font-serif-italic: var(--font-instrument-serif), Georgia, serif;
 
-  /* ASHER brand palette: Asher Navy, Soft Ivory, Warm Sand, Slate Blue, Deep Olive */
+  /* ASHER palette: navy, burgundy and cream, plus a baby blue accent */
   --color-navy: #0b1956;
-  --color-navy-mid: #1f2f73;
-  --color-navy-deep: #070f3a;
+  --color-navy-deep: #060e2e;
+  --color-maroon: #520000;
+  --color-babyblue: #8fb0e3;
   --color-ivory: #f7f4ed;
-  --color-sand: #d8cbb8;
-  --color-slate: #6f84b7;
-  --color-slate-deep: #4a5f95;
-  --color-olive: #4c5340;
 
-  /* semantic tokens the components use */
   --color-bg: var(--color-ivory);
-  --color-ink: #121210;
-  --color-ink-soft: #6b6a62;
-  --color-line: #e2ded2;
-  --color-surface: #ebe8de;
-  --color-accent: #ff4620;
-  --color-accent-2: #3d3bff;
-  --color-accent-3: #cfff5c;
+  --color-ink: var(--color-navy);
+  --color-ink-soft: #56618a;
+  --color-line: #e6ded0;
+  --color-surface: #eee8dd;
+  --color-accent: var(--color-maroon);
+  --color-accent-2: var(--color-navy);
+  --color-accent-3: var(--color-babyblue);
 
-  /* footer field (brand navy) */
+  /* footer field */
   --color-violet: var(--color-navy);
-  --color-violet-deep: #060e2e;
-  --color-lavender: #8b9fd4;
+  --color-violet-deep: var(--color-navy-deep);
+  --color-lavender: var(--color-babyblue);
 
   --ease-out-expo: cubic-bezier(.16, 1, .3, 1);
 }

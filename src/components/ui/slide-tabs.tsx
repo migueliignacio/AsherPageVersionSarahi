@@ -37,8 +37,12 @@ interface CursorPosition {
 export function SlideTabs({ tabs, activeHref, renderLink, className }: SlideTabsProps) {
   const [position, setPosition] = useState<CursorPosition>({ left: 0, width: 0, opacity: 0 });
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [hoverIndex, setHoverIndex] = useState<number | null>(null);
   const tabsRef = useRef<(HTMLLIElement | null)[]>([]);
   const rootRef = useRef<HTMLUListElement>(null);
+
+  // The label under the cursor turns white: hovered tab, else the current route's tab.
+  const litIndex = hoverIndex ?? tabs.findIndex((t) => t.href === activeHref);
 
   const resetToActive = () => {
     const idx = tabs.findIndex((t) => t.href === activeHref);
@@ -70,8 +74,11 @@ export function SlideTabs({ tabs, activeHref, renderLink, className }: SlideTabs
     // which was hiding the dropdown panels entirely.
     <ul
       ref={rootRef}
-      onMouseLeave={resetToActive}
-      className={`relative mx-auto flex w-fit flex-nowrap items-center rounded-full border border-[var(--color-ink)] bg-[var(--color-bg)] p-1 ${className ?? ""}`}
+      onMouseLeave={() => {
+        setHoverIndex(null);
+        resetToActive();
+      }}
+      className={`relative mx-auto flex w-fit flex-nowrap items-center ${className ?? ""}`}
     >
       {tabs.map((tab, i) => {
         const isOpen = openIndex === i;
@@ -86,6 +93,7 @@ export function SlideTabs({ tabs, activeHref, renderLink, className }: SlideTabs
             className="relative"
             onMouseEnter={() => {
               const el = tabsRef.current[i];
+              setHoverIndex(i);
               if (el) setPosition({ left: el.offsetLeft, width: el.getBoundingClientRect().width, opacity: 1 });
             }}
           >
@@ -95,7 +103,7 @@ export function SlideTabs({ tabs, activeHref, renderLink, className }: SlideTabs
                 onClick={() => setOpenIndex(isOpen ? null : i)}
                 aria-expanded={isOpen}
                 data-cursor="expand"
-                className="relative z-10 flex items-center gap-1 px-3 py-1.5 text-xs font-medium uppercase tracking-[0.08em] text-[var(--color-bg)] mix-blend-difference md:px-5 md:py-3 md:text-sm"
+                className={`relative z-10 flex items-center gap-1 px-3 py-1.5 text-xs font-medium uppercase tracking-[0.08em] transition-colors duration-200 md:px-5 md:py-3 md:text-sm ${litIndex === i ? "text-white" : "text-[var(--color-ink)]"}`}
               >
                 {tab.label}
                 <ChevronDown className={`h-3 w-3 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`} />
@@ -105,7 +113,7 @@ export function SlideTabs({ tabs, activeHref, renderLink, className }: SlideTabs
                 { href: tab.href!, label: tab.label },
                 {
                   className:
-                    "relative z-10 block px-3 py-1.5 text-xs font-medium uppercase tracking-[0.08em] text-[var(--color-bg)] mix-blend-difference md:px-5 md:py-3 md:text-sm",
+                    `relative z-10 block px-3 py-1.5 text-xs font-medium uppercase tracking-[0.08em] transition-colors duration-200 md:px-5 md:py-3 md:text-sm ${litIndex === i ? "text-white" : "text-[var(--color-ink)]"}`,
                   onClick: () => setOpenIndex(null),
                 },
                 tab.label
@@ -115,13 +123,13 @@ export function SlideTabs({ tabs, activeHref, renderLink, className }: SlideTabs
             {hasChildren && (
               <AnimatePresence>
                 {isOpen && (
-                  <div className="absolute left-1/2 top-full z-20 mt-3 w-max max-w-[90vw] -translate-x-1/2">
+                  <div className="absolute left-1/2 top-full z-20 mt-4 w-max max-w-[90vw] -translate-x-1/2">
                     <motion.div
                       initial={{ opacity: 0, y: -6 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -6 }}
                       transition={{ duration: 0.18, ease: "easeOut" }}
-                      className="rounded-2xl border border-[var(--color-line)] bg-[var(--color-bg)] p-4 shadow-xl"
+                      className="rounded-2xl border border-[var(--color-line)] bg-white p-4 shadow-xl"
                     >
                       <ul className="space-y-1">
                         {tab.children!.map((child) => (
@@ -130,7 +138,7 @@ export function SlideTabs({ tabs, activeHref, renderLink, className }: SlideTabs
                               { href: child.href, label: child.label },
                               {
                                 className:
-                                  "block rounded-lg px-3 py-2 text-sm text-[var(--color-ink)] transition-colors duration-200 hover:bg-[var(--color-surface)]",
+                                  "block rounded-lg px-3 py-2 text-sm text-[var(--color-ink)] transition-colors duration-200 hover:bg-[var(--color-ink)]/5",
                                 onClick: () => setOpenIndex(null),
                               },
                               <>

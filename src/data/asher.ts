@@ -24,6 +24,8 @@ export interface Route {
   title: string;
   description: string;
   accent: string;
+  /** Label color while the row is filled with its accent on hover. */
+  hoverText: string;
 }
 
 /** 02 — Lo que hacemos: "Cinco Rutas Claras". */
@@ -32,31 +34,36 @@ export const routes: Route[] = [
     index: "01",
     title: "Crear marca",
     description: "Para emprendedores y negocios que arrancan con todo.",
-    accent: "var(--color-accent)",
+    accent: "#ff4620",
+    hoverText: "#0b1956",
   },
   {
     index: "02",
     title: "Mejorar marca",
     description: "Para marcas que ya existen pero merecen verse mejor.",
-    accent: "var(--color-lavender)",
+    accent: "#8b9fd4",
+    hoverText: "#0b1956",
   },
   {
     index: "03",
     title: "Publicidad",
     description: "Para negocios que necesitan más clientes y más ventas.",
-    accent: "var(--color-accent-3)",
+    accent: "#cfff5c",
+    hoverText: "#0b1956",
   },
   {
     index: "04",
     title: "Digitalización",
     description: "Para quienes necesitan presencia digital o herramientas tech.",
-    accent: "var(--color-accent-2)",
+    accent: "#3d3bff",
+    hoverText: "#f7f4ed",
   },
   {
     index: "05",
     title: "Blindaje legal",
     description: "Respaldo legal como base de todo lo que construyes.",
-    accent: "var(--color-violet)",
+    accent: "#0b1956",
+    hoverText: "#f7f4ed",
   },
 ];
 

@@ -26,7 +26,7 @@ export default function BrandingPage() {
           { icon: "whatsapp", href: brand.socialLinks.whatsapp },
         ]}
         locationText="Ecuador"
-        circleClassName="bg-[#fb1b7c]/90"
+        circleClassName="bg-[#520000]"
       />
 
       <div className="flex h-[220px] items-center justify-center px-5 md:h-[280px]">
@@ -56,14 +56,15 @@ export default function BrandingPage() {
         title="Suma extras a tu identidad de marca"
         items={serviceAddons.branding.items}
         accent={serviceAddons.branding.accent}
+        onAccent={serviceAddons.branding.onAccent}
       />
 
       <TextColor
         className="bg-[var(--color-bg)] px-6 py-20 md:py-28"
         words={[
-          { text: "Identidad.", from: "#fb1b7c", to: "#ff8fc4" },
-          { text: "Estilo.", from: "#c026d3", to: "#fb1b7c" },
-          { text: "Carácter.", from: "#fb1b7c", to: "#f43f5e" },
+          { text: "Identidad.", from: "#520000", to: "#a98080" },
+          { text: "Estilo.", from: "#a98080", to: "#520000" },
+          { text: "Carácter.", from: "#520000", to: "#a98080" },
         ]}
       />
     </>

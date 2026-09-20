@@ -26,7 +26,7 @@ export default function LegalPage() {
           { icon: "whatsapp", href: brand.socialLinks.whatsapp },
         ]}
         locationText="Ecuador"
-        circleClassName="bg-[#84172e]/90"
+        circleClassName="bg-[#7d1a1f]"
       />
 
       <div className="flex h-[220px] items-center justify-center px-5 md:h-[280px]">
@@ -56,14 +56,15 @@ export default function LegalPage() {
         title="Suma extras a tu blindaje legal"
         items={serviceAddons.legal.items}
         accent={serviceAddons.legal.accent}
+        onAccent={serviceAddons.legal.onAccent}
       />
 
       <TextColor
         className="bg-[var(--color-bg)] px-6 py-20 md:py-28"
         words={[
-          { text: "Contratos.", from: "#84172e", to: "#e11d48" },
-          { text: "Marca.", from: "#e11d48", to: "#84172e" },
-          { text: "Blindaje.", from: "#84172e", to: "#fb7185" },
+          { text: "Contratos.", from: "#7d1a1f", to: "#be8d8f" },
+          { text: "Marca.", from: "#be8d8f", to: "#7d1a1f" },
+          { text: "Blindaje.", from: "#7d1a1f", to: "#be8d8f" },
         ]}
       />
     </>

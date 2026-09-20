@@ -19,13 +19,6 @@ const SOCIAL_LINKS = [
   { icon: WhatsappIcon, href: brand.socialLinks.whatsapp, label: "WhatsApp" },
 ];
 
-const SERVICE_LOGOS: Record<string, string> = {
-  "/servicios/branding": "/asher/logos/branding.png",
-  "/servicios/digital-web": "/asher/logos/digital-web.png",
-  "/servicios/legal": "/asher/logos/legal.png",
-  "/servicios/marca": "/asher/logos/marca.png",
-  "/servicios/marketing": "/asher/logos/marketing.png",
-};
 const DEFAULT_LOGO = "/asher/logos/asher-consulting.png";
 
 const NAV_ITEMS: SlideTabItem[] = [
@@ -110,7 +103,7 @@ function MobileNav({ onReservar }: { onReservar: () => void }) {
         aria-expanded={open}
         aria-label={open ? "Cerrar menú" : "Abrir menú"}
         data-cursor="expand"
-        className="flex h-10 w-10 flex-col items-center justify-center gap-[5px] rounded-full border border-[var(--color-ink)] bg-[var(--color-bg)]"
+        className="flex h-10 w-10 flex-col items-center justify-center gap-[5px] rounded-full border border-[var(--color-ink)] bg-white"
       >
         <span
           className="block h-px w-5 bg-[var(--color-ink)] transition-transform duration-300"
@@ -133,7 +126,7 @@ function MobileNav({ onReservar }: { onReservar: () => void }) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.2, ease: "easeOut" }}
-            className="absolute right-0 top-full mt-3 w-[86vw] max-w-sm rounded-2xl border border-[var(--color-line)] bg-[var(--color-bg)] p-5 shadow-xl"
+            className="absolute right-0 top-full mt-3 w-[86vw] max-w-sm rounded-2xl border border-[var(--color-line)] bg-white p-5 shadow-xl"
           >
             <ul className="flex flex-col divide-y divide-[var(--color-line)]">
               {NAV_ITEMS.map((item, i) => {
@@ -226,7 +219,7 @@ function MobileNav({ onReservar }: { onReservar: () => void }) {
 export default function TopNav() {
   const pathname = usePathname();
   const { openModal } = useLeadModal();
-  const logoSrc = SERVICE_LOGOS[pathname] ?? DEFAULT_LOGO;
+  const logoSrc = DEFAULT_LOGO;
 
   const logo = (
     <Image
@@ -244,7 +237,7 @@ export default function TopNav() {
     // a classic 3-line toggle that opens a compact dropdown card instead —
     // trying to cram the same pill into a narrow screen (even scrollable)
     // looked broken, so mobile gets its own simpler, reliable layout.
-    <header className="fixed inset-x-0 top-0 z-50 palette-asher flex items-center justify-between gap-3 px-5 py-5 md:px-10 md:py-6">
+    <header className="palette-asher fixed inset-x-0 top-0 z-50 flex items-center justify-between gap-3 border-b border-[var(--color-ink)]/10 bg-white px-5 py-2.5 md:px-10">
       <Link
         href="/"
         data-cursor="expand"
@@ -263,7 +256,7 @@ export default function TopNav() {
           type="button"
           onClick={() => openModal("nav")}
           data-cursor="expand"
-          className="inline-flex items-center gap-2 rounded-full border border-[var(--color-ink)] px-5 py-2.5 text-xs font-medium uppercase tracking-[0.1em] text-[var(--color-ink)] transition-colors duration-300 hover:bg-[var(--color-ink)] hover:text-[var(--color-bg)]"
+          className="inline-flex items-center gap-2 rounded-full border border-[var(--color-ink)] px-5 py-2.5 text-xs font-medium uppercase tracking-[0.1em] text-[var(--color-ink)] transition-colors duration-300 hover:bg-[var(--color-ink)] hover:text-white"
         >
           Reservar consultoría <span aria-hidden="true">→</span>
         </button>
@@ -276,7 +269,7 @@ export default function TopNav() {
             rel="noreferrer"
             aria-label={label}
             data-cursor="expand"
-            className="grid h-10 w-10 place-items-center rounded-full border border-[var(--color-ink)] transition-colors duration-300 hover:bg-[var(--color-ink)] hover:text-[var(--color-bg)]"
+            className="grid h-10 w-10 place-items-center rounded-full border border-[var(--color-ink)] transition-colors duration-300 hover:bg-[var(--color-ink)] hover:text-white"
           >
             <Icon />
           </a>

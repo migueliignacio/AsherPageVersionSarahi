@@ -26,7 +26,7 @@ export default function MarketingPage() {
           { icon: "whatsapp", href: brand.socialLinks.whatsapp },
         ]}
         locationText="Ecuador"
-        circleClassName="bg-[#f1562c]/90"
+        circleClassName="bg-[#6f95d6]"
       />
 
       <div className="flex h-[220px] items-center justify-center px-5 md:h-[280px]">
@@ -56,14 +56,15 @@ export default function MarketingPage() {
         title="Suma extras a tu campaña"
         items={serviceAddons.marketing.items}
         accent={serviceAddons.marketing.accent}
+        onAccent={serviceAddons.marketing.onAccent}
       />
 
       <TextColor
         className="bg-[var(--color-bg)] px-6 py-20 md:py-28"
         words={[
-          { text: "Contenido.", from: "#f1562c", to: "#fb923c" },
-          { text: "Campañas.", from: "#fb923c", to: "#f1562c" },
-          { text: "Alcance.", from: "#f1562c", to: "#fbbf24" },
+          { text: "Contenido.", from: "#0b1956", to: "#6f95d6" },
+          { text: "Campañas.", from: "#6f95d6", to: "#0b1956" },
+          { text: "Alcance.", from: "#0b1956", to: "#6f95d6" },
         ]}
       />
     </>

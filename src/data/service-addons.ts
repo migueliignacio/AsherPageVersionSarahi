@@ -11,6 +11,8 @@ export interface ServiceCatalogEntry {
   /** One-line summary for the /servicios hub. */
   blurb: string;
   accent: string;
+  /** Text color that reads on top of `accent`. */
+  onAccent: string;
   items: ServiceAddon[];
 }
 
@@ -24,7 +26,8 @@ export const serviceAddons: Record<string, ServiceCatalogEntry> = {
     slug: "branding",
     label: "Branding",
     blurb: "Identidades de marca con carácter: naming, sistemas visuales y guías que se sostienen en el tiempo.",
-    accent: "#fb1b7c",
+    accent: "#520000",
+    onAccent: "#f7f4ed",
     items: [
       { id: "branding-auditoria-logo", title: "Auditoría de logo", description: "Revisión de tu logo actual: legibilidad, versatilidad y uso correcto.", price: 1200 },
       { id: "branding-paleta-colores", title: "Paleta de colores", description: "Colores de marca definidos con reglas de uso claras.", price: 900 },
@@ -42,7 +45,8 @@ export const serviceAddons: Record<string, ServiceCatalogEntry> = {
     slug: "legal",
     label: "Legal",
     blurb: "Respaldo legal desde el día uno: registro de marca, contratos y protección para crecer sin sobresaltos.",
-    accent: "#84172e",
+    accent: "#7d1a1f",
+    onAccent: "#f7f4ed",
     items: [
       { id: "legal-aviso-privacidad", title: "Aviso de privacidad", description: "Documento a la medida para el manejo de datos de tus clientes.", price: 1800 },
       { id: "legal-terminos", title: "Términos y condiciones", description: "Reglas claras de uso para tu sitio o producto.", price: 1500 },
@@ -60,7 +64,8 @@ export const serviceAddons: Record<string, ServiceCatalogEntry> = {
     slug: "digital-web",
     label: "Digital Web",
     blurb: "Sitios y productos digitales rápidos, claros y listos para convertir visitas en clientes.",
-    accent: "#79b826",
+    accent: "#8fb0e3",
+    onAccent: "#0b1956",
     items: [
       { id: "digital-landing", title: "Landing page adicional", description: "Página enfocada en un solo objetivo: captar o vender.", price: 4500 },
       { id: "digital-formulario", title: "Formulario de contacto avanzado", description: "Captura de leads con validación y envío automático.", price: 1200 },
@@ -78,7 +83,8 @@ export const serviceAddons: Record<string, ServiceCatalogEntry> = {
     slug: "marca",
     label: "Marca",
     blurb: "Estrategia y posicionamiento: a quién le hablas, qué te hace distinto y cómo se nota.",
-    accent: "#aa7ef6",
+    accent: "#0b1956",
+    onAccent: "#f7f4ed",
     items: [
       { id: "marca-competencia", title: "Análisis de competencia", description: "Cómo se posicionan tus competidores y dónde hay espacio para ti.", price: 2200 },
       { id: "marca-buyer-persona", title: "Buyer persona", description: "Perfil claro de a quién le hablas y qué le importa.", price: 1600 },
@@ -96,7 +102,8 @@ export const serviceAddons: Record<string, ServiceCatalogEntry> = {
     slug: "marketing",
     label: "Marketing",
     blurb: "Campañas y contenido para que tu marca se mueva: más alcance, más conversaciones, más clientes.",
-    accent: "#f1562c",
+    accent: "#6f95d6",
+    onAccent: "#0b1956",
     items: [
       { id: "marketing-fotos-producto", title: "Sesión de fotos de producto", description: "Fotografía profesional lista para catálogo y redes.", price: 2800 },
       { id: "marketing-video-corto", title: "Video corto para redes", description: "Pieza vertical pensada para detener el scroll.", price: 3500 },

@@ -9,18 +9,19 @@ export default function ServicesSubHeader() {
   const pathname = usePathname();
 
   const links = [
-    { href: "/servicios", label: "Todos", accent: "var(--color-navy)" },
+    { href: "/servicios", label: "Todos", accent: "var(--color-navy)", onAccent: "var(--color-bg)" },
     ...serviceOrder.map((slug) => ({
       href: `/servicios/${slug}`,
       label: serviceAddons[slug].label,
       accent: serviceAddons[slug].accent,
+      onAccent: serviceAddons[slug].onAccent,
     })),
   ];
 
   return (
     <nav
       aria-label="Servicios"
-      className="palette-asher sticky top-20 z-40 mt-20 border-y border-[var(--color-line)] bg-[var(--color-bg)]/90 backdrop-blur md:top-[6.5rem] md:mt-[6.5rem]"
+      className="palette-asher sticky top-[3.75rem] z-40 mt-[3.75rem] border-y border-[var(--color-line)] bg-white/90 backdrop-blur md:top-16 md:mt-16"
     >
       <ul className="no-scrollbar flex items-center gap-2 overflow-x-auto px-5 py-3 md:justify-center md:gap-3 md:px-10">
         {links.map((link) => {
@@ -35,7 +36,7 @@ export default function ServicesSubHeader() {
                 style={{
                   borderColor: active ? link.accent : "var(--color-line)",
                   background: active ? link.accent : "transparent",
-                  color: active ? "var(--color-bg)" : "var(--color-ink)",
+                  color: active ? link.onAccent : "var(--color-ink)",
                 }}
               >
                 {link.label}

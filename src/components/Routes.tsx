@@ -86,6 +86,7 @@ export default function Routes() {
             data-reveal
             data-cursor="view"
             className="group relative flex items-center justify-between gap-6 overflow-hidden border-b border-[var(--color-line)] py-8 md:py-10"
+            style={{ "--hover-text": route.hoverText } as React.CSSProperties}
           >
             <span
               className="pointer-events-none absolute inset-0 -translate-x-full transition-transform duration-500 ease-[cubic-bezier(.16,1,.3,1)] group-hover:translate-x-0"
@@ -95,21 +96,21 @@ export default function Routes() {
 
             <span className="relative z-10 flex items-baseline gap-5 transition-transform duration-500 ease-[cubic-bezier(.16,1,.3,1)] group-hover:translate-x-4 md:gap-10">
               <span
-                className="text-xs font-medium text-[color:var(--route-accent)] transition-colors duration-500 md:font-normal md:text-[var(--color-ink-soft)] group-hover:text-[var(--color-bg)]/70"
+                className="text-xs font-medium text-[color:var(--route-accent)] transition-colors duration-500 md:font-normal md:text-[var(--color-ink-soft)] group-hover:text-[color:var(--hover-text)] group-hover:opacity-70"
                 style={{ "--route-accent": route.accent } as React.CSSProperties}
               >
                 {route.index}
               </span>
-              <span className="font-display text-2xl font-medium tracking-tight transition-colors duration-500 group-hover:text-[var(--color-bg)] md:text-5xl">
+              <span className="font-display text-2xl font-medium tracking-tight transition-colors duration-500 group-hover:text-[color:var(--hover-text)] md:text-5xl">
                 {route.title}
               </span>
             </span>
 
-            <span className="relative z-10 hidden max-w-xs text-sm text-[var(--color-ink-soft)] transition-colors duration-500 group-hover:text-[var(--color-bg)] md:block">
+            <span className="relative z-10 hidden max-w-xs text-sm text-[var(--color-ink-soft)] transition-colors duration-500 group-hover:text-[color:var(--hover-text)] md:block">
               {route.description}
             </span>
 
-            <span className="relative z-10 text-xl transition-all duration-500 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-[var(--color-bg)]" aria-hidden="true">
+            <span className="relative z-10 text-xl transition-all duration-500 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-[color:var(--hover-text)]" aria-hidden="true">
               ↗
             </span>
           </Link>

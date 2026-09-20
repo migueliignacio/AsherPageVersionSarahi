@@ -18,7 +18,7 @@ export interface CatalogGridItem {
  * propio pack": click a row to add/remove it from the shared cart, click
  * the chevron for its description.
  */
-export function CatalogGrid({ items, accent }: { items: CatalogGridItem[]; accent: string }) {
+export function CatalogGrid({ items, accent, onAccent = "var(--color-bg)" }: { items: CatalogGridItem[]; accent: string; onAccent?: string }) {
   const { has, toggle } = useCart();
   const [expanded, setExpanded] = useState<string[]>([]);
 
@@ -38,7 +38,7 @@ export function CatalogGrid({ items, accent }: { items: CatalogGridItem[]; accen
             style={{
               borderColor: isSelected ? accent : "var(--color-line)",
               background: isSelected ? accent : "var(--color-bg)",
-              color: isSelected ? "var(--color-bg)" : "var(--color-ink)",
+              color: isSelected ? onAccent : "var(--color-ink)",
             }}
           >
             <div className="flex items-center gap-1 px-2">
@@ -57,8 +57,8 @@ export function CatalogGrid({ items, accent }: { items: CatalogGridItem[]; accen
                     aria-hidden="true"
                     className="grid h-4 w-4 shrink-0 place-items-center rounded-full border text-[0.55rem]"
                     style={{
-                      borderColor: isSelected ? "var(--color-bg)" : "var(--color-line)",
-                      background: isSelected ? "var(--color-bg)" : "transparent",
+                      borderColor: isSelected ? onAccent : "var(--color-line)",
+                      background: isSelected ? onAccent : "transparent",
                       color: isSelected ? accent : "transparent",
                     }}
                   >
@@ -68,7 +68,7 @@ export function CatalogGrid({ items, accent }: { items: CatalogGridItem[]; accen
                 </span>
                 <span
                   className="shrink-0 text-xs font-medium uppercase tracking-[0.04em]"
-                  style={{ color: isSelected ? "var(--color-bg)" : "var(--color-ink-soft)" }}
+                  style={{ color: isSelected ? onAccent : "var(--color-ink-soft)" }}
                 >
                   {currency.format(item.price)}
                 </span>
@@ -85,8 +85,8 @@ export function CatalogGrid({ items, accent }: { items: CatalogGridItem[]; accen
                   isExpanded && "rotate-180"
                 )}
                 style={{
-                  borderColor: isSelected ? "color-mix(in srgb, var(--color-bg) 50%, transparent)" : "var(--color-line)",
-                  color: isSelected ? "var(--color-bg)" : "var(--color-ink-soft)",
+                  borderColor: isSelected ? `color-mix(in srgb, ${onAccent} 50%, transparent)` : "var(--color-line)",
+                  color: isSelected ? onAccent : "var(--color-ink-soft)",
                 }}
               >
                 ⌄
@@ -104,7 +104,7 @@ export function CatalogGrid({ items, accent }: { items: CatalogGridItem[]; accen
                 >
                   <p
                     className="px-4 pb-3 text-xs leading-relaxed"
-                    style={{ opacity: isSelected ? 0.75 : 1, color: isSelected ? "var(--color-bg)" : "var(--color-ink-soft)" }}
+                    style={{ opacity: isSelected ? 0.75 : 1, color: isSelected ? onAccent : "var(--color-ink-soft)" }}
                   >
                     {item.description}
                   </p>

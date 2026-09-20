@@ -36,7 +36,7 @@ export default function CustomPlan() {
                 <h3 className="font-display mb-3 text-sm font-medium uppercase tracking-tight md:text-base">
                   {area.label}
                 </h3>
-                <CatalogGrid items={area.items} accent={area.accent} />
+                <CatalogGrid items={area.items} accent={area.accent} onAccent={area.onAccent} />
               </div>
             );
           })}

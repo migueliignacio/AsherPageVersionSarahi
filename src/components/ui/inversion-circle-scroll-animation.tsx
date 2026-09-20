@@ -201,7 +201,7 @@ function Styles() {
       .icsa-ball {
         position: absolute; top: 50%; left: 50%;
         width: 380px; height: 380px;
-        border-radius: 50%; background: #000;
+        border-radius: 50%; background: #0b1956;
         will-change: transform;
       }
 
@@ -213,8 +213,8 @@ function Styles() {
         text-align: center; padding: 0 2rem;
         pointer-events: none;
       }
-      .icsa-dark  { color: #000; z-index: 2; }
-      .icsa-light { color: #fff; z-index: 3; will-change: clip-path; }
+      .icsa-dark  { color: #0b1956; z-index: 2; }
+      .icsa-light { color: #f7f4ed; z-index: 3; will-change: clip-path; }
 
       .icsa-layer h1 {
         font-size: clamp(2.5rem, 7vw, 6rem);
@@ -230,11 +230,11 @@ function Styles() {
         min-height: 100vh;
         display: flex; align-items: center; justify-content: center;
         padding: 6rem 2rem;
-        background: #000; color: #fff;
+        background: #0b1956; color: #f7f4ed;
         transition: background 2.4s cubic-bezier(.25,0,.1,1),
                     color      2.4s cubic-bezier(.25,0,.1,1);
       }
-      .icsa-cs.on { background: #fff; color: #000; }
+      .icsa-cs.on { background: #f7f4ed; color: #0b1956; }
 
       .icsa-inner {
         max-width: 720px; text-align: center;
@@ -268,7 +268,7 @@ function Styles() {
 
       /* button */
       .icsa-btn {
-        background: #ff3e00; color: #fff;
+        background: #520000; color: #f7f4ed;
         padding: 10px 28px; border-radius: 8px; border: none;
         cursor: pointer; font-family: Inter, sans-serif;
         font-size: 1rem; font-weight: 600; letter-spacing: .01em;
