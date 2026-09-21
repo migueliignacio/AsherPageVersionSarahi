@@ -4,6 +4,7 @@ import { QuoteBlock } from "@/components/ui/quote-block";
 import { TextParallaxContent } from "@/components/ui/text-parallax-content-scroll";
 import TextBlockAnimation from "@/components/ui/text-block-animation";
 import About from "@/components/About";
+import Process from "@/components/Process";
 
 export const metadata: Metadata = {
   title: "Quiénes somos — ASHER",
@@ -113,6 +114,17 @@ export default function QuienesSomosPage() {
               { bold: "Estrategia", thin: "que se ejecuta." },
             ]}
           />
+        </div>
+      </TextParallaxContent>
+
+      <TextParallaxContent
+        id="proceso"
+        subheading="Cómo trabajamos"
+        heading="Diagnóstico. Estrategia. Ejecución."
+        background="linear-gradient(150deg, #14226b 0%, #0b1956 55%, #060e2e 100%)"
+      >
+        <div className="px-4 pb-24 pt-16 md:pb-32">
+          <Process />
         </div>
       </TextParallaxContent>
     </div>

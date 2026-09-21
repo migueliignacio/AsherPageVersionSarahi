@@ -30,6 +30,7 @@ const NAV_ITEMS: SlideTabItem[] = [
       { label: "Misión", href: "/quienes-somos#mision" },
       { label: "Visión", href: "/quienes-somos#vision" },
       { label: "Valores", href: "/quienes-somos#valores" },
+      { label: "Proceso", href: "/quienes-somos#proceso" },
     ],
   },
   {
@@ -42,7 +43,7 @@ const NAV_ITEMS: SlideTabItem[] = [
       { label: "Marketing", href: "/servicios/marketing" },
     ],
   },
-  { label: "Proceso", href: "/proceso" },
+  { label: "Proyectos", href: "/proyectos" },
   { label: "Clientes", href: "/clientes" },
   { label: "Planes", href: "/planes" },
   { label: "Contacto", href: "/contacto" },

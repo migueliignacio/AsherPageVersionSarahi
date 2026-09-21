@@ -21,6 +21,8 @@ export interface TextParallaxContentProps {
   /** Optional picture shown on the right half of the card (md and up). */
   imgUrl?: string;
   imgAlt?: string;
+  /** How the picture fills its frame: photos cover, logos are contained on white. */
+  imgFit?: "cover" | "contain";
   /** Anchor id, so nav links can jump straight to this block. */
   id?: string;
   children?: ReactNode;
@@ -37,13 +39,14 @@ export function TextParallaxContent({
   tone = "dark",
   imgUrl,
   imgAlt = "",
+  imgFit = "cover",
   id,
   children,
 }: TextParallaxContentProps) {
   return (
     <div id={id} className="scroll-mt-16" style={{ paddingLeft: IMG_PADDING, paddingRight: IMG_PADDING }}>
       <div className="relative h-[150vh]">
-        <StickyCard background={background} tone={tone} imgUrl={imgUrl} imgAlt={imgAlt} />
+        <StickyCard background={background} tone={tone} imgUrl={imgUrl} imgAlt={imgAlt} imgFit={imgFit} />
         <OverlayCopy heading={heading} subheading={subheading} tone={tone} withImage={Boolean(imgUrl)} />
       </div>
       {children}
@@ -56,11 +59,13 @@ function StickyCard({
   tone,
   imgUrl,
   imgAlt,
+  imgFit,
 }: {
   background: string;
   tone: ParallaxTone;
   imgUrl?: string;
   imgAlt: string;
+  imgFit: "cover" | "contain";
 }) {
   const targetRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -82,16 +87,16 @@ function StickyCard({
       }}
       className="sticky z-0 overflow-hidden rounded-3xl"
     >
-      {imgUrl && (
-        <div className="absolute inset-4 overflow-hidden rounded-2xl opacity-35 md:inset-y-6 md:left-auto md:right-6 md:w-[46%] md:opacity-100">
-          <Image src={imgUrl} alt={imgAlt} fill sizes="(min-width: 768px) 46vw, 100vw" className="object-cover object-center" />
-        </div>
-      )}
       <motion.div
         aria-hidden="true"
         className={cn("absolute inset-0", tone === "dark" ? "bg-[#060e2e]/45" : "bg-[#f7f4ed]/40")}
         style={{ opacity }}
       />
+      {imgUrl && (
+        <div className={cn("absolute inset-4 overflow-hidden rounded-2xl opacity-35 md:inset-y-6 md:left-auto md:right-6 md:w-[46%] md:opacity-100", imgFit === "contain" && "bg-white")}>
+          <Image src={imgUrl} alt={imgAlt} fill sizes="(min-width: 768px) 46vw, 100vw" className={imgFit === "contain" ? "object-contain p-8 md:p-16" : "object-cover object-center"} />
+        </div>
+      )}
     </motion.div>
   );
 }

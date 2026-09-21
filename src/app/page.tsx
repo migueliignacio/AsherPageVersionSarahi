@@ -1,7 +1,6 @@
 import Hero from "@/components/Hero";
 import Marquee from "@/components/Marquee";
 import ClientLogos from "@/components/ClientLogos";
-import OurWorkSection from "@/components/OurWorkSection";
 import InversionCircleScrollAnimation from "@/components/ui/inversion-circle-scroll-animation";
 import Routes from "@/components/Routes";
 import HomeIntro from "@/components/HomeIntro";
@@ -11,7 +10,6 @@ export default function Home() {
     <>
       <Hero />
       <ClientLogos />
-      <OurWorkSection />
       <HomeIntro />
       <InversionCircleScrollAnimation />
       <Routes />
