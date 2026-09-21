@@ -2,7 +2,6 @@
 
 import { useCallback, useRef } from "react";
 import Link from "next/link";
-import { Plus } from "lucide-react";
 import GlyphPortal from "./GlyphPortal";
 import { brand } from "@/data/asher";
 import { useLeadModal } from "./LeadModalProvider";
@@ -60,21 +59,6 @@ export default function Hero() {
         }}
         front={
           <>
-            {/* Frame with corner marks around the wordmark, like the TextColor blocks. */}
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute inset-x-[4%] border"
-              style={{
-                top: "calc(var(--gp-word-top, 30%) - 84px)",
-                bottom: "calc(100% - var(--gp-word-bottom, 60%) - 96px)",
-                borderColor: "color-mix(in srgb, var(--color-ink) 22%, transparent)",
-              }}
-            >
-              <Plus className="absolute -left-3 -top-3 h-6 w-6 text-[var(--color-ink)]/50" />
-              <Plus className="absolute -bottom-3 -left-3 h-6 w-6 text-[var(--color-ink)]/50" />
-              <Plus className="absolute -right-3 -top-3 h-6 w-6 text-[var(--color-ink)]/50" />
-              <Plus className="absolute -bottom-3 -right-3 h-6 w-6 text-[var(--color-ink)]/50" />
-            </div>
             <p
               className="absolute left-1/2 -translate-x-1/2 text-center font-mono text-[10px] uppercase tracking-[0.25em] sm:text-xs"
               style={{ top: "calc(var(--gp-word-top, 30%) - 40px)", color: "var(--color-ink-soft)" }}
