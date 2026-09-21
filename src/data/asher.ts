@@ -3,10 +3,13 @@
 export const brand = {
   name: "Asher",
   tagline: "Consultora de Crecimiento de Marca",
-  disciplines: "Estrategia · Marca · Digital · Legal",
-  heroHeadline: "Construimos marca sin fricciones",
+  disciplines: "Estrategia · Marca · Marketing · Digital · Legal",
+  heroHeadline: ["Construimos negocios.", "Potenciamos marcas."],
+  /** Line under the big ASHER wordmark. */
   heroSub:
-    "Elige una ruta, cuéntanos tu proyecto, y tu marca empieza a moverse esta semana — con respaldo legal desde el día uno.",
+    "Impulsamos empresas y marcas desde una visión integral que conecta estrategia, creatividad, crecimiento y protección jurídica.",
+  heroIntro:
+    "Integramos estrategia, marca, marketing, tecnología y derecho para convertir ideas y empresas en negocios sólidos, visibles y protegidos.",
   email: "asherlegalbranding@gmail.com",
   copyright: "© 2026 ASHER",
   socialLinks: {
@@ -168,11 +171,3 @@ export const valueProps = [
   "Estrategia que se ejecuta",
 ];
 
-export const marqueeItems = [
-  "Branding Integral",
-  "Publicidad Digital",
-  "Identidad de Marca",
-  "Digitalización",
-  "Blindaje Legal",
-  "Crecimiento",
-];

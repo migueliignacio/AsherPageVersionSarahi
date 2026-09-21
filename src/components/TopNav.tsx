@@ -238,42 +238,26 @@ export default function TopNav() {
     // trying to cram the same pill into a narrow screen (even scrollable)
     // looked broken, so mobile gets its own simpler, reliable layout.
     <header className="palette-asher fixed inset-x-0 top-0 z-50 flex items-center justify-between gap-3 border-b border-[var(--color-ink)]/10 bg-white px-5 py-2.5 md:px-10">
-      <Link
-        href="/"
-        data-cursor="expand"
-        aria-label="ASHER — inicio"
-        className="relative block h-8 w-8 shrink-0 md:h-10 md:w-10"
-      >
-        {logo}
-      </Link>
+      <div className="flex min-w-0 items-center gap-4 lg:gap-6">
+        <Link
+          href="/"
+          data-cursor="expand"
+          aria-label="ASHER — inicio"
+          className="flex shrink-0 items-center gap-3"
+        >
+          <span className="relative block h-8 w-8 md:h-9 md:w-9">{logo}</span>
+          <span className="text-sm font-medium uppercase tracking-[0.4em] text-[var(--color-ink)]">Asher</span>
+        </Link>
 
-      <div className="hidden md:block">
-        <SlideTabs tabs={NAV_ITEMS} activeHref={pathname} renderLink={renderNavLink} />
+        <span className="hidden h-6 w-px bg-[var(--color-ink)]/20 md:block" aria-hidden="true" />
+
+        <div className="hidden md:block">
+          <SlideTabs tabs={NAV_ITEMS} activeHref={pathname} renderLink={renderNavLink} />
+        </div>
       </div>
 
-      <div className="hidden items-center gap-2 md:flex">
-        <button
-          type="button"
-          onClick={() => openModal("nav")}
-          data-cursor="expand"
-          className="inline-flex items-center gap-2 rounded-full border border-[var(--color-ink)] px-5 py-2.5 text-xs font-medium uppercase tracking-[0.1em] text-[var(--color-ink)] transition-colors duration-300 hover:bg-[var(--color-ink)] hover:text-white"
-        >
-          Reservar consultoría <span aria-hidden="true">→</span>
-        </button>
+      <div className="hidden md:block">
         <CartButton className="h-10 w-10" />
-        {SOCIAL_LINKS.map(({ icon: Icon, href, label }) => (
-          <a
-            key={label}
-            href={href}
-            target="_blank"
-            rel="noreferrer"
-            aria-label={label}
-            data-cursor="expand"
-            className="grid h-10 w-10 place-items-center rounded-full border border-[var(--color-ink)] transition-colors duration-300 hover:bg-[var(--color-ink)] hover:text-white"
-          >
-            <Icon />
-          </a>
-        ))}
       </div>
 
       <div className="flex items-center gap-2 md:hidden">

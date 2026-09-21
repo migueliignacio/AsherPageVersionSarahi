@@ -2,7 +2,6 @@
 
 import { useEffect } from "react";
 import Lenis from "lenis";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export default function SmoothScroll() {
   useEffect(() => {
@@ -21,12 +20,6 @@ export default function SmoothScroll() {
     };
     raf = requestAnimationFrame(loop);
 
-    // Other sections (e.g. OurWorkSection) register their own ScrollTrigger
-    // pins on mount, measured against whatever the page height was at that
-    // exact moment. Once every section below has mounted too, refresh once
-    // so those pins are measured against the final, complete layout.
-    const refreshFrame = requestAnimationFrame(() => ScrollTrigger.refresh());
-
     // Landing on a URL with a hash (e.g. a mega menu link followed from
     // another page) fights the same problem, twice over: the browser jumps
     // to the target before this page's JS-sized sections (the
@@ -41,7 +34,6 @@ export default function SmoothScroll() {
       [300, 700, 1200].forEach((delay) => {
         hashTimeouts.push(
           window.setTimeout(() => {
-            ScrollTrigger.refresh();
             const target = document.querySelector(hash);
             if (target) lenis.scrollTo(target as HTMLElement, { offset: -24, immediate: true });
           }, delay)
@@ -75,7 +67,6 @@ export default function SmoothScroll() {
     return () => {
       document.removeEventListener("click", onClick);
       cancelAnimationFrame(raf);
-      cancelAnimationFrame(refreshFrame);
       hashTimeouts.forEach((t) => window.clearTimeout(t));
       lenis.destroy();
     };

@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { InstagramIcon, FacebookIcon, TiktokIcon, WhatsappIcon } from "./SocialIcons";
-import { brand, disciplines } from "@/data/asher";
+import { brand } from "@/data/asher";
 
 const SOCIAL_LINKS = [
   { icon: InstagramIcon, href: brand.socialLinks.instagram, label: "Instagram" },
@@ -46,7 +46,7 @@ export default function Footer() {
       className="relative overflow-hidden bg-[var(--color-violet)] text-[var(--color-bg)]"
     >
       <motion.div
-        className="grid gap-12 px-5 pb-56 pt-20 md:grid-cols-12 md:gap-10 md:px-10 md:pb-72 md:pt-24"
+        className="grid gap-12 px-5 pb-16 pt-20 md:grid-cols-12 md:gap-10 md:px-10 md:pb-20 md:pt-24"
         variants={containerVariants}
       >
         <motion.div
@@ -68,12 +68,12 @@ export default function Footer() {
             todo bajo un mismo techo.
           </p>
           <div className="flex flex-wrap gap-2 pt-2">
-            {disciplines.map((d) => (
+            {brand.disciplines.split(" · ").map((d) => (
               <span
-                key={d.title}
+                key={d}
                 className="rounded-full border border-[var(--color-bg)]/25 px-3 py-1.5 text-xs"
               >
-                {d.title}
+                {d}
               </span>
             ))}
           </div>
@@ -152,17 +152,7 @@ export default function Footer() {
         </motion.div>
       </motion.div>
 
-      {/* Ghost wordmark: oversized, clipped by the viewport, sits behind content. */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 select-none" aria-hidden="true">
-        <span
-          className="font-display block whitespace-nowrap px-3 font-medium leading-[0.72] tracking-[-0.04em] text-[var(--color-bg)]/12"
-          style={{ fontSize: "clamp(6rem, 30vw, 26rem)" }}
-        >
-          <span className="font-serif-italic italic">A</span>sher
-        </span>
-      </div>
-
-      <div className="relative z-10 flex flex-col gap-2 px-5 pb-24 text-xs text-[var(--color-bg)]/55 md:flex-row md:items-center md:justify-between md:px-10 md:pb-28">
+      <div className="relative z-10 flex flex-col gap-2 px-5 pb-10 text-xs text-[var(--color-bg)]/55 md:flex-row md:items-center md:justify-between md:px-10 md:pb-10">
         <p>{brand.copyright}</p>
         <p>{brand.disciplines}</p>
       </div>

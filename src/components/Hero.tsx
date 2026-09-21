@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useRef } from "react";
+import Link from "next/link";
 import GlyphPortal from "./GlyphPortal";
 import { brand } from "@/data/asher";
 import { useLeadModal } from "./LeadModalProvider";
@@ -73,47 +74,47 @@ export default function Hero() {
           </>
         }
       >
-        <div className="mx-auto flex max-w-2xl flex-col items-start gap-6">
-          <p className="font-mono text-[10px] uppercase tracking-[0.25em]" style={{ color: "rgba(245,243,238,0.55)" }}>
-            Estás dentro de {brand.name}
+        <div className="mx-auto flex max-w-2xl flex-col items-start gap-7">
+          <p
+            className="inline-flex rounded-full border px-4 py-1.5 text-[10px] uppercase tracking-[0.3em]"
+            style={{ borderColor: "rgba(247,244,237,0.35)", color: "rgba(247,244,237,0.85)" }}
+          >
+            Bienvenido a {brand.name}
           </p>
           <h2
             className="font-display font-medium tracking-tight"
-            style={{ fontSize: "clamp(1.75rem,4vw,3rem)", color: "var(--color-bg)", lineHeight: 1.1 }}
+            style={{ fontSize: "clamp(2rem,5vw,3.6rem)", color: "var(--color-bg)", lineHeight: 1.05 }}
           >
-            {brand.heroHeadline}.
+            {brand.heroHeadline.map((line) => (
+              <span key={line} className="block">
+                {line}
+              </span>
+            ))}
           </h2>
-          <p className="max-w-lg text-sm leading-relaxed sm:text-base" style={{ color: "rgba(245,243,238,0.75)" }}>
-            {brand.heroSub}
+          <p className="max-w-lg text-sm leading-relaxed sm:text-base" style={{ color: "rgba(247,244,237,0.8)" }}>
+            {brand.heroIntro}
           </p>
-          <div className="mt-2 flex flex-wrap items-center gap-x-8 gap-y-4">
+          <div className="mt-1 flex flex-wrap items-center gap-x-8 gap-y-4">
             <button
               type="button"
               onClick={() => openModal("hero")}
-              className="group inline-flex items-center gap-3 text-sm font-semibold sm:text-base"
-              style={{ color: "var(--color-bg)" }}
+              data-cursor="expand"
+              className="group inline-flex items-center gap-3 rounded-full px-6 py-3 text-sm font-semibold transition-transform duration-300 hover:-translate-y-0.5"
+              style={{ background: "var(--color-bg)", color: "var(--color-navy)" }}
             >
-              <span className="relative pb-1">
-                Reservar consultoría
-                <span
-                  className="absolute -bottom-0.5 left-0 h-px w-full origin-right scale-x-0 transition-transform duration-500 ease-out group-hover:origin-left group-hover:scale-x-100"
-                  style={{ background: "var(--color-bg)" }}
-                />
-              </span>
-              <span
-                className="relative flex h-7 w-7 flex-shrink-0 items-center justify-center overflow-hidden rounded-full transition-transform duration-300 ease-out group-hover:translate-x-1"
-                style={{ background: "rgba(245,243,238,0.15)" }}
-              >
+              Reservar consultoría
+              <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1">
                 →
               </span>
             </button>
-            <a
-              href="#servicios"
-              className="text-sm underline underline-offset-4 sm:text-base"
-              style={{ color: "rgba(245,243,238,0.75)" }}
+            <Link
+              href="/servicios"
+              data-cursor="expand"
+              className="inline-flex items-center gap-2 text-sm underline underline-offset-4 sm:text-base"
+              style={{ color: "rgba(247,244,237,0.85)" }}
             >
-              Ver servicios
-            </a>
+              Ver servicios <span aria-hidden="true">→</span>
+            </Link>
           </div>
         </div>
       </GlyphPortal>

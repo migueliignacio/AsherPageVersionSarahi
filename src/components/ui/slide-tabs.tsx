@@ -28,36 +28,16 @@ export interface SlideTabsProps {
   className?: string;
 }
 
-interface CursorPosition {
-  left: number;
-  width: number;
-  opacity: number;
-}
-
 export function SlideTabs({ tabs, activeHref, renderLink, className }: SlideTabsProps) {
-  const [position, setPosition] = useState<CursorPosition>({ left: 0, width: 0, opacity: 0 });
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const [hoverIndex, setHoverIndex] = useState<number | null>(null);
-  const tabsRef = useRef<(HTMLLIElement | null)[]>([]);
   const rootRef = useRef<HTMLUListElement>(null);
 
-  // The label under the cursor turns white: hovered tab, else the current route's tab.
+  // The tab under the cursor: the hovered one, else the current route's.
+  // The cursor itself is a shared-layout element (layoutId), so it slides
+  // between tabs and always fits whichever one it is in — no manual
+  // measuring that could go stale when fonts/layout settle after mount.
   const litIndex = hoverIndex ?? tabs.findIndex((t) => t.href === activeHref);
-
-  const resetToActive = () => {
-    const idx = tabs.findIndex((t) => t.href === activeHref);
-    const el = idx >= 0 ? tabsRef.current[idx] : null;
-    if (el) {
-      setPosition({ left: el.offsetLeft, width: el.getBoundingClientRect().width, opacity: 1 });
-    } else {
-      setPosition((p) => ({ ...p, opacity: 0 }));
-    }
-  };
-
-  useEffect(() => {
-    resetToActive();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [activeHref, tabs.length]);
 
   useEffect(() => {
     const onDocClick = (e: MouseEvent) => {
@@ -74,36 +54,34 @@ export function SlideTabs({ tabs, activeHref, renderLink, className }: SlideTabs
     // which was hiding the dropdown panels entirely.
     <ul
       ref={rootRef}
-      onMouseLeave={() => {
-        setHoverIndex(null);
-        resetToActive();
-      }}
+      onMouseLeave={() => setHoverIndex(null)}
       className={`relative mx-auto flex w-fit flex-nowrap items-center ${className ?? ""}`}
     >
       {tabs.map((tab, i) => {
         const isOpen = openIndex === i;
         const hasChildren = !!tab.children?.length;
+        const labelClass = `relative z-10 px-3 py-1.5 text-xs font-medium uppercase tracking-[0.08em] transition-colors duration-200 md:px-5 md:py-3 md:text-sm ${
+          litIndex === i ? "text-white" : "text-[var(--color-ink)]"
+        }`;
 
         return (
-          <li
-            key={tab.label}
-            ref={(el) => {
-              tabsRef.current[i] = el;
-            }}
-            className="relative"
-            onMouseEnter={() => {
-              const el = tabsRef.current[i];
-              setHoverIndex(i);
-              if (el) setPosition({ left: el.offsetLeft, width: el.getBoundingClientRect().width, opacity: 1 });
-            }}
-          >
+          <li key={tab.label} className="relative" onMouseEnter={() => setHoverIndex(i)}>
+            {litIndex === i && (
+              <motion.span
+                layoutId="slide-tabs-cursor"
+                transition={{ type: "spring", stiffness: 500, damping: 40 }}
+                className="absolute inset-0 z-0 rounded-full bg-[var(--color-ink)]"
+                aria-hidden="true"
+              />
+            )}
+
             {hasChildren ? (
               <button
                 type="button"
                 onClick={() => setOpenIndex(isOpen ? null : i)}
                 aria-expanded={isOpen}
                 data-cursor="expand"
-                className={`relative z-10 flex items-center gap-1 px-3 py-1.5 text-xs font-medium uppercase tracking-[0.08em] transition-colors duration-200 md:px-5 md:py-3 md:text-sm ${litIndex === i ? "text-white" : "text-[var(--color-ink)]"}`}
+                className={`flex items-center gap-1 ${labelClass}`}
               >
                 {tab.label}
                 <ChevronDown className={`h-3 w-3 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`} />
@@ -112,8 +90,7 @@ export function SlideTabs({ tabs, activeHref, renderLink, className }: SlideTabs
               renderLink(
                 { href: tab.href!, label: tab.label },
                 {
-                  className:
-                    `relative z-10 block px-3 py-1.5 text-xs font-medium uppercase tracking-[0.08em] transition-colors duration-200 md:px-5 md:py-3 md:text-sm ${litIndex === i ? "text-white" : "text-[var(--color-ink)]"}`,
+                  className: `block ${labelClass}`,
                   onClick: () => setOpenIndex(null),
                 },
                 tab.label
@@ -159,17 +136,6 @@ export function SlideTabs({ tabs, activeHref, renderLink, className }: SlideTabs
           </li>
         );
       })}
-
-      <Cursor position={position} />
     </ul>
-  );
-}
-
-function Cursor({ position }: { position: CursorPosition }) {
-  return (
-    <motion.li
-      animate={{ ...position }}
-      className="absolute z-0 h-7 rounded-full bg-[var(--color-ink)] md:h-11"
-    />
   );
 }
