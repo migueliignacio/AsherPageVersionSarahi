@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
-import BackToHome from "@/components/BackToHome";
 import { QuoteBlock } from "@/components/ui/quote-block";
 import { TextParallaxContent } from "@/components/ui/text-parallax-content-scroll";
 import TextBlockAnimation from "@/components/ui/text-block-animation";
-import About from "@/components/About";
+import { Component as QuienesSomosHero } from "@/components/ui/connoisseur-stack-interactor";
 import Process from "@/components/Process";
 
 export const metadata: Metadata = {
@@ -14,19 +13,7 @@ export const metadata: Metadata = {
 export default function QuienesSomosPage() {
   return (
     <div className="palette-asher">
-      <BackToHome />
-
-      <TextParallaxContent
-        id="quienes-somos"
-        subheading="Quiénes somos"
-        heading="Claridad para crecer."
-        tone="light"
-        background="linear-gradient(135deg, #f7f4ed 0%, #eee8dd 100%)"
-        imgUrl="/asher/trabajos/mascota-asher/cover.png"
-        imgAlt="AS, la mascota de ASHER"
-      >
-        <About />
-      </TextParallaxContent>
+      <QuienesSomosHero eyebrow="Quiénes somos" />
 
       <TextParallaxContent
         id="historia"
