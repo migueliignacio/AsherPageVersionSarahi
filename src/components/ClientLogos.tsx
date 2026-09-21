@@ -2,22 +2,22 @@ import { MarqueeLogoScroller } from "@/components/ui/marquee-logo-scroller";
 
 const marcas = [
   {
-    src: "/marcas/spc.png",
+    src: "/marcas/spc.webp",
     alt: "Social Padel Club",
     gradient: { from: "#3d4d8f", via: "#0b1956", to: "#060e2e" },
   },
   {
-    src: "/marcas/batidoos.png",
+    src: "/marcas/Batidos.webp",
     alt: "Batidoos",
     gradient: { from: "#8a2a2a", via: "#520000", to: "#2e0000" },
   },
   {
-    src: "/marcas/velez-guevara.png",
+    src: "/marcas/velezguev.webp",
     alt: "Vélez Guevara Abogados",
     gradient: { from: "#efe6d6", via: "#d8cbb8", to: "#b5a88f" },
   },
   {
-    src: "/marcas/barak-maniquies.png",
+    src: "/marcas/barak.webp",
     alt: "Barak Maniquíes",
     gradient: { from: "#c3d3ef", via: "#8fb0e3", to: "#5f83c4" },
   },

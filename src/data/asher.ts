@@ -11,13 +11,15 @@ export const brand = {
   heroIntro:
     "Integramos estrategia, marca, marketing, tecnología y derecho para convertir ideas y empresas en negocios sólidos, visibles y protegidos.",
   email: "asherlegalbranding@gmail.com",
+  phone: "+593 992198798",
   copyright: "© 2026 ASHER",
   socialLinks: {
-    instagram: "https://www.instagram.com/asherconsulting?stkn=MTY0NTlpOTM1cHNraA==",
+    instagram:
+      "https://www.instagram.com/asherconsulting?stkn=MTY0NTlpOTM1cHNraA==",
     facebook: "https://www.facebook.com/Asherconsult593",
     tiktok: "https://www.tiktok.com/@asherconsulting?_r=1&_t=ZS-99XgCxyAFW9",
     whatsapp: `https://wa.me/593992198798?text=${encodeURIComponent(
-      "Hola, quiero agendar una consultoría con ASHER."
+      "Hola, quiero agendar una consultoría con ASHER.",
     )}`,
   },
 };
@@ -57,7 +59,8 @@ export const routes: Route[] = [
   {
     index: "04",
     title: "Digitalización",
-    description: "Para quienes necesitan presencia digital o herramientas tech.",
+    description:
+      "Para quienes necesitan presencia digital o herramientas tech.",
     accent: "#3d3bff",
     hoverText: "#f7f4ed",
   },
@@ -78,12 +81,40 @@ export interface Phase {
 
 /** 03 — Cómo trabajamos: "Diagnóstico. Estrategia. Ejecución." */
 export const phases: Phase[] = [
-  { index: "01", title: "Diagnóstico", description: "Entendemos tu marca, tu mercado y tu punto de partida real." },
-  { index: "02", title: "Estrategia", description: "Diseñamos un plan de marca, comunicación y crecimiento a la medida." },
-  { index: "03", title: "Ejecución", description: "Implementamos con rigor: diseño, contenido, campañas y desarrollo." },
-  { index: "04", title: "Blindaje", description: "Registro de marca, contratos y cumplimiento legal desde el inicio." },
-  { index: "05", title: "Medición", description: "Seguimos resultados reales y ajustamos lo que haga falta." },
-  { index: "06", title: "Crecimiento", description: "Tu marca evoluciona; nosotros seguimos a tu lado en cada etapa." },
+  {
+    index: "01",
+    title: "Diagnóstico",
+    description: "Entendemos tu marca, tu mercado y tu punto de partida real.",
+  },
+  {
+    index: "02",
+    title: "Estrategia",
+    description:
+      "Diseñamos un plan de marca, comunicación y crecimiento a la medida.",
+  },
+  {
+    index: "03",
+    title: "Ejecución",
+    description:
+      "Implementamos con rigor: diseño, contenido, campañas y desarrollo.",
+  },
+  {
+    index: "04",
+    title: "Blindaje",
+    description:
+      "Registro de marca, contratos y cumplimiento legal desde el inicio.",
+  },
+  {
+    index: "05",
+    title: "Medición",
+    description: "Seguimos resultados reales y ajustamos lo que haga falta.",
+  },
+  {
+    index: "06",
+    title: "Crecimiento",
+    description:
+      "Tu marca evoluciona; nosotros seguimos a tu lado en cada etapa.",
+  },
 ];
 
 export interface Discipline {
@@ -94,11 +125,34 @@ export interface Discipline {
 
 /** 05 — Cinco disciplinas centrales. */
 export const disciplines: Discipline[] = [
-  { title: "Estrategia", description: "Diagnóstico y ruta clara antes de mover un solo elemento de tu marca.", accent: "var(--color-accent)" },
-  { title: "Marca", description: "Identidad visual y de negocio que se sostiene en el tiempo.", accent: "var(--color-lavender)" },
-  { title: "Digital", description: "Presencia web, automatizaciones y campañas que sí convierten.", accent: "var(--color-accent-2)" },
-  { title: "Publicidad", description: "Campañas que se miden en clientes, no en likes.", accent: "var(--color-accent-3)" },
-  { title: "Legal", description: "Registro y blindaje para que lo que construyes sea tuyo de verdad.", accent: "var(--color-violet)" },
+  {
+    title: "Estrategia",
+    description:
+      "Diagnóstico y ruta clara antes de mover un solo elemento de tu marca.",
+    accent: "var(--color-accent)",
+  },
+  {
+    title: "Marca",
+    description: "Identidad visual y de negocio que se sostiene en el tiempo.",
+    accent: "var(--color-lavender)",
+  },
+  {
+    title: "Digital",
+    description:
+      "Presencia web, automatizaciones y campañas que sí convierten.",
+    accent: "var(--color-accent-2)",
+  },
+  {
+    title: "Publicidad",
+    description: "Campañas que se miden en clientes, no en likes.",
+    accent: "var(--color-accent-3)",
+  },
+  {
+    title: "Legal",
+    description:
+      "Registro y blindaje para que lo que construyes sea tuyo de verdad.",
+    accent: "var(--color-violet)",
+  },
 ];
 
 export interface Stat {
@@ -108,9 +162,18 @@ export interface Stat {
 
 /** 04 — Nuestra visión: "Un mañana Mejor, Juntos". */
 export const stats: Stat[] = [
-  { value: "100+", label: "Empresas asesoradas en branding, marketing y materia legal." },
-  { value: "5", label: "Disciplinas centrales bajo un mismo techo, un solo equipo." },
-  { value: "Día 1", label: "Respaldo legal desde el inicio, no como paso final." },
+  {
+    value: "100+",
+    label: "Empresas asesoradas en branding, marketing y materia legal.",
+  },
+  {
+    value: "5",
+    label: "Disciplinas centrales bajo un mismo techo, un solo equipo.",
+  },
+  {
+    value: "Día 1",
+    label: "Respaldo legal desde el inicio, no como paso final.",
+  },
 ];
 
 export interface Tier {
@@ -151,7 +214,8 @@ export const tiers: Tier[] = [
   {
     id: "corporativo",
     name: "ASHER Corporativo",
-    audience: "Empresas de 70+ colaboradores, sector público y grupos empresariales.",
+    audience:
+      "Empresas de 70+ colaboradores, sector público y grupos empresariales.",
     includes: [
       "Todo lo de ASHER PYME",
       "Equipo dedicado y tiempos de respuesta prioritarios",
@@ -162,7 +226,6 @@ export const tiers: Tier[] = [
   },
 ];
 
-
 /** Propuestas de valor repetidas a lo largo del sitio. */
 export const valueProps = [
   "Todo bajo un mismo techo",
@@ -170,4 +233,3 @@ export const valueProps = [
   "Con blindaje desde el principio",
   "Estrategia que se ejecuta",
 ];
-

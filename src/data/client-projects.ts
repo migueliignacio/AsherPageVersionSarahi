@@ -24,7 +24,7 @@ export const clientProjects: ClientProject[] = [
     id: "batidoos",
     name: "Batidoos",
     areas: "Legal",
-    logo: "/marcas/batidoos.png",
+    logo: "/marcas/Batidos.webp",
     services: ["Legal"],
     summary:
       "Acompañamos a Batidoos con la parte legal de su negocio: respaldo para que su marca y su operación crezcan con tranquilidad.",
@@ -38,7 +38,7 @@ export const clientProjects: ClientProject[] = [
     id: "barak-maniquies",
     name: "Barak Maniquíes",
     areas: "Branding · Marketing",
-    logo: "/marcas/barak-maniquies.png",
+    logo: "/marcas/barak.webp",
     services: ["Branding", "Marketing", "Manejo de ads"],
     summary:
       "Construimos la identidad de Barak Maniquíes y llevamos su marketing, con manejo de anuncios pagados para que más gente los conozca.",
@@ -52,7 +52,7 @@ export const clientProjects: ClientProject[] = [
     id: "grupo-velez",
     name: "Grupo Vélez",
     areas: "Legal · Branding",
-    logo: "/marcas/velez-guevara.png",
+    logo: "/marcas/velezguev.webp",
     services: ["Legal", "Branding"],
     summary:
       "Con Grupo Vélez trabajamos la parte legal y su marca, para que su presencia se vea tan sólida como su trabajo.",
@@ -66,7 +66,7 @@ export const clientProjects: ClientProject[] = [
     id: "social-padel-club",
     name: "Social Padel Club",
     areas: "Landing page",
-    logo: "/marcas/spc.png",
+    logo: "/marcas/spc.webp",
     services: ["Landing page", "Digital Web"],
     summary:
       "Diseñamos y desarrollamos la landing page de Social Padel Club.",

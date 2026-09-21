@@ -10,9 +10,7 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <HomeStatement />
       <ClientLogos />
-      <OurWorkSection />
       <InversionCircleScrollAnimation />
       <Routes />
       <Marquee

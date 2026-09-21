@@ -3,11 +3,20 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { InstagramIcon, FacebookIcon, TiktokIcon, WhatsappIcon } from "./SocialIcons";
+import {
+  InstagramIcon,
+  FacebookIcon,
+  TiktokIcon,
+  WhatsappIcon,
+} from "./SocialIcons";
 import { brand } from "@/data/asher";
 
 const SOCIAL_LINKS = [
-  { icon: InstagramIcon, href: brand.socialLinks.instagram, label: "Instagram" },
+  {
+    icon: InstagramIcon,
+    href: brand.socialLinks.instagram,
+    label: "Instagram",
+  },
   { icon: FacebookIcon, href: brand.socialLinks.facebook, label: "Facebook" },
   { icon: TiktokIcon, href: brand.socialLinks.tiktok, label: "TikTok" },
   { icon: WhatsappIcon, href: brand.socialLinks.whatsapp, label: "WhatsApp" },
@@ -55,7 +64,7 @@ export default function Footer() {
         >
           <div className="relative h-12 w-12">
             <Image
-              src="/asher/asher-logo.png"
+              src="/asher/logos/logo-beige.webp"
               alt="ASHER"
               fill
               className="object-contain"
@@ -79,12 +88,28 @@ export default function Footer() {
           </div>
         </motion.div>
 
-        <motion.div className="space-y-8 text-sm md:col-span-3 md:col-start-6" variants={itemVariants}>
+        <motion.div
+          className="space-y-8 text-sm md:col-span-3 md:col-start-6"
+          variants={itemVariants}
+        >
           <div>
             <h2 className="mb-2 font-medium">Contacto</h2>
             <p className="leading-relaxed text-[var(--color-bg)]/70">
-              <a href={`mailto:${brand.email}`} data-cursor="expand" className="hover:text-[var(--color-bg)]">
+              <a
+                href={`mailto:${brand.email}`}
+                data-cursor="expand"
+                className="hover:text-[var(--color-bg)]"
+              >
                 {brand.email}
+              </a>
+            </p>
+            <p className="leading-relaxed text-[var(--color-bg)]/70">
+              <a
+                href={`numerito:${brand.phone}`}
+                data-cursor="expand"
+                className="hover:text-[var(--color-bg)]"
+              >
+                {brand.phone}
               </a>
             </p>
           </div>
@@ -109,24 +134,39 @@ export default function Footer() {
           </div>
 
           <nav className="flex flex-col gap-2 text-[var(--color-bg)]/70">
-            <Link href="/privacidad" data-cursor="expand" className="hover:text-[var(--color-bg)]">
+            <Link
+              href="/privacidad"
+              data-cursor="expand"
+              className="hover:text-[var(--color-bg)]"
+            >
               Política de Privacidad
             </Link>
-            <Link href="/terminos" data-cursor="expand" className="hover:text-[var(--color-bg)]">
+            <Link
+              href="/terminos"
+              data-cursor="expand"
+              className="hover:text-[var(--color-bg)]"
+            >
               Términos de Uso
             </Link>
-            <Link href="/contacto" data-cursor="expand" className="hover:text-[var(--color-bg)]">
+            <Link
+              href="/contacto"
+              data-cursor="expand"
+              className="hover:text-[var(--color-bg)]"
+            >
               Contacto
             </Link>
           </nav>
         </motion.div>
 
-        <motion.div className="text-sm md:col-span-4 md:col-start-9" variants={itemVariants}>
+        <motion.div
+          className="text-sm md:col-span-4 md:col-start-9"
+          variants={itemVariants}
+        >
           <h2 className="mb-3">
             <span className="font-medium">Mantente cerca — </span>
             <span className="text-[var(--color-bg)]/70">
-              de vez en cuando enviamos notas sobre marca, crecimiento y blindaje
-              legal.
+              de vez en cuando enviamos notas sobre marca, crecimiento y
+              blindaje legal.
             </span>
           </h2>
 

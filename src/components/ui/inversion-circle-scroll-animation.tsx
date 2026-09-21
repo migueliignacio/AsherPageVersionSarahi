@@ -45,7 +45,6 @@ export default function InversionCircleScrollAnimation() {
       <Styles />
       <div className="icsa-wrap">
         <HeroSection />
-        <ContentSection />
       </div>
     </>
   );
@@ -55,11 +54,14 @@ export default function InversionCircleScrollAnimation() {
 function HeroSection() {
   const trackRef = useRef<HTMLDivElement>(null);
   const [scrollY, setScrollY] = useState(0);
-  const [viewH,   setViewH]   = useState(800);
-  const [viewW,   setViewW]   = useState(1200);
+  const [viewH, setViewH] = useState(800);
+  const [viewW, setViewW] = useState(1200);
 
   useEffect(() => {
-    const measure = () => { setViewH(window.innerHeight); setViewW(window.innerWidth); };
+    const measure = () => {
+      setViewH(window.innerHeight);
+      setViewW(window.innerWidth);
+    };
     const update = () => {
       const track = trackRef.current;
       if (!track) return;
@@ -87,12 +89,12 @@ function HeroSection() {
   const p2e = p2 * p2;
 
   // geometry
-  const yOff      = (1 - p1e) * (viewH / 2 + BALL_SIZE / 2);
+  const yOff = (1 - p1e) * (viewH / 2 + BALL_SIZE / 2);
   const coverSize = Math.max(viewW, viewH) * 2.8;
-  const ballSize  = BALL_SIZE + p2e * (coverSize - BALL_SIZE);
-  const clipX     = viewW / 2;
-  const clipY     = viewH / 2 + yOff;
-  const clipR     = ballSize / 2;
+  const ballSize = BALL_SIZE + p2e * (coverSize - BALL_SIZE);
+  const clipX = viewW / 2;
+  const clipY = viewH / 2 + yOff;
+  const clipR = ballSize / 2;
 
   return (
     <div ref={trackRef} className="icsa-track">
@@ -124,50 +126,6 @@ function HeroSection() {
       </section>
     </div>
   );
-}
-
-// ─── ContentSection ───────────────────────────────────────────────────────────
-function ContentSection() {
-  const ref = useRef<HTMLElement>(null);
-  const [on, setOn] = useState(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-
-    // Arriving straight at this section (e.g. the "Quiénes somos" mega menu
-    // links point here) can land the page's forced scroll-correction here
-    // without the observer ever seeing a genuine crossing to react to —
-    // reveal immediately in that case instead of staying stuck pre-reveal.
-    if (window.location.hash === `#${el.id}`) setOn(true);
-
-    const io = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) setOn(true); },
-      { threshold: 0.35 },
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, []);
-
-  return (
-    <section ref={ref} id="construye-con-intencion" className={`icsa-cs${on ? " on" : ""}`}>
-      <div className="icsa-inner">
-        <span className="icsa-label icsa-reveal">Lo que sigue</span>
-        <h2 className="icsa-reveal">Construye con intención.<br />Crece con confianza.</h2>
-        <p className="icsa-reveal">
-          Toda marca sólida empieza con un diagnóstico claro y una estrategia real.
-          Del primer boceto a la ejecución — lo único entre tu marca y su siguiente
-          etapa es el trabajo.
-        </p>
-        <CTAButton />
-      </div>
-    </section>
-  );
-}
-
-// ─── Button (from Button.svelte) ──────────────────────────────────────────────
-function CTAButton() {
-  return <button className="icsa-btn icsa-reveal">Hablemos</button>;
 }
 
 // ─── helpers ──────────────────────────────────────────────────────────────────
@@ -224,58 +182,6 @@ function Styles() {
         font-size: clamp(1rem, 2.5vw, 1.5rem);
         font-weight: 400; margin-top: 1.25rem; opacity: .7;
       }
-
-      /* ── content section ── */
-      .icsa-cs {
-        min-height: 100vh;
-        display: flex; align-items: center; justify-content: center;
-        padding: 6rem 2rem;
-        background: #0b1956; color: #f7f4ed;
-        transition: background 2.4s cubic-bezier(.25,0,.1,1),
-                    color      2.4s cubic-bezier(.25,0,.1,1);
-      }
-      .icsa-cs.on { background: #f7f4ed; color: #0b1956; }
-
-      .icsa-inner {
-        max-width: 720px; text-align: center;
-        display: flex; flex-direction: column;
-        align-items: center; gap: 1.75rem;
-      }
-
-      .icsa-reveal {
-        opacity: 0; transform: translateY(24px);
-        transition: opacity .7s ease, transform .7s ease;
-      }
-      .icsa-cs.on .icsa-reveal { opacity: 1; transform: translateY(0); }
-
-      .icsa-cs.on .icsa-label { transition-delay: .10s; }
-      .icsa-cs.on h2          { transition-delay: .24s; }
-      .icsa-cs.on p           { transition-delay: .38s; }
-      .icsa-cs.on .icsa-btn   { transition-delay: .52s; }
-
-      .icsa-label {
-        font-size: .75rem; font-weight: 600;
-        letter-spacing: .18em; text-transform: uppercase; opacity: .45;
-      }
-      .icsa-inner h2 {
-        font-size: clamp(2rem, 6vw, 4rem);
-        font-weight: 900; letter-spacing: -.03em; line-height: 1.08;
-      }
-      .icsa-inner p {
-        font-size: clamp(1rem, 2vw, 1.2rem);
-        line-height: 1.75; opacity: .6; max-width: 560px;
-      }
-
-      /* button */
-      .icsa-btn {
-        background: #520000; color: #f7f4ed;
-        padding: 10px 28px; border-radius: 8px; border: none;
-        cursor: pointer; font-family: Inter, sans-serif;
-        font-size: 1rem; font-weight: 600; letter-spacing: .01em;
-        transition: opacity .2s ease, transform .2s ease;
-      }
-      .icsa-btn:hover  { opacity: .85; transform: translateY(-1px); }
-      .icsa-btn:active { opacity: 1;   transform: translateY(0);    }
     `}</style>
   );
 }

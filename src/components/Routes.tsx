@@ -26,15 +26,25 @@ export default function Routes() {
   const clipPath = useTransform(clip, (v) => `inset(0 ${v}% 0 0)`);
 
   return (
-    <section ref={ref} id="servicios" className="relative overflow-hidden px-5 py-28 md:px-10 md:py-40">
+    <section
+      ref={ref}
+      id="servicios"
+      className="relative overflow-hidden px-5 py-28 md:px-10 md:py-40"
+    >
       {/* Faint three-column grid guides */}
-      <div className="pointer-events-none absolute inset-0 mx-auto grid max-w-[1600px] grid-cols-3" aria-hidden="true">
+      <div
+        className="pointer-events-none absolute inset-0 mx-auto grid max-w-[1600px] grid-cols-3"
+        aria-hidden="true"
+      >
         <div className="border-r border-[var(--color-line)]" />
         <div className="border-r border-[var(--color-line)]" />
         <div />
       </div>
 
-      <p data-reveal className="relative z-20 mb-10 text-xs font-medium uppercase tracking-[0.18em] text-[var(--color-ink-soft)]">
+      <p
+        data-reveal
+        className="relative z-20 mb-10 text-xs font-medium uppercase tracking-[0.18em] text-[var(--color-ink-soft)]"
+      >
         02 — Lo que hacemos
       </p>
 
@@ -61,7 +71,9 @@ export default function Routes() {
                   "left-[38%] -top-[18%] md:left-[42%] md:top-[2%]",
                 ][i]
               }`}
-              style={{ background: `color-mix(in srgb, ${color} 14%, var(--color-bg))` }}
+              style={{
+                background: `color-mix(in srgb, ${color} 14%, var(--color-bg))`,
+              }}
             />
           );
         })}
@@ -70,7 +82,10 @@ export default function Routes() {
           style={{ clipPath }}
           className="font-display relative z-10 text-center font-medium uppercase leading-[0.85] tracking-[-0.03em]"
         >
-          <span className="block" style={{ fontSize: "clamp(2.6rem, 12vw, 11rem)" }}>
+          <span
+            className="block"
+            style={{ fontSize: "clamp(2.6rem, 12vw, 11rem)" }}
+          >
             Cinco rutas
             <br />
             claras
@@ -97,7 +112,9 @@ export default function Routes() {
             <span className="relative z-10 flex items-baseline gap-5 transition-transform duration-500 ease-[cubic-bezier(.16,1,.3,1)] group-hover:translate-x-4 md:gap-10">
               <span
                 className="text-xs font-medium text-[color:var(--route-accent)] transition-colors duration-500 md:font-normal md:text-[var(--color-ink-soft)] group-hover:text-[color:var(--hover-text)] group-hover:opacity-70"
-                style={{ "--route-accent": route.accent } as React.CSSProperties}
+                style={
+                  { "--route-accent": route.accent } as React.CSSProperties
+                }
               >
                 {route.index}
               </span>
@@ -110,7 +127,10 @@ export default function Routes() {
               {route.description}
             </span>
 
-            <span className="relative z-10 text-xl transition-all duration-500 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-[color:var(--hover-text)]" aria-hidden="true">
+            <span
+              className="relative z-10 text-xl transition-all duration-500 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-[color:var(--hover-text)]"
+              aria-hidden="true"
+            >
               ↗
             </span>
           </Link>
@@ -120,18 +140,25 @@ export default function Routes() {
       <div
         id="diagnostico"
         data-reveal
-        className="palette-asher relative z-10 mt-16 flex flex-col items-start gap-5 rounded-3xl bg-[var(--color-ink)] px-8 py-12 text-[var(--color-bg)] md:flex-row md:items-center md:justify-between md:px-12"
+        className="palette-asher relative z-10 mt-16 flex flex-col items-center rounded-3xl bg-[var(--color-ink)] px-8 py-12 text-[var(--color-bg)] md:flex-row md:items-center md:gap-8 md:px-12"
       >
-        <div>
-          <h3 className="font-display text-2xl font-medium tracking-tight md:text-4xl">Diagnóstico</h3>
-          <p className="mt-2 max-w-md text-sm text-[var(--color-bg)]/70">
-            3 preguntas para saber exactamente qué necesitas primero.
+        <div className="icsa-inner text-white">
+          <span className="icsa-label icsa-reveal">Lo que sigue</span>
+          <h2 className="font-display text-4xl font-medium leading-[1.05] tracking-tight md:text-5xl lg:text-6xl">
+            Construye con intención.
+            <br />
+            Crece con confianza.
+          </h2>
+          <p className="icsa-reveal">
+            Toda marca sólida empieza con un diagnóstico claro y una estrategia
+            real. Del primer boceto a la ejecución — lo único entre tu marca y
+            su siguiente etapa es el trabajo.
           </p>
         </div>
         <Link
           href="/contacto"
           data-cursor="expand"
-          className="inline-flex shrink-0 items-center gap-2 rounded-full bg-[var(--color-bg)] px-7 py-4 text-xs font-medium uppercase tracking-[0.1em] text-[var(--color-ink)] transition-transform duration-300 hover:-translate-y-0.5"
+          className="mt-8 inline-flex shrink-0 items-center gap-2 rounded-full bg-[var(--color-bg)] px-17 py-10 text-md font-medium uppercase tracking-[0.1em] text-[var(--color-ink)] transition-transform duration-300 hover:-translate-y-0.5 md:mt-0 md:ml-auto"
         >
           Empezar diagnóstico <span aria-hidden="true">→</span>
         </Link>
