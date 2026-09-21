@@ -3,6 +3,7 @@
 import { tiers, type Tier } from "@/data/asher";
 import { planId } from "@/data/catalog";
 import { useCart } from "./CartProvider";
+import TextBlockAnimation from "@/components/ui/text-block-animation";
 
 function PlanButton({ tier }: { tier: Tier }) {
   const { has, toggle, setOpen } = useCart();
@@ -46,16 +47,15 @@ function PlanButton({ tier }: { tier: Tier }) {
 export default function Tiers() {
   return (
     <section id="planes" className="border-t border-[var(--color-line)] px-5 py-28 md:px-10 md:py-40">
-      <p data-reveal className="mb-10 text-xs font-medium uppercase tracking-[0.18em] text-[var(--color-ink-soft)]">
-        05 — Planes
-      </p>
+      <TextBlockAnimation blockColor="#8fb0e3" duration={0.5} className="mb-10">
+        <p className="text-xs font-medium uppercase tracking-[0.18em] text-[var(--color-ink-soft)]">05 — Planes</p>
+      </TextBlockAnimation>
 
-      <h2
-        data-reveal
-        className="font-display mb-16 max-w-3xl text-balance text-4xl font-medium leading-[0.95] tracking-tight md:mb-24 md:text-7xl"
-      >
-        Un nivel para cada etapa
-      </h2>
+      <TextBlockAnimation blockColor="#520000" delay={0.1} className="mb-16 md:mb-24">
+        <h2 className="font-display max-w-3xl text-balance text-4xl font-medium leading-[0.95] tracking-tight md:text-7xl">
+          Un nivel para cada etapa
+        </h2>
+      </TextBlockAnimation>
 
       <div className="grid gap-6 md:grid-cols-3 md:gap-5">
         {tiers.map((tier) => (

@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import BackToHome from "@/components/BackToHome";
 import { caseStudies } from "@/data/work";
+import TextBlockAnimation from "@/components/ui/text-block-animation";
 
 export const metadata: Metadata = {
   title: "Clientes — ASHER",
@@ -14,15 +15,21 @@ export default function ClientesPage() {
     <div className="palette-asher">
       <BackToHome />
       <section className="px-5 pb-16 pt-10 md:px-10 md:pb-20">
-        <p className="mb-10 whitespace-nowrap text-xs font-medium uppercase tracking-[0.18em] text-[var(--color-ink-soft)]">
-          Nuestros clientes
-        </p>
-        <h1 className="font-display max-w-3xl text-balance text-4xl font-medium leading-[0.95] tracking-tight md:text-7xl">
-          Marcas que ya se mueven con ASHER.
-        </h1>
-        <p className="mt-8 max-w-xl text-sm leading-relaxed text-[var(--color-ink-soft)]">
-          Historias de marcas que construimos, mejoramos y protegemos. Seguimos sumando casos; mientras tanto, cuéntanos tu proyecto y te compartimos ejemplos de tu ruta de interés.
-        </p>
+        <TextBlockAnimation blockColor="#8fb0e3" duration={0.5} animateOnScroll={false} className="mb-10">
+          <p className="whitespace-nowrap text-xs font-medium uppercase tracking-[0.18em] text-[var(--color-ink-soft)]">
+            Nuestros clientes
+          </p>
+        </TextBlockAnimation>
+        <TextBlockAnimation blockColor="#0b1956" animateOnScroll={false} delay={0.1}>
+          <h1 className="font-display max-w-3xl text-balance text-4xl font-medium leading-[0.95] tracking-tight md:text-7xl">
+            Marcas que ya se mueven con ASHER.
+          </h1>
+        </TextBlockAnimation>
+        <TextBlockAnimation blockColor="#520000" duration={0.5} animateOnScroll={false} delay={0.3} className="mt-8">
+          <p className="max-w-xl text-sm leading-relaxed text-[var(--color-ink-soft)]">
+            Historias de marcas que construimos, mejoramos y protegemos. Seguimos sumando casos; mientras tanto, cuéntanos tu proyecto y te compartimos ejemplos de tu ruta de interés.
+          </p>
+        </TextBlockAnimation>
       </section>
 
       <section className="grid grid-cols-1 gap-px border-t border-[var(--color-line)] bg-[var(--color-line)] sm:grid-cols-2 lg:grid-cols-3">

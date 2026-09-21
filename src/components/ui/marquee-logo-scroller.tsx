@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
+import TextBlockAnimation from "@/components/ui/text-block-animation";
 
 interface Logo {
   src: string;
@@ -48,8 +49,12 @@ const MarqueeLogoScroller = React.forwardRef<HTMLDivElement, MarqueeLogoScroller
       >
         <div className="p-6 md:p-8 lg:p-10">
           <div className="grid grid-cols-1 gap-6 border-b border-[var(--color-line)] pb-6 md:pb-8 lg:grid-cols-[3fr_2fr] lg:gap-8">
-            <h2 className="font-display text-balance text-3xl font-medium tracking-tight md:text-4xl">{title}</h2>
-            <p className="self-start text-balance text-[var(--color-ink-soft)] lg:justify-self-end">{description}</p>
+            <TextBlockAnimation blockColor="#0b1956">
+              <h2 className="font-display text-balance text-3xl font-medium tracking-tight md:text-4xl">{title}</h2>
+            </TextBlockAnimation>
+            <TextBlockAnimation blockColor="#8fb0e3" duration={0.5} delay={0.15} className="self-start lg:justify-self-end">
+              <p className="text-balance text-[var(--color-ink-soft)]">{description}</p>
+            </TextBlockAnimation>
           </div>
         </div>
 
@@ -58,7 +63,7 @@ const MarqueeLogoScroller = React.forwardRef<HTMLDivElement, MarqueeLogoScroller
           style={{ maskImage: "linear-gradient(to right, transparent, black 10%, black 90%, transparent)" }}
         >
           <ul
-            className="flex w-max items-center gap-4 py-4 pr-4 hover:[animation-play-state:paused]"
+            className="flex w-max items-center gap-5 py-6 pr-5 hover:[animation-play-state:paused] md:gap-8 md:py-8 md:pr-8"
             style={{ animation: `marquee-left ${DURATIONS[speed]} linear infinite` }}
           >
             {[0, 1].flatMap((copy) =>
@@ -66,7 +71,7 @@ const MarqueeLogoScroller = React.forwardRef<HTMLDivElement, MarqueeLogoScroller
                 <li
                   key={`${copy}-${index}`}
                   aria-hidden={copy === 1 ? true : undefined}
-                  className="group relative flex h-28 w-44 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-[var(--color-surface)]/70"
+                  className="group relative flex h-40 w-48 shrink-0 items-center justify-center overflow-hidden rounded-3xl bg-[var(--color-surface)]/70 md:h-56 md:w-72"
                 >
                   <div
                     style={
@@ -78,12 +83,12 @@ const MarqueeLogoScroller = React.forwardRef<HTMLDivElement, MarqueeLogoScroller
                     }
                     className="absolute inset-0 scale-150 bg-gradient-to-br from-[var(--from)] via-[var(--via)] to-[var(--to)] opacity-0 transition-all duration-700 ease-out group-hover:scale-100 group-hover:opacity-100"
                   />
-                  <div className="relative aspect-square h-[78%] overflow-hidden rounded-full bg-white shadow-sm">
+                  <div className="relative aspect-square h-[80%] overflow-hidden rounded-full bg-white shadow-md">
                     <Image
                       src={logo.src}
                       alt={copy === 1 ? "" : logo.alt}
                       fill
-                      sizes="88px"
+                      sizes="(min-width: 768px) 180px, 130px"
                       className="object-cover"
                     />
                   </div>

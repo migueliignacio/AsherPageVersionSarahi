@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import BackToHome from "@/components/BackToHome";
 import { QuoteBlock } from "@/components/ui/quote-block";
 import About from "@/components/About";
+import TextBlockAnimation from "@/components/ui/text-block-animation";
 
 export const metadata: Metadata = {
   title: "Quiénes somos — ASHER",
@@ -16,23 +17,29 @@ export default function QuienesSomosPage() {
       <About />
 
       <section id="historia" className="border-t border-[var(--color-line)] px-5 py-20 md:px-10 md:py-28">
-        <p className="mb-8 text-xs font-medium uppercase tracking-[0.18em] text-[var(--color-ink-soft)]">
-          Historia
-        </p>
+        <TextBlockAnimation blockColor="#8fb0e3" duration={0.5} className="mb-8">
+          <p className="text-xs font-medium uppercase tracking-[0.18em] text-[var(--color-ink-soft)]">Historia</p>
+        </TextBlockAnimation>
         <div className="grid gap-8 md:grid-cols-12 md:gap-10">
-          <h2 className="font-display max-w-md text-balance text-3xl font-medium leading-[1.05] tracking-tight md:col-span-5 md:text-5xl">
-            Nacimos para juntar lo que normalmente anda separado.
-          </h2>
+          <TextBlockAnimation blockColor="#0b1956" delay={0.1} className="md:col-span-5">
+            <h2 className="font-display max-w-md text-balance text-3xl font-medium leading-[1.05] tracking-tight md:text-5xl">
+              Nacimos para juntar lo que normalmente anda separado.
+            </h2>
+          </TextBlockAnimation>
           <div className="space-y-5 text-sm leading-relaxed text-[var(--color-ink-soft)] md:col-span-6 md:col-start-7">
-            <p>
-              ASHER nace de una idea simple: una marca no crece solo con buen diseño, ni solo con estrategia, ni
-              solo con papeles en regla — crece cuando todo eso avanza junto, desde el principio.
-            </p>
-            <p>
-              Por eso somos una consultora integral de marca, marketing, tecnología y protección legal. No
-              trabajamos por partes sueltas; construimos, mejoramos, digitalizamos y protegemos marcas bajo un
-              mismo techo, para que ningún negocio tenga que elegir entre crecer rápido o crecer bien.
-            </p>
+            <TextBlockAnimation blockColor="#520000" duration={0.5} delay={0.2}>
+              <p>
+                ASHER nace de una idea simple: una marca no crece solo con buen diseño, ni solo con estrategia, ni
+                solo con papeles en regla — crece cuando todo eso avanza junto, desde el principio.
+              </p>
+            </TextBlockAnimation>
+            <TextBlockAnimation blockColor="#0b1956" duration={0.5} delay={0.3}>
+              <p>
+                Por eso somos una consultora integral de marca, marketing, tecnología y protección legal. No
+                trabajamos por partes sueltas; construimos, mejoramos, digitalizamos y protegemos marcas bajo un
+                mismo techo, para que ningún negocio tenga que elegir entre crecer rápido o crecer bien.
+              </p>
+            </TextBlockAnimation>
           </div>
         </div>
       </section>

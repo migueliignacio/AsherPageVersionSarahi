@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import BackToHome from "@/components/BackToHome";
 import { QuoteBlock } from "@/components/ui/quote-block";
+import TextBlockAnimation from "@/components/ui/text-block-animation";
 
 export const metadata: Metadata = {
   title: "AS, la mascota de ASHER — Clientes",
@@ -16,17 +17,21 @@ export default function MascotaAsherPage() {
       <BackToHome />
 
       <section className="px-5 pb-12 pt-10 md:px-10 md:pb-16">
-        <p className="mb-8 text-xs font-medium uppercase tracking-[0.18em] text-[var(--color-ink-soft)]">
-          Caso — Branding
-        </p>
-        <h1 className="font-display max-w-3xl text-balance text-4xl font-medium leading-[0.95] tracking-tight md:text-7xl">
-          AS, la mascota de ASHER
-        </h1>
-        <p className="mt-8 max-w-xl text-sm leading-relaxed text-[var(--color-ink-soft)]">
-          Antes de vender un solo servicio, ASHER tenía que explicarse a sí
-          misma: cuatro disciplinas distintas —marca, digital, marketing y
-          legal— bajo un mismo techo. Le dimos una cara amigable a esa idea.
-        </p>
+        <TextBlockAnimation blockColor="#8fb0e3" duration={0.5} animateOnScroll={false} className="mb-8">
+          <p className="text-xs font-medium uppercase tracking-[0.18em] text-[var(--color-ink-soft)]">Caso — Branding</p>
+        </TextBlockAnimation>
+        <TextBlockAnimation blockColor="#520000" animateOnScroll={false} delay={0.1}>
+          <h1 className="font-display max-w-3xl text-balance text-4xl font-medium leading-[0.95] tracking-tight md:text-7xl">
+            AS, la mascota de ASHER
+          </h1>
+        </TextBlockAnimation>
+        <TextBlockAnimation blockColor="#0b1956" duration={0.5} animateOnScroll={false} delay={0.3} className="mt-8">
+          <p className="max-w-xl text-sm leading-relaxed text-[var(--color-ink-soft)]">
+            Antes de vender un solo servicio, ASHER tenía que explicarse a sí
+            misma: cuatro disciplinas distintas —marca, digital, marketing y
+            legal— bajo un mismo techo. Le dimos una cara amigable a esa idea.
+          </p>
+        </TextBlockAnimation>
       </section>
 
       <div className="px-5 md:px-10">
@@ -45,29 +50,33 @@ export default function MascotaAsherPage() {
 
       <section className="border-t border-[var(--color-line)] px-5 py-20 md:px-10 md:py-28">
         <div className="grid gap-8 md:grid-cols-12 md:gap-10">
-          <p className="text-xs font-medium uppercase tracking-[0.18em] text-[var(--color-ink-soft)] md:col-span-3">
-            El reto
-          </p>
+          <TextBlockAnimation blockColor="#8fb0e3" duration={0.5} className="md:col-span-3">
+            <p className="text-xs font-medium uppercase tracking-[0.18em] text-[var(--color-ink-soft)]">El reto</p>
+          </TextBlockAnimation>
           <div className="space-y-5 text-sm leading-relaxed text-[var(--color-ink-soft)] md:col-span-7">
-            <p>
-              Contar qué hace una consultora integral en una sola imagen es
-              difícil, sobre todo cuando esa consultora junta cosas que
-              normalmente van por separado. Necesitábamos un símbolo que se
-              sintiera cercano y no corporativo, capaz de aparecer igual de bien
-              en una tarjeta de presentación que en una historia de Instagram.
-            </p>
-            <p>
-              La respuesta no fue un ícono más: fue un personaje con el que la
-              gente pudiera quedarse.
-            </p>
+            <TextBlockAnimation blockColor="#520000" duration={0.5} delay={0.1}>
+              <p>
+                Contar qué hace una consultora integral en una sola imagen es
+                difícil, sobre todo cuando esa consultora junta cosas que
+                normalmente van por separado. Necesitábamos un símbolo que se
+                sintiera cercano y no corporativo, capaz de aparecer igual de bien
+                en una tarjeta de presentación que en una historia de Instagram.
+              </p>
+            </TextBlockAnimation>
+            <TextBlockAnimation blockColor="#0b1956" duration={0.5} delay={0.2}>
+              <p>
+                La respuesta no fue un ícono más: fue un personaje con el que la
+                gente pudiera quedarse.
+              </p>
+            </TextBlockAnimation>
           </div>
         </div>
       </section>
 
       <section className="border-t border-[var(--color-line)] px-5 py-20 md:px-10 md:py-28">
-        <p className="mb-10 text-xs font-medium uppercase tracking-[0.18em] text-[var(--color-ink-soft)]">
-          Conoce a AS
-        </p>
+        <TextBlockAnimation blockColor="#8fb0e3" duration={0.5} className="mb-10">
+          <p className="text-xs font-medium uppercase tracking-[0.18em] text-[var(--color-ink-soft)]">Conoce a AS</p>
+        </TextBlockAnimation>
         <div className="grid gap-10 md:grid-cols-12 md:items-center md:gap-10">
           <div className="md:col-span-7">
             <dl className="divide-y divide-[var(--color-line)] border-y border-[var(--color-line)] text-sm">
@@ -103,14 +112,16 @@ export default function MascotaAsherPage() {
       </section>
 
       <section className="border-t border-[var(--color-line)] px-5 py-20 md:px-10 md:py-28">
-        <p className="mb-10 text-xs font-medium uppercase tracking-[0.18em] text-[var(--color-ink-soft)]">
-          Vistas
-        </p>
-        <p className="mb-10 max-w-xl text-sm leading-relaxed text-[var(--color-ink-soft)]">
-          Un personaje de marca tiene que sostenerse desde cualquier ángulo: de
-          frente, de perfil, de espalda y en 3/4 — listo para ilustraciones,
-          redes sociales o un futuro peluche real.
-        </p>
+        <TextBlockAnimation blockColor="#8fb0e3" duration={0.5} className="mb-10">
+          <p className="text-xs font-medium uppercase tracking-[0.18em] text-[var(--color-ink-soft)]">Vistas</p>
+        </TextBlockAnimation>
+        <TextBlockAnimation blockColor="#520000" duration={0.5} delay={0.1} className="mb-10">
+          <p className="max-w-xl text-sm leading-relaxed text-[var(--color-ink-soft)]">
+            Un personaje de marca tiene que sostenerse desde cualquier ángulo: de
+            frente, de perfil, de espalda y en 3/4 — listo para ilustraciones,
+            redes sociales o un futuro peluche real.
+          </p>
+        </TextBlockAnimation>
         <div className="relative aspect-[900/230] w-full overflow-hidden rounded-2xl bg-[var(--color-surface)]">
           <Image
             src="/asher/trabajos/mascota-asher/views.png"
@@ -152,13 +163,15 @@ export default function MascotaAsherPage() {
       </section>
 
       <section className="border-t border-[var(--color-line)] px-5 py-20 md:px-10 md:py-28">
-        <p className="mb-10 text-xs font-medium uppercase tracking-[0.18em] text-[var(--color-ink-soft)]">
-          En cualquier pose
-        </p>
-        <p className="mb-10 max-w-xl text-sm leading-relaxed text-[var(--color-ink-soft)]">
-          Sentado, dormido, caminando o saltando: AS se adapta al tono de cada
-          mensaje sin perder lo que lo hace reconocible.
-        </p>
+        <TextBlockAnimation blockColor="#8fb0e3" duration={0.5} className="mb-10">
+          <p className="text-xs font-medium uppercase tracking-[0.18em] text-[var(--color-ink-soft)]">En cualquier pose</p>
+        </TextBlockAnimation>
+        <TextBlockAnimation blockColor="#0b1956" duration={0.5} delay={0.1} className="mb-10">
+          <p className="max-w-xl text-sm leading-relaxed text-[var(--color-ink-soft)]">
+            Sentado, dormido, caminando o saltando: AS se adapta al tono de cada
+            mensaje sin perder lo que lo hace reconocible.
+          </p>
+        </TextBlockAnimation>
         <div className="relative aspect-[900/220] w-full overflow-hidden rounded-2xl bg-[var(--color-surface)]">
           <Image
             src="/asher/trabajos/mascota-asher/poses.png"
@@ -174,9 +187,11 @@ export default function MascotaAsherPage() {
       <section className="border-t border-[var(--color-line)] px-5 py-20 md:px-10 md:py-28">
         <div className="flex flex-col items-start gap-6 rounded-3xl bg-[var(--color-ink)] px-8 py-12 text-[var(--color-bg)] md:flex-row md:items-center md:justify-between md:px-12">
           <div>
-            <h3 className="font-display text-2xl font-medium tracking-tight md:text-4xl">
-              ¿Tu marca necesita un personaje así?
-            </h3>
+            <TextBlockAnimation blockColor="#8fb0e3">
+              <h3 className="font-display text-2xl font-medium tracking-tight md:text-4xl">
+                ¿Tu marca necesita un personaje así?
+              </h3>
+            </TextBlockAnimation>
             <p className="mt-2 max-w-md text-sm text-[var(--color-bg)]/70">
               Diseñamos identidades, mascotas y sistemas visuales que la gente
               recuerda.

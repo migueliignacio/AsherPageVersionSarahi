@@ -3,6 +3,7 @@
 import { cn } from "@/lib/utils";
 import { CatalogGrid, type CatalogGridItem } from "@/components/CatalogGrid";
 import CartSummary from "@/components/CartSummary";
+import TextBlockAnimation from "@/components/ui/text-block-animation";
 
 export interface ServiceCatalogProps {
   eyebrow: string;
@@ -34,12 +35,18 @@ export function ServiceCatalog({
       id={id}
       className={cn("scroll-mt-40 border-t border-[var(--color-line)] px-5 py-20 md:px-10 md:py-28", className)}
     >
-      <p className="mb-8 text-xs font-medium uppercase tracking-[0.18em] text-[var(--color-ink-soft)]">{eyebrow}</p>
-      <h2 className="font-display mb-6 max-w-2xl text-balance text-3xl font-medium leading-[1.05] tracking-tight md:text-5xl">
-        {title}
-      </h2>
+      <TextBlockAnimation blockColor={accent} duration={0.5} className="mb-8">
+        <p className="text-xs font-medium uppercase tracking-[0.18em] text-[var(--color-ink-soft)]">{eyebrow}</p>
+      </TextBlockAnimation>
+      <TextBlockAnimation blockColor={accent} delay={0.1} className="mb-6">
+        <h2 className="font-display max-w-2xl text-balance text-3xl font-medium leading-[1.05] tracking-tight md:text-5xl">
+          {title}
+        </h2>
+      </TextBlockAnimation>
       {description && (
-        <p className="mb-8 max-w-xl text-sm leading-relaxed text-[var(--color-ink-soft)] md:text-base">{description}</p>
+        <TextBlockAnimation blockColor={accent} duration={0.5} delay={0.2} className="mb-8">
+          <p className="max-w-xl text-sm leading-relaxed text-[var(--color-ink-soft)] md:text-base">{description}</p>
+        </TextBlockAnimation>
       )}
       {highlights && highlights.length > 0 && (
         <ul className="mb-12 flex flex-wrap gap-x-8 gap-y-3 text-sm md:mb-16">

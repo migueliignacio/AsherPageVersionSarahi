@@ -3,6 +3,7 @@ import Link from "next/link";
 import { PerspectiveMarquee } from "@/components/ui/perspective-marquee";
 import { currency } from "@/lib/currency";
 import { serviceAddons, serviceOrder } from "@/data/service-addons";
+import TextBlockAnimation from "@/components/ui/text-block-animation";
 
 export const metadata: Metadata = {
   title: "Servicios — ASHER",
@@ -15,14 +16,20 @@ export default function ServiciosPage() {
   return (
     <div className="palette-asher">
       <section className="px-5 pb-8 pt-16 md:px-10 md:pt-24">
-        <p className="mb-8 text-xs font-medium uppercase tracking-[0.18em] text-[var(--color-ink-soft)]">Servicios</p>
-        <h1 className="font-display max-w-4xl text-balance text-4xl font-medium leading-[0.95] tracking-tight md:text-7xl">
-          Cuatro servicios. Un mismo equipo.
-        </h1>
-        <p className="mt-8 max-w-xl text-sm leading-relaxed text-[var(--color-ink-soft)]">
-          Elige por dónde empezar. Cada servicio tiene su propia página, con un catálogo de adicionales que
-          puedes sumar a tu carrito o a un plan.
-        </p>
+        <TextBlockAnimation blockColor="#8fb0e3" duration={0.5} animateOnScroll={false} className="mb-8">
+          <p className="text-xs font-medium uppercase tracking-[0.18em] text-[var(--color-ink-soft)]">Servicios</p>
+        </TextBlockAnimation>
+        <TextBlockAnimation blockColor="#0b1956" animateOnScroll={false} delay={0.1}>
+          <h1 className="font-display max-w-4xl text-balance text-4xl font-medium leading-[0.95] tracking-tight md:text-7xl">
+            Cuatro servicios. Un mismo equipo.
+          </h1>
+        </TextBlockAnimation>
+        <TextBlockAnimation blockColor="#520000" duration={0.5} animateOnScroll={false} delay={0.3} className="mt-8">
+          <p className="max-w-xl text-sm leading-relaxed text-[var(--color-ink-soft)]">
+            Elige por dónde empezar. Cada servicio tiene su propia página, con un catálogo de adicionales que
+            puedes sumar a tu carrito o a un plan.
+          </p>
+        </TextBlockAnimation>
       </section>
 
       <div className="relative h-[55vh] min-h-[340px] w-full md:h-[65vh]">
@@ -74,7 +81,9 @@ export default function ServiciosPage() {
           })}
 
           <div className="flex flex-col justify-between gap-6 bg-[var(--color-navy)] p-7 text-[var(--color-bg)] sm:col-span-2 md:p-9">
-            <h2 className="font-display text-2xl font-medium tracking-tight md:text-3xl">¿No sabes por dónde empezar?</h2>
+            <TextBlockAnimation blockColor="#8fb0e3">
+              <h2 className="font-display text-2xl font-medium tracking-tight md:text-3xl">¿No sabes por dónde empezar?</h2>
+            </TextBlockAnimation>
             <div className="flex flex-wrap gap-3">
               <Link
                 href="/planes"

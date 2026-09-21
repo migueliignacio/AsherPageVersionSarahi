@@ -3,6 +3,7 @@
 import { serviceAddons, serviceOrder } from "@/data/service-addons";
 import { CatalogGrid } from "./CatalogGrid";
 import CartSummary from "./CartSummary";
+import TextBlockAnimation from "@/components/ui/text-block-animation";
 
 // One block per service; a sectioned service (Legal) gets one block per area.
 const groups = serviceOrder.flatMap((slug) => {
@@ -25,22 +26,22 @@ export default function CustomPlan() {
       id="plan-personalizado"
       className="border-t border-[var(--color-line)] px-5 py-28 md:px-10 md:py-40"
     >
-      <p
-        data-reveal
-        className="mb-10 text-xs font-medium uppercase tracking-[0.18em] text-[var(--color-ink-soft)]"
-      >
-        06 — Plan personalizado
-      </p>
+      <TextBlockAnimation blockColor="#8fb0e3" duration={0.5} className="mb-10">
+        <p className="text-xs font-medium uppercase tracking-[0.18em] text-[var(--color-ink-soft)]">
+          06 — Plan personalizado
+        </p>
+      </TextBlockAnimation>
 
-      <h2
-        data-reveal
-        className="font-display mb-6 max-w-3xl text-balance text-4xl font-medium leading-[0.95] tracking-tight md:text-7xl"
-      >
-        Arma tu propio pack
-      </h2>
-      <p data-reveal className="mb-16 max-w-xl text-sm leading-relaxed text-[var(--color-ink-soft)] md:mb-24">
-        El mismo catálogo de cada servicio, en un solo lugar. Súmalo a un plan o elige solo lo que necesitas.
-      </p>
+      <TextBlockAnimation blockColor="#0b1956" delay={0.1} className="mb-6">
+        <h2 className="font-display max-w-3xl text-balance text-4xl font-medium leading-[0.95] tracking-tight md:text-7xl">
+          Arma tu propio pack
+        </h2>
+      </TextBlockAnimation>
+      <TextBlockAnimation blockColor="#520000" duration={0.5} className="mb-16 md:mb-24">
+        <p className="max-w-xl text-sm leading-relaxed text-[var(--color-ink-soft)]">
+          El mismo catálogo de cada servicio, en un solo lugar. Súmalo a un plan o elige solo lo que necesitas.
+        </p>
+      </TextBlockAnimation>
 
       <div className="grid gap-10 md:grid-cols-3 md:gap-16">
         <div className="space-y-8 md:col-span-2">
