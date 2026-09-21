@@ -6,21 +6,9 @@ import GlyphPortal from "./GlyphPortal";
 import { brand } from "@/data/asher";
 import { useLeadModal } from "./LeadModalProvider";
 
-/** Fondo tras el cristal, una vez que el zoom revela el campo oscuro. */
+/** Fondo tras el cristal: el azul plano del logo, que es también el color de la palabra ASHER. */
 function PortalBackground() {
-  return (
-    <div
-      style={{
-        position: "absolute",
-        inset: 0,
-        background: `
-          radial-gradient(circle at 20% 15%, rgba(111,132,183,0.22), transparent 45%),
-          radial-gradient(circle at 82% 75%, rgba(216,203,184,0.10), transparent 50%),
-          linear-gradient(150deg, #0b1956 0%, #14226b 55%, #0b1956 100%)
-        `,
-      }}
-    />
-  );
+  return <div style={{ position: "absolute", inset: 0, background: "#0b1956" }} />;
 }
 
 /**
