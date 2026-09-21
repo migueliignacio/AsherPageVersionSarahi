@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import BackToHome from "@/components/BackToHome";
 import { QuoteBlock } from "@/components/ui/quote-block";
-import About from "@/components/About";
+import { TextParallaxContent } from "@/components/ui/text-parallax-content-scroll";
 import TextBlockAnimation from "@/components/ui/text-block-animation";
+import About from "@/components/About";
 
 export const metadata: Metadata = {
   title: "Quiénes somos — ASHER",
@@ -14,27 +15,39 @@ export default function QuienesSomosPage() {
     <div className="palette-asher">
       <BackToHome />
 
-      <About />
+      <TextParallaxContent
+        id="quienes-somos"
+        subheading="Quiénes somos"
+        heading="Claridad para crecer."
+        tone="light"
+        background="linear-gradient(135deg, #f7f4ed 0%, #eee8dd 100%)"
+        imgUrl="/asher/trabajos/mascota-asher/cover.png"
+        imgAlt="AS, la mascota de ASHER"
+      >
+        <About />
+      </TextParallaxContent>
 
-      <section id="historia" className="border-t border-[var(--color-line)] px-5 py-20 md:px-10 md:py-28">
-        <TextBlockAnimation blockColor="#8fb0e3" duration={0.5} className="mb-8">
-          <p className="text-xs font-medium uppercase tracking-[0.18em] text-[var(--color-ink-soft)]">Historia</p>
-        </TextBlockAnimation>
-        <div className="grid gap-8 md:grid-cols-12 md:gap-10">
-          <TextBlockAnimation blockColor="#0b1956" delay={0.1} className="md:col-span-5">
-            <h2 className="font-display max-w-md text-balance text-3xl font-medium leading-[1.05] tracking-tight md:text-5xl">
+      <TextParallaxContent
+        id="historia"
+        subheading="Historia"
+        heading="Nacimos para juntar lo que anda separado."
+        background="linear-gradient(150deg, #14226b 0%, #0b1956 55%, #060e2e 100%)"
+      >
+        <div className="mx-auto grid max-w-5xl gap-8 px-4 pb-24 pt-12 md:grid-cols-12 md:gap-10 md:pb-32">
+          <TextBlockAnimation blockColor="#0b1956" className="md:col-span-4">
+            <h2 className="font-display text-balance text-3xl font-semibold leading-[1.05] tracking-tight">
               Nacimos para juntar lo que normalmente anda separado.
             </h2>
           </TextBlockAnimation>
-          <div className="space-y-5 text-sm leading-relaxed text-[var(--color-ink-soft)] md:col-span-6 md:col-start-7">
-            <TextBlockAnimation blockColor="#520000" duration={0.5} delay={0.2}>
-              <p>
+          <div className="space-y-5 md:col-span-8">
+            <TextBlockAnimation blockColor="#520000" duration={0.5} delay={0.1}>
+              <p className="text-lg leading-relaxed text-[var(--color-ink-soft)] md:text-2xl">
                 ASHER nace de una idea simple: una marca no crece solo con buen diseño, ni solo con estrategia, ni
                 solo con papeles en regla — crece cuando todo eso avanza junto, desde el principio.
               </p>
             </TextBlockAnimation>
-            <TextBlockAnimation blockColor="#0b1956" duration={0.5} delay={0.3}>
-              <p>
+            <TextBlockAnimation blockColor="#0b1956" duration={0.5} delay={0.2}>
+              <p className="text-lg leading-relaxed text-[var(--color-ink-soft)] md:text-2xl">
                 Por eso somos una consultora integral de marca, marketing, tecnología y protección legal. No
                 trabajamos por partes sueltas; construimos, mejoramos, digitalizamos y protegemos marcas bajo un
                 mismo techo, para que ningún negocio tenga que elegir entre crecer rápido o crecer bien.
@@ -42,52 +55,66 @@ export default function QuienesSomosPage() {
             </TextBlockAnimation>
           </div>
         </div>
-      </section>
+      </TextParallaxContent>
 
-      <section id="mision" className="border-t border-[var(--color-line)] py-20 md:py-28">
-        <p className="mb-8 px-5 text-center text-xs font-medium uppercase tracking-[0.18em] text-[var(--color-ink-soft)] md:px-10">
-          Misión
-        </p>
-        <QuoteBlock
-          eyebrow="Nuestra misión"
-          accent="#0b1956"
-          lines={[
-            { bold: "Construimos marca", thin: "sin fricciones," },
-            { bold: "con respaldo legal", thin: "desde el día uno —" },
-            { bold: "no como", thin: "último paso." },
-          ]}
-        />
-      </section>
+      <TextParallaxContent
+        id="mision"
+        subheading="Nuestra misión"
+        heading="Construimos marca sin fricciones."
+        background="linear-gradient(150deg, #7a1f1f 0%, #520000 55%, #2e0000 100%)"
+      >
+        <div className="pb-24 pt-16 md:pb-32">
+          <QuoteBlock
+            eyebrow="Nuestra misión"
+            accent="#0b1956"
+            lines={[
+              { bold: "Construimos marca", thin: "sin fricciones," },
+              { bold: "con respaldo legal", thin: "desde el día uno —" },
+              { bold: "no como", thin: "último paso." },
+            ]}
+          />
+        </div>
+      </TextParallaxContent>
 
-      <section id="vision" className="border-t border-[var(--color-line)] py-20 md:py-28">
-        <p className="mb-8 px-5 text-center text-xs font-medium uppercase tracking-[0.18em] text-[var(--color-ink-soft)] md:px-10">
-          Visión
-        </p>
-        <QuoteBlock
-          eyebrow="Nuestra visión"
-          accent="#520000"
-          lines={[
-            { bold: "Un mañana mejor,", thin: "construido entre todos." },
-            { bold: "Cinco disciplinas,", thin: "un solo equipo detrás de cada marca." },
-          ]}
-        />
-      </section>
+      <TextParallaxContent
+        id="vision"
+        subheading="Nuestra visión"
+        heading="Un mañana mejor, construido entre todos."
+        tone="light"
+        background="linear-gradient(150deg, #c3d3ef 0%, #8fb0e3 60%, #6f93cf 100%)"
+      >
+        <div className="pb-24 pt-16 md:pb-32">
+          <QuoteBlock
+            eyebrow="Nuestra visión"
+            accent="#520000"
+            lines={[
+              { bold: "Un mañana mejor,", thin: "construido entre todos." },
+              { bold: "Cinco disciplinas,", thin: "un solo equipo detrás de cada marca." },
+            ]}
+          />
+        </div>
+      </TextParallaxContent>
 
-      <section id="valores" className="border-t border-[var(--color-line)] py-20 md:py-28">
-        <p className="mb-8 px-5 text-center text-xs font-medium uppercase tracking-[0.18em] text-[var(--color-ink-soft)] md:px-10">
-          Valores
-        </p>
-        <QuoteBlock
-          eyebrow="Nuestros valores"
-          accent="#8fb0e3"
-          lines={[
-            { bold: "Todo bajo", thin: "un mismo techo." },
-            { bold: "Construimos", thin: "para crecer." },
-            { bold: "Blindaje", thin: "desde el principio." },
-            { bold: "Estrategia", thin: "que se ejecuta." },
-          ]}
-        />
-      </section>
+      <TextParallaxContent
+        id="valores"
+        subheading="Nuestros valores"
+        heading="Todo bajo un mismo techo."
+        tone="light"
+        background="linear-gradient(150deg, #efe6d6 0%, #d8cbb8 60%, #c2b49c 100%)"
+      >
+        <div className="pb-24 pt-16 md:pb-32">
+          <QuoteBlock
+            eyebrow="Nuestros valores"
+            accent="#0b1956"
+            lines={[
+              { bold: "Todo bajo", thin: "un mismo techo." },
+              { bold: "Construimos", thin: "para crecer." },
+              { bold: "Blindaje", thin: "desde el principio." },
+              { bold: "Estrategia", thin: "que se ejecuta." },
+            ]}
+          />
+        </div>
+      </TextParallaxContent>
     </div>
   );
 }
