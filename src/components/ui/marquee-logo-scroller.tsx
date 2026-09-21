@@ -1,0 +1,102 @@
+import React from "react";
+import Image from "next/image";
+import { cn } from "@/lib/utils";
+
+interface Logo {
+  src: string;
+  alt: string;
+  gradient: {
+    from: string;
+    via: string;
+    to: string;
+  };
+}
+
+interface MarqueeLogoScrollerProps extends React.HTMLAttributes<HTMLDivElement> {
+  title: string;
+  description: string;
+  logos: Logo[];
+  speed?: "normal" | "slow" | "fast";
+  /** How many times the logo list repeats per half of the track, so each half is wider than the screen. */
+  repeat?: number;
+}
+
+const DURATIONS = {
+  normal: "40s",
+  slow: "80s",
+  fast: "20s",
+} as const;
+
+/**
+ * A self-contained, infinitely scrolling logo marquee. The track holds two
+ * identical halves and scrolls exactly one half (keyframes in globals.css),
+ * so the loop has no seam; it pauses on hover.
+ */
+const MarqueeLogoScroller = React.forwardRef<HTMLDivElement, MarqueeLogoScrollerProps>(
+  ({ title, description, logos, speed = "normal", repeat = 4, className, ...props }, ref) => {
+    const half = Array.from({ length: repeat }, () => logos).flat();
+
+    return (
+      <section
+        ref={ref}
+        aria-label={title}
+        className={cn(
+          "w-full overflow-hidden rounded-lg border border-[var(--color-line)] bg-[var(--color-bg)] text-[var(--color-ink)]",
+          className
+        )}
+        {...props}
+      >
+        <div className="p-6 md:p-8 lg:p-10">
+          <div className="grid grid-cols-1 gap-6 border-b border-[var(--color-line)] pb-6 md:pb-8 lg:grid-cols-[3fr_2fr] lg:gap-8">
+            <h2 className="font-display text-balance text-3xl font-medium tracking-tight md:text-4xl">{title}</h2>
+            <p className="self-start text-balance text-[var(--color-ink-soft)] lg:justify-self-end">{description}</p>
+          </div>
+        </div>
+
+        <div
+          className="w-full overflow-hidden"
+          style={{ maskImage: "linear-gradient(to right, transparent, black 10%, black 90%, transparent)" }}
+        >
+          <ul
+            className="flex w-max items-center gap-4 py-4 pr-4 hover:[animation-play-state:paused]"
+            style={{ animation: `marquee-left ${DURATIONS[speed]} linear infinite` }}
+          >
+            {[0, 1].flatMap((copy) =>
+              half.map((logo, index) => (
+                <li
+                  key={`${copy}-${index}`}
+                  aria-hidden={copy === 1 ? true : undefined}
+                  className="group relative flex h-28 w-44 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-[var(--color-surface)]/70"
+                >
+                  <div
+                    style={
+                      {
+                        "--from": logo.gradient.from,
+                        "--via": logo.gradient.via,
+                        "--to": logo.gradient.to,
+                      } as React.CSSProperties
+                    }
+                    className="absolute inset-0 scale-150 bg-gradient-to-br from-[var(--from)] via-[var(--via)] to-[var(--to)] opacity-0 transition-all duration-700 ease-out group-hover:scale-100 group-hover:opacity-100"
+                  />
+                  <div className="relative aspect-square h-[78%] overflow-hidden rounded-full bg-white shadow-sm">
+                    <Image
+                      src={logo.src}
+                      alt={copy === 1 ? "" : logo.alt}
+                      fill
+                      sizes="88px"
+                      className="object-cover"
+                    />
+                  </div>
+                </li>
+              ))
+            )}
+          </ul>
+        </div>
+      </section>
+    );
+  }
+);
+
+MarqueeLogoScroller.displayName = "MarqueeLogoScroller";
+
+export { MarqueeLogoScroller };
