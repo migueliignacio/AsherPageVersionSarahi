@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PerspectiveMarquee } from "@/components/ui/perspective-marquee";
-import { currency } from "@/lib/currency";
-import { serviceAddons, serviceOrder } from "@/data/service-addons";
 import TextBlockAnimation from "@/components/ui/text-block-animation";
+import { serviceAddons, serviceOrder } from "@/data/service-addons";
 
 export const metadata: Metadata = {
   title: "Servicios — ASHER",
@@ -11,6 +10,49 @@ export const metadata: Metadata = {
 };
 
 const marqueeItems = serviceOrder.map((slug) => serviceAddons[slug].label.toUpperCase());
+
+interface ServicePanel {
+  headline: string;
+  tagline: string;
+  /** Panel background. */
+  background: string;
+  /** Text colour on that background. */
+  ink: string;
+  /** Text colour for the secondary lines. */
+  soft: string;
+}
+
+// One colour per service: branding pink, digital web green, legal red, marketing tomato.
+const panels: Record<string, ServicePanel> = {
+  branding: {
+    headline: "Lo que eres, hecho visible.",
+    tagline: "Identidad visual y verbal para marcas con propósito.",
+    background: "#f8c6d4",
+    ink: "#0b1956",
+    soft: "#2a3670",
+  },
+  "digital-web": {
+    headline: "Presencia digital que trabaja por tu marca.",
+    tagline: "Sitios y soluciones digitales que conectan y convierten.",
+    background: "#b9ef7a",
+    ink: "#0b1956",
+    soft: "#2a3670",
+  },
+  legal: {
+    headline: "Tu negocio y tu marca, protegidos.",
+    tagline: "Derecho de empresas y derecho de marcas: constitución, contratos, registro y protección.",
+    background: "#b3202a",
+    ink: "#ffffff",
+    soft: "rgba(255,255,255,0.85)",
+  },
+  marketing: {
+    headline: "Estrategia que se convierte en movimiento.",
+    tagline: "Planes, contenido y campañas que generan resultados.",
+    background: "#ee5a2b",
+    ink: "#ffffff",
+    soft: "rgba(255,255,255,0.9)",
+  },
+};
 
 export default function ServiciosPage() {
   return (
@@ -43,63 +85,58 @@ export default function ServiciosPage() {
         />
       </div>
 
-      <section className="border-t border-[var(--color-line)] px-5 py-20 md:px-10 md:py-28">
-        <div className="grid gap-px overflow-hidden rounded-3xl border border-[var(--color-line)] bg-[var(--color-line)] sm:grid-cols-2">
+      <section className="border-t border-[var(--color-line)] px-5 py-16 md:px-10 md:py-24">
+        <div className="grid gap-4 md:grid-cols-2 md:gap-5">
           {serviceOrder.map((slug, i) => {
             const service = serviceAddons[slug];
-            const from = Math.min(...service.items.map((item) => item.price));
+            const panel = panels[slug];
             return (
               <Link
                 key={slug}
                 href={`/servicios/${slug}`}
                 data-cursor="view"
-                className="group relative flex flex-col gap-6 bg-[var(--color-bg)] p-7 transition-colors duration-300 hover:bg-[var(--color-surface)] md:p-9"
+                className="group relative flex min-h-[420px] flex-col justify-between gap-10 overflow-hidden rounded-3xl p-7 transition-transform duration-500 hover:-translate-y-1 md:min-h-[480px] md:p-10"
+                style={{ background: panel.background, color: panel.ink }}
               >
-                <div className="flex items-center justify-between">
-                  <span className="text-xs text-[var(--color-ink-soft)]">0{i + 1}</span>
-                  <span className="h-3 w-3 rounded-full" style={{ background: service.accent }} aria-hidden="true" />
-                </div>
-                <div>
-                  <h2 className="font-display text-2xl font-medium uppercase tracking-tight md:text-3xl">
-                    {service.label}
+                <div className="max-w-[26rem]">
+                  <p className="mb-6 font-mono text-[11px] uppercase tracking-[0.2em]" style={{ color: panel.soft }}>
+                    0{i + 1} — {service.label}
+                  </p>
+                  <h2 className="font-display text-balance text-3xl font-semibold leading-[1.02] tracking-tight md:text-5xl">
+                    {panel.headline}
                   </h2>
-                  <p className="mt-3 text-sm leading-relaxed text-[var(--color-ink-soft)]">{service.blurb}</p>
-                  {service.sections && (
-                    <p className="mt-3 text-xs uppercase tracking-[0.14em]">
-                      {service.sections.map((section) => section.label).join(" · ")}
-                    </p>
-                  )}
+                  <p className="mt-5 text-sm leading-relaxed md:text-base" style={{ color: panel.soft }}>
+                    {panel.tagline}
+                  </p>
                 </div>
-                <p className="mt-auto text-xs text-[var(--color-ink-soft)]">
-                  {service.items.length} adicionales desde {currency.format(from)}
-                </p>
-                <span className="inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.1em]">
-                  Explorar <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+
+                <span className="inline-flex w-fit items-center gap-3 rounded-full bg-white px-6 py-3 text-xs font-semibold uppercase tracking-[0.08em] text-[var(--color-navy)] shadow-sm transition-transform duration-300 group-hover:translate-x-1">
+                  Conocer el servicio <span aria-hidden="true">→</span>
                 </span>
               </Link>
             );
           })}
+        </div>
 
-          <div className="flex flex-col justify-between gap-6 bg-[var(--color-navy)] p-7 text-[var(--color-bg)] sm:col-span-2 md:p-9">
-            <TextBlockAnimation blockColor="#8fb0e3">
-              <h2 className="font-display text-2xl font-medium tracking-tight md:text-3xl">¿No sabes por dónde empezar?</h2>
-            </TextBlockAnimation>
-            <div className="flex flex-wrap gap-3">
-              <Link
-                href="/planes"
-                data-cursor="expand"
-                className="inline-flex items-center gap-2 rounded-full bg-[var(--color-bg)] px-5 py-3 text-xs font-medium uppercase tracking-[0.1em] text-[var(--color-navy)] transition-transform duration-300 hover:-translate-y-0.5"
-              >
-                Ver planes <span aria-hidden="true">→</span>
-              </Link>
-              <Link
-                href="/contacto"
-                data-cursor="expand"
-                className="inline-flex items-center gap-2 rounded-full border border-[var(--color-bg)]/40 px-5 py-3 text-xs font-medium uppercase tracking-[0.1em] transition-colors duration-300 hover:bg-[var(--color-bg)] hover:text-[var(--color-navy)]"
-              >
-                Hablemos
-              </Link>
-            </div>
+        <div className="mt-4 flex flex-col justify-between gap-6 rounded-3xl bg-[var(--color-navy)] p-7 text-[var(--color-bg)] md:mt-5 md:p-9">
+          <TextBlockAnimation blockColor="#8fb0e3">
+            <h2 className="font-display text-2xl font-medium tracking-tight md:text-3xl">¿No sabes por dónde empezar?</h2>
+          </TextBlockAnimation>
+          <div className="flex flex-wrap gap-3">
+            <Link
+              href="/planes"
+              data-cursor="expand"
+              className="inline-flex items-center gap-2 rounded-full bg-[var(--color-bg)] px-5 py-3 text-xs font-medium uppercase tracking-[0.1em] text-[var(--color-navy)] transition-transform duration-300 hover:-translate-y-0.5"
+            >
+              Ver planes <span aria-hidden="true">→</span>
+            </Link>
+            <Link
+              href="/contacto"
+              data-cursor="expand"
+              className="inline-flex items-center gap-2 rounded-full border border-[var(--color-bg)]/40 px-5 py-3 text-xs font-medium uppercase tracking-[0.1em] transition-colors duration-300 hover:bg-[var(--color-bg)] hover:text-[var(--color-navy)]"
+            >
+              Hablemos
+            </Link>
           </div>
         </div>
       </section>

@@ -44,7 +44,6 @@ const NAV_ITEMS: SlideTabItem[] = [
     ],
   },
   { label: "Proyectos", href: "/proyectos" },
-  { label: "Clientes", href: "/clientes" },
   { label: "Planes", href: "/planes" },
   { label: "Contacto", href: "/contacto" },
 ];
