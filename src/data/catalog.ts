@@ -14,9 +14,15 @@ export interface CatalogEntry {
 /** Every purchasable thing, keyed by id — the cart only stores ids. */
 export const catalogById: Record<string, CatalogEntry> = {};
 
-for (const area of Object.values(serviceAddons)) {
-  for (const item of area.items) {
-    catalogById[item.id] = { ...item, kind: "service", area: area.label };
+for (const service of Object.values(serviceAddons)) {
+  // A sectioned service (Legal) labels each item with its own area.
+  const groups = service.sections
+    ? service.sections.map((section) => ({ area: `${service.label} · ${section.label}`, items: section.items }))
+    : [{ area: service.label, items: service.items }];
+  for (const group of groups) {
+    for (const item of group.items) {
+      catalogById[item.id] = { ...item, kind: "service", area: group.area };
+    }
   }
 }
 

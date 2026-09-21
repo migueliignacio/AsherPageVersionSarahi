@@ -4,6 +4,21 @@ import { serviceAddons, serviceOrder } from "@/data/service-addons";
 import { CatalogGrid } from "./CatalogGrid";
 import CartSummary from "./CartSummary";
 
+// One block per service; a sectioned service (Legal) gets one block per area.
+const groups = serviceOrder.flatMap((slug) => {
+  const service = serviceAddons[slug];
+  if (!service.sections) {
+    return [{ id: slug, label: service.label, items: service.items, accent: service.accent, onAccent: service.onAccent }];
+  }
+  return service.sections.map((section) => ({
+    id: section.id,
+    label: `${service.label} · ${section.label}`,
+    items: section.items,
+    accent: section.accent,
+    onAccent: section.onAccent,
+  }));
+});
+
 export default function CustomPlan() {
   return (
     <section
@@ -29,17 +44,14 @@ export default function CustomPlan() {
 
       <div className="grid gap-10 md:grid-cols-3 md:gap-16">
         <div className="space-y-8 md:col-span-2">
-          {serviceOrder.map((slug) => {
-            const area = serviceAddons[slug];
-            return (
-              <div key={slug} data-reveal>
-                <h3 className="font-display mb-3 text-sm font-medium uppercase tracking-tight md:text-base">
-                  {area.label}
-                </h3>
-                <CatalogGrid items={area.items} accent={area.accent} onAccent={area.onAccent} />
-              </div>
-            );
-          })}
+          {groups.map((group) => (
+            <div key={group.id} data-reveal>
+              <h3 className="font-display mb-3 text-sm font-medium uppercase tracking-tight md:text-base">
+                {group.label}
+              </h3>
+              <CatalogGrid items={group.items} accent={group.accent} onAccent={group.onAccent} />
+            </div>
+          ))}
         </div>
 
         <div data-reveal className="md:col-span-1">

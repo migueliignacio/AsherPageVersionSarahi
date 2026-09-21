@@ -39,7 +39,6 @@ const NAV_ITEMS: SlideTabItem[] = [
       { label: "Branding", href: "/servicios/branding" },
       { label: "Digital Web", href: "/servicios/digital-web" },
       { label: "Legal", href: "/servicios/legal" },
-      { label: "Marca", href: "/servicios/marca" },
       { label: "Marketing", href: "/servicios/marketing" },
     ],
   },

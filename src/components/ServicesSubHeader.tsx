@@ -18,6 +18,8 @@ export default function ServicesSubHeader() {
     })),
   ];
 
+  const activeService = serviceOrder.map((slug) => serviceAddons[slug]).find((service) => pathname === `/servicios/${service.slug}`);
+
   return (
     <nav
       aria-label="Servicios"
@@ -45,6 +47,23 @@ export default function ServicesSubHeader() {
           );
         })}
       </ul>
+      {activeService?.sections && (
+        <ul className="no-scrollbar flex items-center gap-4 overflow-x-auto border-t border-[var(--color-line)] px-5 py-2 md:justify-center md:gap-6 md:px-10">
+          {activeService.sections.map((section) => (
+            <li key={section.id} className="shrink-0">
+              <a
+                href={`#${section.id}`}
+                data-cursor="expand"
+                className="inline-flex items-center gap-2 py-1 text-[0.7rem] font-medium uppercase tracking-[0.14em] underline-offset-4 hover:underline"
+                style={{ color: section.accent }}
+              >
+                <span className="h-2 w-2 rounded-full" style={{ background: section.accent }} aria-hidden="true" />
+                {section.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      )}
     </nav>
   );
 }

@@ -14,7 +14,7 @@ export default function Home() {
       <InversionCircleScrollAnimation />
       <Routes />
       <Marquee
-        text="Branding ✦ Legal ✦ Digital Web ✦ Marca ✦ Marketing ✦"
+        text="Branding ✦ Digital Web ✦ Legal ✦ Marketing ✦"
         reverse
         className="border-t border-[var(--color-line)] py-6"
       />

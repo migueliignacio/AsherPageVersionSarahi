@@ -5,6 +5,18 @@ export interface ServiceAddon {
   price: number;
 }
 
+/** A distinct area inside a service, with its own copy and catalog (e.g. Legal). */
+export interface ServiceSection {
+  id: string;
+  label: string;
+  title: string;
+  description: string;
+  highlights: string[];
+  accent: string;
+  onAccent: string;
+  items: ServiceAddon[];
+}
+
 export interface ServiceCatalogEntry {
   slug: string;
   label: string;
@@ -13,13 +25,70 @@ export interface ServiceCatalogEntry {
   accent: string;
   /** Text color that reads on top of `accent`. */
   onAccent: string;
+  /** Flat list of every add-on (for a sectioned service, the union of its sections). */
   items: ServiceAddon[];
+  sections?: ServiceSection[];
 }
 
 // Single catalog behind the cart: shown on each /servicios/[area] page and,
 // all together, in "Arma tu propio pack" on /planes.
+const legalSections: ServiceSection[] = [
+  {
+    id: "derecho-empresas",
+    label: "Derecho de empresas",
+    title: "Tu empresa, bien constituida y protegida",
+    description:
+      "Estructura legal, contratos y cumplimiento para que tu negocio opere con orden y crezca sin sobresaltos.",
+    highlights: [
+      "Constitución y reformas societarias",
+      "Contratos con clientes, equipo y proveedores",
+      "Políticas de privacidad y cumplimiento",
+    ],
+    accent: "#7d1a1f",
+    onAccent: "#f7f4ed",
+    items: [
+      { id: "legal-constitucion-empresa", title: "Constitución de empresa", description: "Creamos tu sociedad de principio a fin: estatutos, registro y obligaciones iniciales.", price: 3500 },
+      { id: "legal-estatutos", title: "Reforma de estatutos y actas", description: "Actualizamos estatutos, nombramientos y actas de junta para que todo esté en regla.", price: 2200 },
+      { id: "legal-contrato-laboral", title: "Contrato laboral", description: "Contratos a la medida para tu equipo, dentro de la ley.", price: 1600 },
+      { id: "legal-contrato-proveedores", title: "Contrato con proveedores", description: "Acuerdos claros de entregables, tiempos y pagos.", price: 1400 },
+      { id: "legal-nda", title: "Contrato de confidencialidad (NDA)", description: "Protege información sensible al hablar con terceros.", price: 1200 },
+      { id: "legal-revision-contrato", title: "Revisión de contrato existente", description: "Analizamos un contrato que ya tienes antes de firmarlo.", price: 950 },
+      { id: "legal-aviso-privacidad", title: "Aviso de privacidad", description: "Documento a la medida para el manejo de datos de tus clientes.", price: 1800 },
+      { id: "legal-terminos", title: "Términos y condiciones", description: "Reglas claras de uso para tu sitio o producto.", price: 1500 },
+      { id: "legal-cookies", title: "Política de cookies", description: "Cumplimiento normativo para el uso de cookies en tu sitio.", price: 700 },
+      { id: "legal-asesoria-puntual", title: "Asesoría legal puntual", description: "Una hora de consulta directa para resolver una duda específica.", price: 1100 },
+    ],
+  },
+  {
+    id: "derecho-de-marcas",
+    label: "Derecho de marcas",
+    title: "Tu marca, registrada y a salvo",
+    description:
+      "Registro, defensa y gestión de tu propiedad intelectual: que el nombre que construyes sea tuyo de verdad.",
+    highlights: [
+      "Búsqueda y registro de marca",
+      "Oposiciones, cesiones y licencias",
+      "Vigilancia y defensa ante usos indebidos",
+    ],
+    accent: "#0b1956",
+    onAccent: "#f7f4ed",
+    items: [
+      { id: "legal-diagnostico-pi", title: "Diagnóstico de propiedad intelectual", description: "Revisamos qué activos de tu marca puedes y debes proteger.", price: 1600 },
+      { id: "legal-busqueda-marca", title: "Búsqueda de disponibilidad de marca", description: "Verificamos que tu nombre esté libre antes de registrarlo.", price: 900 },
+      { id: "legal-registro-marca", title: "Registro de marca", description: "Solicitud y seguimiento del registro de tu marca ante la autoridad competente.", price: 3800 },
+      { id: "legal-clases-marca", title: "Registro en clases adicionales", description: "Extiende la protección de tu marca a más productos o servicios.", price: 2600 },
+      { id: "legal-oposicion-marca", title: "Oposiciones y observaciones", description: "Defendemos tu solicitud si alguien se opone o la autoridad la observa.", price: 3200 },
+      { id: "legal-renovacion-marca", title: "Renovación de marca registrada", description: "Trámite de renovación para no perder tu registro.", price: 2500 },
+      { id: "legal-cesion-licencia", title: "Cesión y licencia de marca", description: "Contrato para transferir o licenciar el uso de tu marca.", price: 2400 },
+      { id: "legal-cambio-titular", title: "Cambio de titular o de datos", description: "Actualizamos titularidad, domicilio o nombre en el registro.", price: 1500 },
+      { id: "legal-vigilancia-marca", title: "Vigilancia de marca", description: "Monitoreamos solicitudes nuevas que puedan parecerse a la tuya.", price: 1800 },
+      { id: "legal-carta-cese", title: "Carta de cese y desistimiento", description: "Requerimiento formal ante un uso indebido de tu marca.", price: 1300 },
+    ],
+  },
+];
+
 /** Display order used by the nav, the hub, and "Arma tu propio pack". */
-export const serviceOrder = ["branding", "digital-web", "legal", "marca", "marketing"] as const;
+export const serviceOrder = ["branding", "digital-web", "legal", "marketing"] as const;
 
 export const serviceAddons: Record<string, ServiceCatalogEntry> = {
   branding: {
@@ -44,21 +113,11 @@ export const serviceAddons: Record<string, ServiceCatalogEntry> = {
   legal: {
     slug: "legal",
     label: "Legal",
-    blurb: "Respaldo legal desde el día uno: registro de marca, contratos y protección para crecer sin sobresaltos.",
+    blurb: "Derecho de empresas y derecho de marcas: constitución, contratos, registro y protección para crecer sin sobresaltos.",
     accent: "#7d1a1f",
     onAccent: "#f7f4ed",
-    items: [
-      { id: "legal-aviso-privacidad", title: "Aviso de privacidad", description: "Documento a la medida para el manejo de datos de tus clientes.", price: 1800 },
-      { id: "legal-terminos", title: "Términos y condiciones", description: "Reglas claras de uso para tu sitio o producto.", price: 1500 },
-      { id: "legal-nda", title: "Contrato de confidencialidad (NDA)", description: "Protege información sensible al hablar con terceros.", price: 1200 },
-      { id: "legal-contrato-laboral", title: "Contrato laboral", description: "Contratos a la medida para tu equipo, dentro de la ley.", price: 1600 },
-      { id: "legal-busqueda-marca", title: "Búsqueda de disponibilidad de marca", description: "Verificamos que tu nombre esté libre antes de registrarlo.", price: 900 },
-      { id: "legal-renovacion-marca", title: "Renovación de marca registrada", description: "Trámite de renovación para no perder tu registro.", price: 2500 },
-      { id: "legal-contrato-proveedores", title: "Contrato con proveedores", description: "Acuerdos claros de entregables, tiempos y pagos.", price: 1400 },
-      { id: "legal-cookies", title: "Política de cookies", description: "Cumplimiento normativo para el uso de cookies en tu sitio.", price: 700 },
-      { id: "legal-asesoria-puntual", title: "Asesoría legal puntual", description: "Una hora de consulta directa para resolver una duda específica.", price: 1100 },
-      { id: "legal-revision-contrato", title: "Revisión de contrato existente", description: "Analizamos un contrato que ya tienes antes de firmarlo.", price: 950 },
-    ],
+    items: legalSections.flatMap((section) => section.items),
+    sections: legalSections,
   },
   "digital-web": {
     slug: "digital-web",
@@ -77,25 +136,6 @@ export const serviceAddons: Record<string, ServiceCatalogEntry> = {
       { id: "digital-mantenimiento", title: "Mantenimiento mensual", description: "Actualizaciones, respaldos y monitoreo continuo.", price: 2000 },
       { id: "digital-ssl", title: "Certificado SSL y seguridad", description: "Tu sitio protegido y marcado como seguro.", price: 900 },
       { id: "digital-analitica", title: "Reporte de analítica", description: "Qué páginas visitan, de dónde vienen y qué convierte.", price: 1300 },
-    ],
-  },
-  marca: {
-    slug: "marca",
-    label: "Marca",
-    blurb: "Estrategia y posicionamiento: a quién le hablas, qué te hace distinto y cómo se nota.",
-    accent: "#0b1956",
-    onAccent: "#f7f4ed",
-    items: [
-      { id: "marca-competencia", title: "Análisis de competencia", description: "Cómo se posicionan tus competidores y dónde hay espacio para ti.", price: 2200 },
-      { id: "marca-buyer-persona", title: "Buyer persona", description: "Perfil claro de a quién le hablas y qué le importa.", price: 1600 },
-      { id: "marca-tagline", title: "Mensaje de marca (tagline)", description: "La frase que resume qué haces y por qué importa.", price: 1000 },
-      { id: "marca-arquitectura", title: "Arquitectura de marca", description: "Cómo se organizan tus líneas de producto o submarcas.", price: 3000 },
-      { id: "marca-diagnostico-expres", title: "Diagnóstico exprés", description: "Lectura rápida de tu marca actual en una sesión.", price: 1200 },
-      { id: "marca-taller-posicionamiento", title: "Taller de posicionamiento", description: "Sesión de trabajo para definir tu lugar en el mercado.", price: 2800 },
-      { id: "marca-pitch", title: "Guion de pitch", description: "Cómo presentar tu marca en menos de un minuto.", price: 1400 },
-      { id: "marca-coherencia", title: "Revisión de coherencia de marca", description: "Detectamos inconsistencias entre lo que dices y lo que muestras.", price: 900 },
-      { id: "marca-naming-linea", title: "Naming de producto o línea", description: "Nombre para un nuevo producto dentro de tu marca.", price: 2000 },
-      { id: "marca-expansion", title: "Estrategia de expansión", description: "Plan para llevar tu marca a una nueva ciudad, canal o mercado.", price: 3500 },
     ],
   },
   marketing: {

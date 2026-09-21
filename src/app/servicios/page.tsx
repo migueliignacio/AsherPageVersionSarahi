@@ -6,7 +6,7 @@ import { serviceAddons, serviceOrder } from "@/data/service-addons";
 
 export const metadata: Metadata = {
   title: "Servicios — ASHER",
-  description: "Branding, Digital Web, Legal, Marca y Marketing: cinco servicios, un mismo equipo.",
+  description: "Branding, Digital Web, Legal y Marketing: cuatro servicios, un mismo equipo.",
 };
 
 const marqueeItems = serviceOrder.map((slug) => serviceAddons[slug].label.toUpperCase());
@@ -17,7 +17,7 @@ export default function ServiciosPage() {
       <section className="px-5 pb-8 pt-16 md:px-10 md:pt-24">
         <p className="mb-8 text-xs font-medium uppercase tracking-[0.18em] text-[var(--color-ink-soft)]">Servicios</p>
         <h1 className="font-display max-w-4xl text-balance text-4xl font-medium leading-[0.95] tracking-tight md:text-7xl">
-          Cinco servicios. Un mismo equipo.
+          Cuatro servicios. Un mismo equipo.
         </h1>
         <p className="mt-8 max-w-xl text-sm leading-relaxed text-[var(--color-ink-soft)]">
           Elige por dónde empezar. Cada servicio tiene su propia página, con un catálogo de adicionales que
@@ -37,7 +37,7 @@ export default function ServiciosPage() {
       </div>
 
       <section className="border-t border-[var(--color-line)] px-5 py-20 md:px-10 md:py-28">
-        <div className="grid gap-px overflow-hidden rounded-3xl border border-[var(--color-line)] bg-[var(--color-line)] sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-px overflow-hidden rounded-3xl border border-[var(--color-line)] bg-[var(--color-line)] sm:grid-cols-2">
           {serviceOrder.map((slug, i) => {
             const service = serviceAddons[slug];
             const from = Math.min(...service.items.map((item) => item.price));
@@ -57,6 +57,11 @@ export default function ServiciosPage() {
                     {service.label}
                   </h2>
                   <p className="mt-3 text-sm leading-relaxed text-[var(--color-ink-soft)]">{service.blurb}</p>
+                  {service.sections && (
+                    <p className="mt-3 text-xs uppercase tracking-[0.14em]">
+                      {service.sections.map((section) => section.label).join(" · ")}
+                    </p>
+                  )}
                 </div>
                 <p className="mt-auto text-xs text-[var(--color-ink-soft)]">
                   {service.items.length} adicionales desde {currency.format(from)}
@@ -68,7 +73,7 @@ export default function ServiciosPage() {
             );
           })}
 
-          <div className="flex flex-col justify-between gap-6 bg-[var(--color-navy)] p-7 text-[var(--color-bg)] md:p-9">
+          <div className="flex flex-col justify-between gap-6 bg-[var(--color-navy)] p-7 text-[var(--color-bg)] sm:col-span-2 md:p-9">
             <h2 className="font-display text-2xl font-medium tracking-tight md:text-3xl">¿No sabes por dónde empezar?</h2>
             <div className="flex flex-wrap gap-3">
               <Link

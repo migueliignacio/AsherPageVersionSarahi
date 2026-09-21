@@ -51,13 +51,19 @@ export default function LegalPage() {
         ]}
       />
 
-      <ServiceCatalog
-        eyebrow="Adicionales — Legal"
-        title="Suma extras a tu blindaje legal"
-        items={serviceAddons.legal.items}
-        accent={serviceAddons.legal.accent}
-        onAccent={serviceAddons.legal.onAccent}
-      />
+      {serviceAddons.legal.sections!.map((section) => (
+        <ServiceCatalog
+          key={section.id}
+          id={section.id}
+          eyebrow={`Legal — ${section.label}`}
+          title={section.title}
+          description={section.description}
+          highlights={section.highlights}
+          items={section.items}
+          accent={section.accent}
+          onAccent={section.onAccent}
+        />
+      ))}
 
       <TextColor
         className="bg-[var(--color-bg)] px-6 py-20 md:py-28"
