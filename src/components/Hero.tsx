@@ -77,7 +77,7 @@ export default function Hero() {
         <div className="mx-auto flex max-w-2xl flex-col items-start gap-7">
           <p
             className="inline-flex rounded-full border px-4 py-1.5 text-[10px] uppercase tracking-[0.3em]"
-            style={{ borderColor: "rgba(247,244,237,0.35)", color: "rgba(247,244,237,0.85)" }}
+            style={{ borderColor: "rgba(255,255,255,0.35)", color: "rgba(255,255,255,0.85)" }}
           >
             Bienvenido a {brand.name}
           </p>
@@ -91,7 +91,7 @@ export default function Hero() {
               </span>
             ))}
           </h2>
-          <p className="max-w-lg text-sm leading-relaxed sm:text-base" style={{ color: "rgba(247,244,237,0.8)" }}>
+          <p className="max-w-lg text-sm leading-relaxed sm:text-base" style={{ color: "rgba(255,255,255,0.8)" }}>
             {brand.heroIntro}
           </p>
           <div className="mt-1 flex flex-wrap items-center gap-x-8 gap-y-4">
@@ -111,7 +111,7 @@ export default function Hero() {
               href="/servicios"
               data-cursor="expand"
               className="inline-flex items-center gap-2 text-sm underline underline-offset-4 sm:text-base"
-              style={{ color: "rgba(247,244,237,0.85)" }}
+              style={{ color: "rgba(255,255,255,0.85)" }}
             >
               Ver servicios <span aria-hidden="true">→</span>
             </Link>

@@ -23,14 +23,14 @@ function Collage() {
         style={{ boxShadow: "inset 18px 0 40px rgba(0,0,0,0.25)" }}
       />
       <div
-        className="absolute left-[14%] top-[-6%] h-[78%] w-[52%] rotate-[24deg] bg-[#f7f4ed] shadow-[0_30px_60px_-20px_rgba(6,14,46,0.45)]"
+        className="absolute left-[14%] top-[-6%] h-[78%] w-[52%] rotate-[24deg] bg-white shadow-[0_30px_60px_-20px_rgba(6,14,46,0.45)]"
       >
         <Image
-          src="/asher/asher-logo.png"
+          src="/asher/logos/asher-consulting.png"
           alt=""
           fill
           sizes="(min-width: 768px) 30vw, 60vw"
-          className="-rotate-[24deg] scale-[1.35] object-contain"
+          className="-rotate-[24deg] scale-[0.8] object-contain mix-blend-multiply"
         />
       </div>
       <p className="absolute bottom-[10%] right-[6%] max-w-[9rem] font-mono text-[10px] uppercase leading-relaxed tracking-[0.25em] text-[var(--color-bg)]/80">

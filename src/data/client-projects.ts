@@ -29,7 +29,7 @@ export const clientProjects: ClientProject[] = [
     summary:
       "Acompañamos a Batidoos con la parte legal de su negocio: respaldo para que su marca y su operación crezcan con tranquilidad.",
     href: "/servicios/legal",
-    colors: ["#520000", "#e6007e", "#f7f4ed"],
+    colors: ["#520000", "#e6007e", "#ffffff"],
     background: "linear-gradient(150deg, #7a1f1f 0%, #520000 55%, #2e0000 100%)",
     tone: "dark",
     accent: "#520000",
@@ -43,8 +43,8 @@ export const clientProjects: ClientProject[] = [
     summary:
       "Construimos la identidad de Barak Maniquíes y llevamos su marketing, con manejo de anuncios pagados para que más gente los conozca.",
     href: "/servicios/marketing",
-    colors: ["#d8cbb8", "#0b1956", "#f7f4ed"],
-    background: "linear-gradient(150deg, #efe6d6 0%, #d8cbb8 60%, #c2b49c 100%)",
+    colors: ["#c3d3ef", "#0b1956", "#ffffff"],
+    background: "linear-gradient(150deg, #f2f5fb 0%, #dbe4f5 60%, #c3d3ef 100%)",
     tone: "light",
     accent: "#0b1956",
   },
@@ -57,7 +57,7 @@ export const clientProjects: ClientProject[] = [
     summary:
       "Con Grupo Vélez trabajamos la parte legal y su marca, para que su presencia se vea tan sólida como su trabajo.",
     href: "/servicios/legal",
-    colors: ["#0b1956", "#8fb0e3", "#f7f4ed"],
+    colors: ["#0b1956", "#8fb0e3", "#ffffff"],
     background: "linear-gradient(150deg, #14226b 0%, #0b1956 55%, #060e2e 100%)",
     tone: "dark",
     accent: "#0b1956",
@@ -71,7 +71,7 @@ export const clientProjects: ClientProject[] = [
     summary:
       "Diseñamos y desarrollamos la landing page de Social Padel Club.",
     href: "/servicios/digital-web",
-    colors: ["#e6007e", "#0b1956", "#f7f4ed"],
+    colors: ["#e6007e", "#0b1956", "#ffffff"],
     background: "linear-gradient(150deg, #c3d3ef 0%, #8fb0e3 60%, #6f93cf 100%)",
     tone: "light",
     accent: "#520000",

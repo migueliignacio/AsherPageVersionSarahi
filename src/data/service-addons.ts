@@ -45,7 +45,7 @@ const legalSections: ServiceSection[] = [
       "Políticas de privacidad y cumplimiento",
     ],
     accent: "#7d1a1f",
-    onAccent: "#f7f4ed",
+    onAccent: "#ffffff",
     items: [
       { id: "legal-constitucion-empresa", title: "Constitución de empresa", description: "Creamos tu sociedad de principio a fin: estatutos, registro y obligaciones iniciales.", price: 3500 },
       { id: "legal-estatutos", title: "Reforma de estatutos y actas", description: "Actualizamos estatutos, nombramientos y actas de junta para que todo esté en regla.", price: 2200 },
@@ -71,7 +71,7 @@ const legalSections: ServiceSection[] = [
       "Vigilancia y defensa ante usos indebidos",
     ],
     accent: "#0b1956",
-    onAccent: "#f7f4ed",
+    onAccent: "#ffffff",
     items: [
       { id: "legal-diagnostico-pi", title: "Diagnóstico de propiedad intelectual", description: "Revisamos qué activos de tu marca puedes y debes proteger.", price: 1600 },
       { id: "legal-busqueda-marca", title: "Búsqueda de disponibilidad de marca", description: "Verificamos que tu nombre esté libre antes de registrarlo.", price: 900 },
@@ -96,7 +96,7 @@ export const serviceAddons: Record<string, ServiceCatalogEntry> = {
     label: "Branding",
     blurb: "Identidades de marca con carácter: naming, sistemas visuales y guías que se sostienen en el tiempo.",
     accent: "#520000",
-    onAccent: "#f7f4ed",
+    onAccent: "#ffffff",
     items: [
       { id: "branding-auditoria-logo", title: "Auditoría de logo", description: "Revisión de tu logo actual: legibilidad, versatilidad y uso correcto.", price: 1200 },
       { id: "branding-paleta-colores", title: "Paleta de colores", description: "Colores de marca definidos con reglas de uso claras.", price: 900 },
@@ -115,7 +115,7 @@ export const serviceAddons: Record<string, ServiceCatalogEntry> = {
     label: "Legal",
     blurb: "Derecho de empresas y derecho de marcas: constitución, contratos, registro y protección para crecer sin sobresaltos.",
     accent: "#7d1a1f",
-    onAccent: "#f7f4ed",
+    onAccent: "#ffffff",
     items: legalSections.flatMap((section) => section.items),
     sections: legalSections,
   },

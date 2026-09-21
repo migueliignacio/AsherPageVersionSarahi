@@ -11,13 +11,13 @@
   --color-navy-deep: #060e2e;
   --color-maroon: #520000;
   --color-babyblue: #8fb0e3;
-  --color-ivory: #f7f4ed;
+  --color-ivory: #ffffff;
 
   --color-bg: var(--color-ivory);
   --color-ink: var(--color-navy);
   --color-ink-soft: #56618a;
-  --color-line: #e6ded0;
-  --color-surface: #eee8dd;
+  --color-line: #e4e8f1;
+  --color-surface: #f3f5fa;
   --color-accent: var(--color-maroon);
   --color-accent-2: var(--color-navy);
   --color-accent-3: var(--color-babyblue);

@@ -89,7 +89,7 @@ function StickyCard({
     >
       <motion.div
         aria-hidden="true"
-        className={cn("absolute inset-0", tone === "dark" ? "bg-[#060e2e]/45" : "bg-[#f7f4ed]/40")}
+        className={cn("absolute inset-0", tone === "dark" ? "bg-[#060e2e]/45" : "bg-[#ffffff]/40")}
         style={{ opacity }}
       />
       {imgUrl && (
@@ -127,7 +127,7 @@ function OverlayCopy({
       style={{ y, opacity, paddingTop: NAV_OFFSET }}
       className={cn(
         "absolute left-0 top-0 flex h-screen w-full flex-col items-center justify-center px-6 text-center",
-        tone === "dark" ? "text-[#f7f4ed]" : "text-[var(--color-navy)]",
+        tone === "dark" ? "text-[#ffffff]" : "text-[var(--color-navy)]",
         withImage && "md:items-start md:pl-16 md:pr-[50%] md:text-left lg:pl-24"
       )}
     >

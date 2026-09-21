@@ -143,7 +143,7 @@ function Styles() {
       .icsa-wrap {
         width: 100%; position: relative;
         font-family: Inter, sans-serif;
-        background: #f7f4ed;
+        background: #ffffff;
       }
 
       /* 300 vh scroll room; hero sticks inside */
@@ -172,7 +172,7 @@ function Styles() {
         pointer-events: none;
       }
       .icsa-dark  { color: #0b1956; z-index: 2; }
-      .icsa-light { color: #f7f4ed; z-index: 3; will-change: clip-path; }
+      .icsa-light { color: #ffffff; z-index: 3; will-change: clip-path; }
 
       .icsa-layer h1 {
         font-size: clamp(2.5rem, 7vw, 6rem);
