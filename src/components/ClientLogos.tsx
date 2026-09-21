@@ -14,7 +14,7 @@ const marcas = [
   {
     src: "/marcas/velez-guevara.png",
     alt: "Vélez Guevara Abogados",
-    gradient: { from: "#efe6d6", via: "#d8cbb8", to: "#b5a88f" },
+    gradient: { from: "#e3ebf8", via: "#c3d3ef", to: "#9db8e3" },
   },
   {
     src: "/marcas/barak-maniquies.png",

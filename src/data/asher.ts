@@ -59,14 +59,14 @@ export const routes: Route[] = [
     title: "Digitalización",
     description: "Para quienes necesitan presencia digital o herramientas tech.",
     accent: "#3d3bff",
-    hoverText: "#f7f4ed",
+    hoverText: "#ffffff",
   },
   {
     index: "05",
     title: "Blindaje legal",
     description: "Respaldo legal como base de todo lo que construyes.",
     accent: "#0b1956",
-    hoverText: "#f7f4ed",
+    hoverText: "#ffffff",
   },
 ];
 

@@ -88,7 +88,7 @@ export default function QuienesSomosPage() {
         subheading="Nuestros valores"
         heading="Todo bajo un mismo techo."
         tone="light"
-        background="linear-gradient(150deg, #efe6d6 0%, #d8cbb8 60%, #c2b49c 100%)"
+        background="linear-gradient(150deg, #f2f5fb 0%, #dbe4f5 60%, #c3d3ef 100%)"
       >
         <div className="pb-24 pt-16 md:pb-32">
           <QuoteBlock

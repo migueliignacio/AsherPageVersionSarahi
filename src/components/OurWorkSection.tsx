@@ -36,7 +36,7 @@ interface Pill {
 const pills: Pill[] = [
   { src: "/marcas/spc.png", alt: "Social Padel Club", bg: "#0b1956", position: "left-[5%] top-[18%]", rotate: -8, cross: { x: 55, y: 12, rotate: 10 } },
   { src: "/marcas/batidoos.png", alt: "Batidoos", bg: "#520000", position: "right-[8%] top-[20%]", rotate: 7, cross: { x: -55, y: 18, rotate: -12 } },
-  { src: "/marcas/velez-guevara.png", alt: "Vélez Guevara Abogados", bg: "#d8cbb8", position: "left-[15%] top-[48%]", rotate: 5, cross: { x: 48, y: -5, rotate: -8 } },
+  { src: "/marcas/velez-guevara.png", alt: "Vélez Guevara Abogados", bg: "#c3d3ef", position: "left-[15%] top-[48%]", rotate: 5, cross: { x: 48, y: -5, rotate: -8 } },
   { src: "/marcas/barak-maniquies.png", alt: "Barak Maniquíes", bg: "#8fb0e3", position: "right-[12%] top-[52%]", rotate: -6, cross: { x: -45, y: -8, rotate: 12 } },
 ];
 
