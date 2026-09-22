@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
+import { MessageSquare, Layers, TrendingUp, BarChart3, ShieldCheck, Share2 } from "lucide-react";
 import { MinimalistHero } from "@/components/ui/minimalist-hero";
 import { GooeyText } from "@/components/ui/gooey-text-morphing";
-import BentoGrid from "@/components/ui/bento-grid-01";
+import { FeatureShaderCards } from "@/components/ui/feature-shader-cards";
 import { ServiceCatalog } from "@/components/ui/service-catalog";
 import { TextColor } from "@/components/ui/text-color";
 import { serviceAddons } from "@/data/service-addons";
@@ -38,16 +39,16 @@ export default function MarketingPage() {
         />
       </div>
 
-      <BentoGrid
+      <FeatureShaderCards
         eyebrow="Marketing"
-        speedValue="+40%"
-        cards={[
-          { title: "Mensajes que destacan", description: "Copys y creatividades pensadas para detener el scroll." },
-          { title: "Campañas flexibles", description: "Contenido que se adapta a cada red y objetivo." },
-          { title: "Más alcance", description: "Llega a más personas con la estrategia correcta de medios." },
-          { title: "Resultados medibles", description: "Reportes claros de qué está funcionando y qué no." },
-          { title: "Datos protegidos", description: "Campañas que respetan la privacidad de tus clientes." },
-          { title: "Contenido para cada canal", description: "Instagram, WhatsApp, email — todo coordinado." },
+        colors={["#0b1956", "#6f95d6"]}
+        features={[
+          { title: "Mensajes que destacan", description: "Copys y creatividades pensadas para detener el scroll.", icon: <MessageSquare /> },
+          { title: "Campañas flexibles", description: "Contenido que se adapta a cada red y objetivo.", icon: <Layers /> },
+          { title: "Más alcance", description: "Llega a más personas con la estrategia correcta de medios.", icon: <TrendingUp /> },
+          { title: "Resultados medibles", description: "Reportes claros de qué está funcionando y qué no.", icon: <BarChart3 /> },
+          { title: "Datos protegidos", description: "Campañas que respetan la privacidad de tus clientes.", icon: <ShieldCheck /> },
+          { title: "Contenido para cada canal", description: "Instagram, WhatsApp, email — todo coordinado.", icon: <Share2 /> },
         ]}
       />
 

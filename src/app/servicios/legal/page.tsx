@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
+import { FileText, Building2, Globe, Zap, ShieldCheck, Smartphone } from "lucide-react";
 import { MinimalistHero } from "@/components/ui/minimalist-hero";
 import { GooeyText } from "@/components/ui/gooey-text-morphing";
-import BentoGrid from "@/components/ui/bento-grid-01";
+import { FeatureShaderCards } from "@/components/ui/feature-shader-cards";
 import { ServiceCatalog } from "@/components/ui/service-catalog";
 import { TextColor } from "@/components/ui/text-color";
 import { serviceAddons } from "@/data/service-addons";
@@ -38,16 +39,16 @@ export default function LegalPage() {
         />
       </div>
 
-      <BentoGrid
+      <FeatureShaderCards
         eyebrow="Legal"
-        speedValue="24h"
-        cards={[
-          { title: "Contratos claros", description: "Documentos redactados para entenderse, no para confundir." },
-          { title: "Estructura a la medida", description: "Organizamos la parte legal de tu negocio según cómo creces." },
-          { title: "Cobertura total", description: "Respaldo legal para marca, contratos, datos y operaciones." },
-          { title: "Respuesta rápida", description: "Resolvemos tus dudas legales sin semanas de espera." },
-          { title: "Blindaje legal", description: "Protección desde el día uno, no como último paso." },
-          { title: "Siempre disponible", description: "Acompañamiento legal accesible cuando lo necesitas." },
+        colors={["#7d1a1f", "#be8d8f"]}
+        features={[
+          { title: "Contratos claros", description: "Documentos redactados para entenderse, no para confundir.", icon: <FileText /> },
+          { title: "Estructura a la medida", description: "Organizamos la parte legal de tu negocio según cómo creces.", icon: <Building2 /> },
+          { title: "Cobertura total", description: "Respaldo legal para marca, contratos, datos y operaciones.", icon: <Globe /> },
+          { title: "Respuesta rápida", description: "Resolvemos tus dudas legales sin semanas de espera.", icon: <Zap /> },
+          { title: "Blindaje legal", description: "Protección desde el día uno, no como último paso.", icon: <ShieldCheck /> },
+          { title: "Siempre disponible", description: "Acompañamiento legal accesible cuando lo necesitas.", icon: <Smartphone /> },
         ]}
       />
 
