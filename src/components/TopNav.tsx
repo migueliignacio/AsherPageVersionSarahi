@@ -26,10 +26,10 @@ const NAV_ITEMS: SlideTabItem[] = [
   {
     label: "Quiénes somos",
     children: [
+      { label: "Nosotros", href: "/quienes-somos" },
       { label: "Historia", href: "/quienes-somos#historia" },
       { label: "Misión, visión y valores", href: "/quienes-somos#mision" },
       { label: "Proceso Asher", href: "/quienes-somos#proceso" },
-      { label: "Nosotros", href: "/quienes-somos" },
     ],
   },
   {
