@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { TextParallaxContent } from "@/components/ui/text-parallax-content-scroll";
+import { QuoteBlock } from "@/components/ui/quote-block";
 import TextBlockAnimation from "@/components/ui/text-block-animation";
 import { Component as QuienesSomosHero } from "@/components/ui/connoisseur-stack-interactor";
 import HowItWorks, { type Step, type StepPosition } from "@/components/ui/how-it-works";
@@ -67,28 +68,50 @@ export default function QuienesSomosPage() {
         </div>
       </TextParallaxContent>
 
-      <TextParallaxContent
-        id="mision"
-        subheading="Nuestra misión"
-        heading="Construimos marca sin fricciones."
-        background="linear-gradient(150deg, #7a1f1f 0%, #520000 55%, #2e0000 100%)"
-      />
+      <section id="mision" className="border-t border-[var(--color-line)] py-20 md:py-28">
+        <p className="mb-8 px-5 text-center text-xs font-medium uppercase tracking-[0.18em] text-[var(--color-ink-soft)] md:px-10">
+          Misión
+        </p>
+        <QuoteBlock
+          eyebrow="Nuestra misión"
+          accent="#0b1956"
+          lines={[
+            { bold: "Construimos marca", thin: "sin fricciones," },
+            { bold: "con respaldo legal", thin: "desde el día uno —" },
+            { bold: "no como", thin: "último paso." },
+          ]}
+        />
+      </section>
 
-      <TextParallaxContent
-        id="vision"
-        subheading="Nuestra visión"
-        heading="Un mañana mejor, construido entre todos."
-        tone="light"
-        background="linear-gradient(150deg, #c3d3ef 0%, #8fb0e3 60%, #6f93cf 100%)"
-      />
+      <section id="vision" className="border-t border-[var(--color-line)] py-20 md:py-28">
+        <p className="mb-8 px-5 text-center text-xs font-medium uppercase tracking-[0.18em] text-[var(--color-ink-soft)] md:px-10">
+          Visión
+        </p>
+        <QuoteBlock
+          eyebrow="Nuestra visión"
+          accent="#520000"
+          lines={[
+            { bold: "Un mañana mejor,", thin: "construido entre todos." },
+            { bold: "Cinco disciplinas,", thin: "un solo equipo detrás de cada marca." },
+          ]}
+        />
+      </section>
 
-      <TextParallaxContent
-        id="valores"
-        subheading="Nuestros valores"
-        heading="Todo bajo un mismo techo."
-        tone="light"
-        background="linear-gradient(150deg, #f2f5fb 0%, #dbe4f5 60%, #c3d3ef 100%)"
-      />
+      <section id="valores" className="border-t border-[var(--color-line)] py-20 md:py-28">
+        <p className="mb-8 px-5 text-center text-xs font-medium uppercase tracking-[0.18em] text-[var(--color-ink-soft)] md:px-10">
+          Valores
+        </p>
+        <QuoteBlock
+          eyebrow="Nuestros valores"
+          accent="#0b1956"
+          lines={[
+            { bold: "Todo bajo", thin: "un mismo techo." },
+            { bold: "Construimos", thin: "para crecer." },
+            { bold: "Blindaje", thin: "desde el principio." },
+            { bold: "Estrategia", thin: "que se ejecuta." },
+          ]}
+        />
+      </section>
 
       <TextParallaxContent
         id="proceso"
