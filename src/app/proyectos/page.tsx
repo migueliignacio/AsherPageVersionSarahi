@@ -24,6 +24,8 @@ export default function ProyectosPage() {
           href: project.href,
           colors: project.colors,
           tags: project.services,
+          background: project.background,
+          tone: project.tone,
         }))}
       />
     </div>

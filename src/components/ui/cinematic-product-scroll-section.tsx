@@ -1,10 +1,11 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
+import { cn } from "@/lib/utils";
 
 export interface CinematicItem {
   id: string;
@@ -18,6 +19,10 @@ export interface CinematicItem {
   colors: string[];
   /** What was delivered, shown as chips. */
   tags: string[];
+  /** Overview-card background, in that project's own palette. */
+  background: string;
+  /** "dark" = white text/pill on the card, "light" = navy. */
+  tone: "dark" | "light";
 }
 
 export interface CinematicSectionProps {
@@ -35,55 +40,29 @@ export interface CinematicSectionProps {
   detailLabel?: string;
 }
 
-/** Tile with a grayscale picture that turns to colour in a circle from wherever the pointer enters. */
+/** Tile with the logo in full colour on a background from that project's own palette. */
 function OverviewCard({ item, detailLabel }: { item: CinematicItem; detailLabel: string }) {
-  const cardRef = useRef<HTMLDivElement>(null);
-  const [active, setActive] = useState(false);
-
-  const setOrigin = (clientX: number, clientY: number) => {
-    const card = cardRef.current;
-    if (!card) return;
-    const rect = card.getBoundingClientRect();
-    card.style.setProperty("--reveal-x", `${((clientX - rect.left) / rect.width) * 100}%`);
-    card.style.setProperty("--reveal-y", `${((clientY - rect.top) / rect.height) * 100}%`);
-    setActive(true);
-  };
+  const onDark = item.tone === "dark";
 
   return (
-    <div
-      ref={cardRef}
-      onMouseEnter={(e) => setOrigin(e.clientX, e.clientY)}
-      onTouchStart={(e) => setOrigin(e.touches[0].clientX, e.touches[0].clientY)}
-      onMouseLeave={() => setActive(false)}
-      className="group relative block h-full w-full overflow-hidden border border-[var(--color-line)] transition-colors duration-700 hover:border-[var(--color-ink)]/50"
-    >
-      <div className="relative aspect-[3/4] w-full overflow-hidden bg-white">
+    <div className="group relative block h-full w-full overflow-hidden rounded-3xl border border-[var(--color-line)] transition-colors duration-700 hover:border-[var(--color-ink)]/50">
+      <div className="relative aspect-[3/4] w-full overflow-hidden" style={{ background: item.background }}>
         <Image
           src={item.image}
           alt={item.title}
           fill
-          className="object-contain p-6 opacity-90 grayscale transition-all duration-1000 ease-out"
+          className="object-contain p-8 transition-transform duration-700 ease-out group-hover:scale-105"
           sizes="(max-width: 768px) 50vw, 300px"
         />
-        <div
-          className="absolute inset-0 h-full w-full"
-          style={{
-            clipPath: `circle(${active ? "150%" : "0%"} at var(--reveal-x, 50%) var(--reveal-y, 50%))`,
-            transition: "clip-path 2.8s cubic-bezier(0.15, 0.85, 0.35, 1)",
-          }}
-        >
-          <Image src={item.image} alt="" aria-hidden="true" fill className="object-contain p-6" sizes="(max-width: 768px) 50vw, 300px" />
-        </div>
 
-        <div
-          className={`absolute bottom-6 left-1/2 z-30 w-fit -translate-x-1/2 transition-all duration-700 ${
-            active ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100"
-          }`}
-        >
+        <div className="absolute bottom-6 left-1/2 z-30 w-fit -translate-x-1/2 translate-y-8 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
           <Link
             href={item.href}
             data-cursor="expand"
-            className="block cursor-pointer whitespace-nowrap rounded-full border border-[var(--color-line)] bg-[var(--color-bg)]/85 px-3 py-1.5 text-[8px] font-medium uppercase tracking-normal text-[var(--color-ink)] shadow-xl backdrop-blur-md transition-colors duration-300 hover:bg-[var(--color-navy)] hover:text-[var(--color-bg)] sm:px-8 sm:py-3 sm:text-[10px]"
+            className={cn(
+              "block cursor-pointer whitespace-nowrap rounded-full px-3 py-1.5 text-[8px] font-medium uppercase tracking-normal shadow-xl backdrop-blur-md transition-colors duration-300 sm:px-8 sm:py-3 sm:text-[10px]",
+              onDark ? "bg-white/90 text-[var(--color-navy)] hover:bg-white" : "bg-[var(--color-navy)] text-white hover:bg-[var(--color-navy-deep)]"
+            )}
           >
             {detailLabel}
           </Link>
