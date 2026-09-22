@@ -68,36 +68,23 @@ export const MinimalistHero = ({
           covers every page, and this hero used to render its own "ASHER"
           wordmark on top of it, colliding in the corner on both mobile and
           desktop. */}
-      <div className="relative mt-16 grid w-full max-w-7xl flex-grow grid-cols-1 items-center gap-y-8 md:mt-0 md:grid-cols-3 md:gap-y-0">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 1 }}
-          className="z-20 order-2 md:order-1 text-center md:text-left"
-        >
-          <p className="mx-auto max-w-xs text-sm leading-relaxed text-[var(--color-ink)]/80 md:mx-0">
-            {mainText}
-          </p>
-          <a
-            href={readMoreLink}
-            className="mt-4 inline-block text-sm font-medium text-[var(--color-ink)] underline decoration-from-font"
-          >
-            Leer más
-          </a>
-        </motion.div>
-
-        <div className="relative order-1 md:order-2 flex items-center justify-center md:h-full">
+      {/* Mobile: a plain stack (grid-cols-1), order = ball, detail, title — unchanged.
+          Desktop: a row (ball, then title+detail stacked) so the ball sits left of
+          a title that's free to be big without ever overlapping it. */}
+      <div className="relative mt-16 grid w-full max-w-7xl flex-grow grid-cols-1 items-center gap-y-8 md:mt-0 md:flex md:flex-row md:items-center md:gap-x-10 lg:gap-x-16">
+        {/* Ball */}
+        <div className="relative order-1 flex items-center justify-center md:h-auto md:w-[260px] md:flex-none lg:w-[320px]">
           <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
             className={cn(
-              "absolute z-0 h-[300px] w-[300px] rounded-full md:h-[400px] md:w-[400px] lg:h-[500px] lg:w-[500px]",
+              "absolute z-0 h-[300px] w-[300px] rounded-full md:h-[220px] md:w-[220px] lg:h-[300px] lg:w-[300px]",
               circleClassName ?? "bg-[var(--color-accent)]/90",
             )}
           ></motion.div>
           <motion.div
-            className="relative z-10 h-48 w-48 md:h-64 md:w-64 lg:h-80 lg:w-80"
+            className="relative z-10 h-48 w-48 md:h-36 md:w-36 lg:h-52 lg:w-52"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.4 }}
@@ -112,16 +99,38 @@ export const MinimalistHero = ({
           </motion.div>
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 1.2 }}
-          className="z-20 order-3 flex items-center justify-center text-center md:justify-start"
-        >
-          <h1 className="font-display uppercase text-7xl font-medium tracking-tight text-[var(--color-ink)] md:text-8xl lg:text-9xl">
-            {title}
-          </h1>
-        </motion.div>
+        {/* Title + detail: on mobile they're two separate blocks (order-2, order-3
+            below), so wrapping them costs nothing there; on desktop the wrapper
+            becomes a column with the title on top and the detail right under it. */}
+        <div className="order-2 flex flex-col items-center gap-8 text-center md:order-2 md:flex-1 md:items-start md:gap-6 md:text-left">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 1 }}
+            className="order-1 md:order-2"
+          >
+            <p className="mx-auto max-w-xs text-sm leading-relaxed text-[var(--color-ink)]/80 md:mx-0 md:max-w-sm">
+              {mainText}
+            </p>
+            <a
+              href={readMoreLink}
+              className="mt-4 inline-block text-sm font-medium text-[var(--color-ink)] underline decoration-from-font"
+            >
+              Leer más
+            </a>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 1.2 }}
+            className="order-2 md:order-1"
+          >
+            <h1 className="font-display uppercase text-7xl font-medium tracking-tight text-[var(--color-ink)] md:text-7xl lg:text-8xl">
+              {title}
+            </h1>
+          </motion.div>
+        </div>
       </div>
 
       <footer className="z-30 flex w-full max-w-7xl items-center justify-between">
