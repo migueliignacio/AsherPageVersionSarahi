@@ -73,18 +73,18 @@ export const MinimalistHero = ({
           a title that's free to be big without ever overlapping it. */}
       <div className="relative mt-16 grid w-full max-w-7xl flex-grow grid-cols-1 items-center gap-y-8 md:mt-0 md:flex md:flex-row md:items-center md:gap-x-10 lg:gap-x-16">
         {/* Ball */}
-        <div className="relative order-1 flex items-center justify-center md:h-auto md:w-[260px] md:flex-none lg:w-[320px]">
+        <div className="relative order-1 flex items-center justify-center md:h-auto md:w-[300px] md:flex-none lg:w-[400px]">
           <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
             className={cn(
-              "absolute z-0 h-[300px] w-[300px] rounded-full md:h-[220px] md:w-[220px] lg:h-[300px] lg:w-[300px]",
+              "absolute z-0 h-[300px] w-[300px] rounded-full md:h-[260px] md:w-[260px] lg:h-[380px] lg:w-[380px]",
               circleClassName ?? "bg-[var(--color-accent)]/90",
             )}
           ></motion.div>
           <motion.div
-            className="relative z-10 h-48 w-48 md:h-36 md:w-36 lg:h-52 lg:w-52"
+            className="relative z-10 h-48 w-48 md:h-44 md:w-44 lg:h-64 lg:w-64"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.4 }}
@@ -126,7 +126,7 @@ export const MinimalistHero = ({
             transition={{ duration: 0.6, delay: 1.2 }}
             className="order-2 md:order-1"
           >
-            <h1 className="font-display uppercase text-7xl font-medium tracking-tight text-[var(--color-ink)] md:text-7xl lg:text-8xl">
+            <h1 className="font-display uppercase text-7xl font-medium tracking-tight text-[var(--color-ink)] md:text-8xl lg:text-9xl">
               {title}
             </h1>
           </motion.div>
