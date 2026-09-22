@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { QuoteBlock } from "@/components/ui/quote-block";
 import { TextParallaxContent } from "@/components/ui/text-parallax-content-scroll";
 import TextBlockAnimation from "@/components/ui/text-block-animation";
 import { Component as QuienesSomosHero } from "@/components/ui/connoisseur-stack-interactor";
@@ -50,19 +49,7 @@ export default function QuienesSomosPage() {
         subheading="Nuestra misión"
         heading="Construimos marca sin fricciones."
         background="linear-gradient(150deg, #7a1f1f 0%, #520000 55%, #2e0000 100%)"
-      >
-        <div className="pb-24 pt-16 md:pb-32">
-          <QuoteBlock
-            eyebrow="Nuestra misión"
-            accent="#0b1956"
-            lines={[
-              { bold: "Construimos marca", thin: "sin fricciones," },
-              { bold: "con respaldo legal", thin: "desde el día uno —" },
-              { bold: "no como", thin: "último paso." },
-            ]}
-          />
-        </div>
-      </TextParallaxContent>
+      />
 
       <TextParallaxContent
         id="vision"
@@ -70,18 +57,7 @@ export default function QuienesSomosPage() {
         heading="Un mañana mejor, construido entre todos."
         tone="light"
         background="linear-gradient(150deg, #c3d3ef 0%, #8fb0e3 60%, #6f93cf 100%)"
-      >
-        <div className="pb-24 pt-16 md:pb-32">
-          <QuoteBlock
-            eyebrow="Nuestra visión"
-            accent="#520000"
-            lines={[
-              { bold: "Un mañana mejor,", thin: "construido entre todos." },
-              { bold: "Cinco disciplinas,", thin: "un solo equipo detrás de cada marca." },
-            ]}
-          />
-        </div>
-      </TextParallaxContent>
+      />
 
       <TextParallaxContent
         id="valores"
@@ -89,20 +65,7 @@ export default function QuienesSomosPage() {
         heading="Todo bajo un mismo techo."
         tone="light"
         background="linear-gradient(150deg, #f2f5fb 0%, #dbe4f5 60%, #c3d3ef 100%)"
-      >
-        <div className="pb-24 pt-16 md:pb-32">
-          <QuoteBlock
-            eyebrow="Nuestros valores"
-            accent="#0b1956"
-            lines={[
-              { bold: "Todo bajo", thin: "un mismo techo." },
-              { bold: "Construimos", thin: "para crecer." },
-              { bold: "Blindaje", thin: "desde el principio." },
-              { bold: "Estrategia", thin: "que se ejecuta." },
-            ]}
-          />
-        </div>
-      </TextParallaxContent>
+      />
 
       <TextParallaxContent
         id="proceso"
