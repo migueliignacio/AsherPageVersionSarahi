@@ -70,7 +70,7 @@ export const clientProjects: ClientProject[] = [
     services: ["Landing page", "Digital Web"],
     summary:
       "Diseñamos y desarrollamos la landing page de Social Padel Club.",
-    href: "/servicios/digital-web",
+    href: "https://padel-club-landing-phi.vercel.app/",
     colors: ["#e6007e", "#0b1956", "#ffffff"],
     background: "linear-gradient(150deg, #c3d3ef 0%, #8fb0e3 60%, #6f93cf 100%)",
     tone: "light",
