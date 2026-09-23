@@ -4,6 +4,7 @@ import { useRef } from "react";
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { routes, disciplines } from "@/data/asher";
+import DiagnosticoQuiz from "./DiagnosticoQuiz";
 
 // The site's real per-service accent colors (from the /servicios pages).
 const disciplineColors: Record<string, string> = {
@@ -137,31 +138,8 @@ export default function Routes() {
         ))}
       </div>
 
-      <div
-        id="diagnostico"
-        data-reveal
-        className="palette-asher relative z-10 mt-16 flex flex-col items-center rounded-3xl bg-[var(--color-ink)] px-8 py-12 text-[var(--color-bg)] md:flex-row md:items-center md:gap-8 md:px-12"
-      >
-        <div className="icsa-inner text-white">
-          <span className="icsa-label icsa-reveal">Lo que sigue</span>
-          <h2 className="font-display text-4xl font-medium leading-[1.05] tracking-tight md:text-5xl lg:text-6xl">
-            Construye con intención.
-            <br />
-            Crece con confianza.
-          </h2>
-          <p className="icsa-reveal">
-            Toda marca sólida empieza con un diagnóstico claro y una estrategia
-            real. Del primer boceto a la ejecución — lo único entre tu marca y
-            su siguiente etapa es el trabajo.
-          </p>
-        </div>
-        <Link
-          href="/contacto"
-          data-cursor="expand"
-          className="mt-8 inline-flex shrink-0 items-center gap-2 rounded-full bg-[var(--color-bg)] px-17 py-10 text-md font-medium uppercase tracking-[0.1em] text-[var(--color-ink)] transition-transform duration-300 hover:-translate-y-0.5 md:mt-0 md:ml-auto"
-        >
-          Empezar diagnóstico <span aria-hidden="true">→</span>
-        </Link>
+      <div id="diagnostico" data-reveal className="relative z-10 mt-16 scroll-mt-24 border-t border-[var(--color-line)] pt-16 md:pt-24">
+        <DiagnosticoQuiz />
       </div>
     </section>
   );
