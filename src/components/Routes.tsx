@@ -5,6 +5,7 @@ import Link from "next/link";
 import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion";
 import { routes, disciplines } from "@/data/asher";
 import DiagnosticoQuiz from "./DiagnosticoQuiz";
+import { useDiagnosticoRequested } from "@/lib/diagnostico-signal";
 
 // The site's real per-service accent colors (from the /servicios pages).
 const disciplineColors: Record<string, string> = {
@@ -16,7 +17,12 @@ const disciplineColors: Record<string, string> = {
 };
 
 export default function Routes() {
-  const [showQuiz, setShowQuiz] = useState(false);
+  // Opens on its own button, or when anything else (the floating badge, a
+  // direct "/#diagnostico" link) asks for it — see diagnostico-signal.ts.
+  const [clicked, setClicked] = useState(false);
+  const requested = useDiagnosticoRequested();
+  const showQuiz = clicked || requested;
+
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -158,7 +164,7 @@ export default function Routes() {
           </div>
           <button
             type="button"
-            onClick={() => setShowQuiz(true)}
+            onClick={() => setClicked(true)}
             data-cursor="expand"
             className="mt-8 inline-flex shrink-0 items-center gap-2 rounded-full bg-[var(--color-bg)] px-17 py-10 text-md font-medium uppercase tracking-[0.1em] text-[var(--color-ink)] transition-transform duration-300 hover:-translate-y-0.5 md:mt-0 md:ml-auto"
           >

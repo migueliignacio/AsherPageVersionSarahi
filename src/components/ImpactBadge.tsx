@@ -1,13 +1,19 @@
+"use client";
+
 import Link from "next/link";
+import { requestDiagnostico } from "@/lib/diagnostico-signal";
 
 /**
  * Small by default so it never covers the page; grows on hover/focus to show
- * its message.
+ * its message. Always points at the home page's diagnóstico section, and
+ * asks Routes.tsx to open the quiz itself — not just scroll to the CTA that
+ * starts it (see diagnostico-signal.ts).
  */
 export default function ImpactBadge() {
   return (
     <Link
-      href="#diagnostico"
+      href="/#diagnostico"
+      onClick={requestDiagnostico}
       data-cursor="expand"
       aria-label="Hacer el diagnóstico de marca"
       className="group fixed bottom-4 right-4 z-40 grid h-11 w-11 place-items-center rounded-2xl transition-[width,height] duration-500 ease-[cubic-bezier(.16,1,.3,1)] hover:h-32 hover:w-32 focus-visible:h-32 focus-visible:w-32 md:bottom-6 md:right-6 md:h-12 md:w-12 md:hover:h-36 md:hover:w-36 md:focus-visible:h-36 md:focus-visible:w-36"
