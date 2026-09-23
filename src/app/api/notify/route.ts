@@ -153,7 +153,7 @@ export async function POST(req: NextRequest) {
       },
       body: JSON.stringify({
         from: `${brand.name} <onboarding@resend.dev>`,
-        to: [brand.email],
+        to: brand.notifyEmails,
         subject,
         html: isDiagnostico ? buildDiagnosticoHtml(data) : buildLeadHtml(data),
       }),

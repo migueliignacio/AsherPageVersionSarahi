@@ -10,7 +10,9 @@ export const brand = {
     "Impulsamos empresas y marcas desde una visión integral que conecta estrategia, creatividad, crecimiento y protección jurídica.",
   heroIntro:
     "Integramos estrategia, marca, marketing, tecnología y derecho para convertir ideas y empresas en negocios sólidos, visibles y protegidos.",
-  email: "asherlegalbranding@gmail.com",
+  email: "contacto@asherconsulting.ec",
+  /** Bandejas que reciben las solicitudes del sitio (ver app/api/notify/route.ts). */
+  notifyEmails: ["contacto@asherconsulting.ec", "ventas@asherconsulting.ec"],
   phone: "+593 992198798",
   copyright: "© 2026 ASHER",
   socialLinks: {
