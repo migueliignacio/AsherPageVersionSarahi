@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Lock, Smartphone, Globe } from "lucide-react";
+import { Lock, Smartphone, Globe, Scale, CheckCircle2, Megaphone } from "lucide-react";
 
 function TypeTester() {
   const [scale, setScale] = useState(1);
@@ -167,6 +167,60 @@ function GlobalNetwork() {
   );
 }
 
+/** Scales of justice, gently tipping side to side — for a legal "clear contracts" slot. */
+export function LegalBalance() {
+  return (
+    <div className="flex h-full items-center justify-center">
+      <motion.div animate={{ rotate: [0, -8, 8, 0] }} transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}>
+        <Scale className="h-16 w-16 text-white" strokeWidth={1.5} />
+      </motion.div>
+    </div>
+  );
+}
+
+/** A short checklist ticking itself off, one item at a time, then resetting. */
+export function LegalChecklist() {
+  const items = ["Constitución", "Contratos", "Marca"];
+  const [checked, setChecked] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setChecked((prev) => (prev + 1) % (items.length + 1));
+    }, 900);
+    return () => clearInterval(interval);
+  }, [items.length]);
+
+  return (
+    <div className="flex h-full flex-col items-start justify-center gap-3 px-2">
+      {items.map((item, i) => (
+        <div key={item} className="flex items-center gap-2.5">
+          <CheckCircle2 className={`h-5 w-5 shrink-0 transition-colors duration-300 ${i < checked ? "text-white" : "text-white/20"}`} />
+          <span className={`text-sm transition-colors duration-300 ${i < checked ? "text-white" : "text-[#5b6795]"}`}>{item}</span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+/** A megaphone with sound-wave rings — for a marketing "messages that stand out" slot. */
+export function MarketingMegaphone() {
+  const pulses = [0, 1, 2];
+  return (
+    <div className="relative flex h-full items-center justify-center">
+      <Megaphone className="z-10 h-14 w-14 text-white" strokeWidth={1.5} />
+      {pulses.map((pulse) => (
+        <motion.div
+          key={pulse}
+          className="absolute h-14 w-14 rounded-full border-2 border-white/30"
+          initial={{ scale: 0.6, opacity: 1 }}
+          animate={{ scale: 2.4, opacity: 0 }}
+          transition={{ duration: 2.2, repeat: Infinity, delay: pulse * 0.6, ease: "easeOut" }}
+        />
+      ))}
+    </div>
+  );
+}
+
 export interface BentoCard {
   title: string;
   description: string;
@@ -178,9 +232,12 @@ export interface BentoGridProps {
   cards: [BentoCard, BentoCard, BentoCard, BentoCard, BentoCard, BentoCard];
   speedValue?: string;
   className?: string;
+  /** Overrides for the first two slots' decorative visual (defaults: "Aa" type sample, reflowing grid). */
+  visual1?: React.ReactNode;
+  visual2?: React.ReactNode;
 }
 
-export default function BentoGrid({ eyebrow = "Features", cards, speedValue = "100ms", className }: BentoGridProps) {
+export default function BentoGrid({ eyebrow = "Features", cards, speedValue = "100ms", className, visual1, visual2 }: BentoGridProps) {
   const [c1, c2, c3, c4, c5, c6] = cards;
 
   return (
@@ -204,7 +261,7 @@ export default function BentoGrid({ eyebrow = "Features", cards, speedValue = "1
             whileHover={{ scale: 1.02, backgroundColor: "rgba(31, 47, 115, 1)" }}
           >
             <div className="flex-1">
-              <TypeTester />
+              {visual1 ?? <TypeTester />}
             </div>
             <div className="mt-4">
               <h3 className="font-serif text-xl text-white font-medium">{c1.title}</h3>
@@ -221,7 +278,7 @@ export default function BentoGrid({ eyebrow = "Features", cards, speedValue = "1
             whileHover={{ scale: 0.98 }}
           >
             <div className="flex-1">
-              <LayoutAnimation />
+              {visual2 ?? <LayoutAnimation />}
             </div>
             <div className="mt-4">
               <h3 className="font-serif text-xl text-white font-medium">{c2.title}</h3>
