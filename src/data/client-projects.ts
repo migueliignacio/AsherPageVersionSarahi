@@ -29,10 +29,11 @@ export const clientProjects: ClientProject[] = [
     summary:
       "Acompañamos a Batidoos con la parte legal de su negocio: respaldo para que su marca y su operación crezcan con tranquilidad.",
     href: "/servicios/legal",
-    colors: ["#520000", "#e6007e", "#ffffff"],
-    background: "linear-gradient(150deg, #7a1f1f 0%, #520000 55%, #2e0000 100%)",
+    // Sampled from the real logo: hot pink circle, lime-green lettering, white outline.
+    colors: ["#e90962", "#b3cc0d", "#ffffff"],
+    background: "linear-gradient(150deg, #ff4fa3 0%, #e90962 55%, #7a0538 100%)",
     tone: "dark",
-    accent: "#520000",
+    accent: "#e90962",
   },
   {
     id: "barak-maniquies",
@@ -43,10 +44,11 @@ export const clientProjects: ClientProject[] = [
     summary:
       "Construimos la identidad de Barak Maniquíes y llevamos su marketing, con manejo de anuncios pagados para que más gente los conozca.",
     href: "/servicios/marketing",
-    colors: ["#c3d3ef", "#0b1956", "#ffffff"],
-    background: "linear-gradient(150deg, #f2f5fb 0%, #dbe4f5 60%, #c3d3ef 100%)",
+    // Sampled from the real logo: cream backdrop, gold ring, black type.
+    colors: ["#c9a227", "#1a1a1a", "#f8f0e0"],
+    background: "linear-gradient(150deg, #fdf8ee 0%, #f0dfb0 60%, #c9a227 100%)",
     tone: "light",
-    accent: "#0b1956",
+    accent: "#8a6d1f",
   },
   {
     id: "grupo-velez",
@@ -57,7 +59,8 @@ export const clientProjects: ClientProject[] = [
     summary:
       "Con Grupo Vélez trabajamos la parte legal y su marca, para que su presencia se vea tan sólida como su trabajo.",
     href: "/servicios/legal",
-    colors: ["#0b1956", "#8fb0e3", "#ffffff"],
+    // Sampled from the real logo: navy circle, white type — already the closest match we had.
+    colors: ["#0b1956", "#060e2e", "#ffffff"],
     background: "linear-gradient(150deg, #14226b 0%, #0b1956 55%, #060e2e 100%)",
     tone: "dark",
     accent: "#0b1956",
@@ -71,9 +74,10 @@ export const clientProjects: ClientProject[] = [
     summary:
       "Diseñamos y desarrollamos la landing page de Social Padel Club.",
     href: "https://padel-club-landing-phi.vercel.app/",
-    colors: ["#e6007e", "#0b1956", "#ffffff"],
-    background: "linear-gradient(150deg, #c3d3ef 0%, #8fb0e3 60%, #6f93cf 100%)",
-    tone: "light",
-    accent: "#520000",
+    // Sampled from the real logo: hot pink circle, white type — no third hue in the mark itself.
+    colors: ["#e8037b", "#8c0350", "#ffffff"],
+    background: "linear-gradient(150deg, #ff4fb0 0%, #e8037b 55%, #8c0350 100%)",
+    tone: "dark",
+    accent: "#e8037b",
   },
 ];

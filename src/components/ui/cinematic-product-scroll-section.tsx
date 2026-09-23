@@ -3,7 +3,7 @@
 import React, { useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowDown, ArrowUpRight } from "lucide-react";
+import { ArrowDown, ArrowRight, ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
@@ -234,6 +234,12 @@ export function Component({
   overviewLinkHref = "/contacto",
   detailLabel = "Ver servicio",
 }: CinematicSectionProps) {
+  const scrollerRef = useRef<HTMLDivElement>(null);
+
+  const scrollByOneCard = () => {
+    scrollerRef.current?.scrollBy({ left: scrollerRef.current.clientWidth * 0.6, behavior: "smooth" });
+  };
+
   return (
     <div className="w-full bg-transparent text-[var(--color-ink)] antialiased selection:bg-[var(--color-navy)] selection:text-[var(--color-bg)]">
       {/* Intro */}
@@ -311,19 +317,40 @@ export function Component({
             </Link>
           </div>
 
-          <div className="no-scrollbar flex snap-x snap-mandatory justify-start gap-4 overflow-x-auto pb-8 md:justify-center md:gap-8">
-            {items.map((item, i) => (
-              <motion.div
-                key={item.id}
-                initial={{ opacity: 0, y: -120 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ type: "spring", stiffness: 90, damping: 11, delay: i * 0.15 }}
-                className="w-[calc(50%-8px)] min-w-[calc(50%-8px)] max-w-[calc(50%-8px)] flex-shrink-0 cursor-pointer snap-center sm:w-[calc(33.333%-11px)] sm:min-w-[calc(33.333%-11px)] sm:max-w-[calc(33.333%-11px)] md:w-[260px] md:min-w-[260px] md:max-w-[280px]"
-              >
-                <OverviewCard item={item} detailLabel={detailLabel} />
-              </motion.div>
-            ))}
+          <div className="relative">
+            <div
+              ref={scrollerRef}
+              className="no-scrollbar flex snap-x snap-mandatory justify-start gap-4 overflow-x-auto pb-8 md:justify-center md:gap-8"
+            >
+              {items.map((item, i) => (
+                <motion.div
+                  key={item.id}
+                  initial={{ opacity: 0, y: -120 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ type: "spring", stiffness: 90, damping: 11, delay: i * 0.15 }}
+                  className="w-[42%] min-w-[42%] max-w-[42%] flex-shrink-0 cursor-pointer snap-center sm:w-[calc(33.333%-11px)] sm:min-w-[calc(33.333%-11px)] sm:max-w-[calc(33.333%-11px)] md:w-[260px] md:min-w-[260px] md:max-w-[280px]"
+                >
+                  <OverviewCard item={item} detailLabel={detailLabel} />
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Mobile only: the peeking 3rd card already hints there's more,
+                but back it up with a fade and a tap-to-advance arrow — from
+                the sm breakpoint up, three full cards already show at once. */}
+            <div
+              className="pointer-events-none absolute inset-y-0 right-0 w-14 bg-gradient-to-l from-[var(--color-bg)] to-transparent sm:hidden"
+              aria-hidden="true"
+            />
+            <button
+              type="button"
+              onClick={scrollByOneCard}
+              aria-label="Ver más proyectos"
+              className="absolute right-1 top-1/2 z-10 flex h-9 w-9 -translate-y-1/2 animate-pulse items-center justify-center rounded-full border border-[var(--color-line)] bg-[var(--color-bg)] text-[var(--color-ink)] shadow-md sm:hidden"
+            >
+              <ArrowRight className="h-4 w-4" />
+            </button>
           </div>
         </div>
       </div>

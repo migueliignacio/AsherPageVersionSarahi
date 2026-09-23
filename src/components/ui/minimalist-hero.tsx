@@ -68,7 +68,7 @@ export const MinimalistHero = ({
           covers every page, and this hero used to render its own "ASHER"
           wordmark on top of it, colliding in the corner on both mobile and
           desktop. */}
-      {/* Mobile: a plain stack (grid-cols-1), order = ball, detail, title — unchanged.
+      {/* Mobile: a plain stack (grid-cols-1) — ball, then title, then detail.
           Desktop: a row (ball, then title+detail stacked) so the ball sits left of
           a title that's free to be big without ever overlapping it. */}
       <div className="relative mt-16 grid w-full max-w-7xl flex-grow grid-cols-1 items-center gap-y-8 md:mt-0 md:flex md:flex-row md:items-center md:gap-x-10 lg:gap-x-16">
@@ -99,15 +99,26 @@ export const MinimalistHero = ({
           </motion.div>
         </div>
 
-        {/* Title + detail: on mobile they're two separate blocks (order-2, order-3
-            below), so wrapping them costs nothing there; on desktop the wrapper
-            becomes a column with the title on top and the detail right under it. */}
-        <div className="order-2 flex flex-col items-center gap-8 text-center md:order-2 md:flex-1 md:items-start md:gap-6 md:text-left">
+        {/* Title + detail: same order everywhere now — title first, detail
+            right under it — so this wrapper just handles alignment per
+            breakpoint. */}
+        <div className="order-2 flex flex-col items-center gap-8 text-center md:flex-1 md:items-start md:gap-6 md:text-left">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 1.2 }}
+            className="order-1"
+          >
+            <h1 className="font-display uppercase text-7xl font-medium tracking-tight text-[var(--color-ink)] md:text-8xl lg:text-9xl">
+              {title}
+            </h1>
+          </motion.div>
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 1 }}
-            className="order-1 md:order-2"
+            className="order-2"
           >
             <p className="mx-auto max-w-xs text-sm leading-relaxed text-[var(--color-ink)]/80 md:mx-0 md:max-w-sm">
               {mainText}
@@ -116,19 +127,8 @@ export const MinimalistHero = ({
               href={readMoreLink}
               className="mt-4 inline-block text-sm font-medium text-[var(--color-ink)] underline decoration-from-font"
             >
-              Leer más
+              Conocer más
             </a>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 1.2 }}
-            className="order-2 md:order-1"
-          >
-            <h1 className="font-display uppercase text-7xl font-medium tracking-tight text-[var(--color-ink)] md:text-8xl lg:text-9xl">
-              {title}
-            </h1>
           </motion.div>
         </div>
       </div>
