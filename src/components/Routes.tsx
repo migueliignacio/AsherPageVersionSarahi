@@ -39,15 +39,6 @@ export default function Routes() {
       id="servicios"
       className="relative overflow-hidden px-5 py-28 md:px-10 md:py-40"
     >
-      {/* Faint three-column grid guides */}
-      <div
-        className="pointer-events-none absolute inset-0 mx-auto grid max-w-[1600px] grid-cols-3"
-        aria-hidden="true"
-      >
-        <div className="border-r border-[var(--color-line)]" />
-        <div className="border-r border-[var(--color-line)]" />
-        <div />
-      </div>
 
       <p
         data-reveal
