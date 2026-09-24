@@ -1,13 +1,16 @@
 import { NextRequest, NextResponse } from "next/server";
 import { brand } from "@/data/asher";
+import { getSupabase } from "@/lib/supabase-server";
 
 /**
- * Envía un correo inmediato cuando alguien deja sus datos — desde el modal de
- * contacto (ver LeadModalProvider.tsx) o el diagnóstico de 3 pasos (ver
- * DiagnosticoQuiz.tsx) — mismo mecanismo (Resend, vía fetch directo a su API
- * REST, sin SDK) que ya usa asher-web.vercel.app en app/api/notify/route.ts.
- * Requiere la env var RESEND_API_KEY en Vercel; si falta, no falla —
- * simplemente no envía (el registro nunca se bloquea por un correo).
+ * Runs on every submission from the lead modal ("Cuéntanos un poco sobre
+ * ti" — see LeadModalProvider.tsx) and the 3-step diagnóstico (see
+ * DiagnosticoQuiz.tsx): emails the team and saves a row in Supabase (see
+ * supabase/schema.sql for the table).
+ *
+ * Both are independent and best-effort — a missing RESEND_API_KEY or
+ * Supabase env vars just skips that half; the visitor's submission is never
+ * blocked by either one failing.
  */
 
 function esc(value: unknown): string {
@@ -134,32 +137,62 @@ function buildDiagnosticoHtml(data: Record<string, unknown>): string {
   return emailShell("📋 Nuevo diagnóstico", rows, respuestasHtml);
 }
 
-export async function POST(req: NextRequest) {
+async function sendEmail(data: Record<string, unknown>, isDiagnostico: boolean) {
   const apiKey = process.env.RESEND_API_KEY;
-  if (!apiKey) return NextResponse.json({ ok: false, reason: "missing_api_key" });
+  if (!apiKey) return { sent: false, reason: "missing_api_key" };
 
+  const subject = isDiagnostico
+    ? `📋 Diagnóstico: ${data.nombre_negocio ?? "Sin nombre"}`
+    : `🆕 Nuevo registro: ${data.nombre ?? "Sin nombre"}`;
+
+  await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${apiKey}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      from: `${brand.name} <onboarding@resend.dev>`,
+      to: brand.notifyEmails,
+      subject,
+      html: isDiagnostico ? buildDiagnosticoHtml(data) : buildLeadHtml(data),
+    }),
+  });
+  return { sent: true };
+}
+
+async function saveToDatabase(data: Record<string, unknown>, isDiagnostico: boolean) {
+  const supabase = getSupabase();
+  if (!supabase) return { saved: false, reason: "missing_supabase_config" };
+
+  const { error } = await supabase.from("leads").insert({
+    tipo: isDiagnostico ? "diagnostico" : "contacto",
+    nombre: isDiagnostico ? data.nombre_negocio : data.nombre,
+    celular: isDiagnostico ? data.contacto : data.celular,
+    correo: isDiagnostico ? null : data.correo || null,
+    mensaje: isDiagnostico ? null : data.mensaje || null,
+    seccion_origen: data.seccion_origen ?? null,
+    respuestas: isDiagnostico ? data.respuestas ?? null : null,
+  });
+  if (error) return { saved: false, reason: error.message };
+  return { saved: true };
+}
+
+export async function POST(req: NextRequest) {
   try {
     const data = await req.json();
     const isDiagnostico = data.tipo === "diagnostico";
-    const subject = isDiagnostico
-      ? `📋 Diagnóstico: ${data.nombre_negocio ?? "Sin nombre"}`
-      : `🆕 Nuevo registro: ${data.nombre ?? "Sin nombre"}`;
 
-    await fetch("https://api.resend.com/emails", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${apiKey}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        from: `${brand.name} <onboarding@resend.dev>`,
-        to: brand.notifyEmails,
-        subject,
-        html: isDiagnostico ? buildDiagnosticoHtml(data) : buildLeadHtml(data),
-      }),
+    const [emailResult, dbResult] = await Promise.allSettled([
+      sendEmail(data, isDiagnostico),
+      saveToDatabase(data, isDiagnostico),
+    ]);
+
+    return NextResponse.json({
+      ok: true,
+      email: emailResult.status === "fulfilled" ? emailResult.value : { sent: false, reason: "error" },
+      database: dbResult.status === "fulfilled" ? dbResult.value : { saved: false, reason: "error" },
     });
-
-    return NextResponse.json({ ok: true });
   } catch {
     return NextResponse.json({ ok: false });
   }
