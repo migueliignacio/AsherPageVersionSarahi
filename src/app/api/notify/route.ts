@@ -145,7 +145,7 @@ async function sendEmail(data: Record<string, unknown>, isDiagnostico: boolean) 
     ? `📋 Diagnóstico: ${data.nombre_negocio ?? "Sin nombre"}`
     : `🆕 Nuevo registro: ${data.nombre ?? "Sin nombre"}`;
 
-  await fetch("https://api.resend.com/emails", {
+  const response = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: {
       Authorization: `Bearer ${apiKey}`,
@@ -158,6 +158,11 @@ async function sendEmail(data: Record<string, unknown>, isDiagnostico: boolean) 
       html: isDiagnostico ? buildDiagnosticoHtml(data) : buildLeadHtml(data),
     }),
   });
+
+  if (!response.ok) {
+    const body = await response.text().catch(() => "");
+    return { sent: false, reason: `resend_${response.status}: ${body}` };
+  }
   return { sent: true };
 }
 
