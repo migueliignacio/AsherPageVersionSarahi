@@ -3,11 +3,10 @@
 export const brand = {
   name: "Asher",
   tagline: "Consultora de Crecimiento de Marca",
-  disciplines: "Estrategia · Marca · Marketing · Digital · Legal",
+  disciplines: "Estrategia · Legal · Marketing · Branding",
   heroHeadline: ["Construimos negocios.", "Potenciamos marcas."],
   /** Line under the big ASHER wordmark. */
-  heroSub:
-    "Impulsamos empresas y marcas desde una visión integral que conecta estrategia, creatividad, crecimiento y protección jurídica.",
+  heroSub: "Protegemos tu visión. Potenciamos tu impacto.",
   heroIntro:
     "Integramos estrategia, marca, marketing, tecnología y derecho para convertir ideas y empresas en negocios sólidos, visibles y protegidos.",
   email: "contacto@asherconsulting.ec",
