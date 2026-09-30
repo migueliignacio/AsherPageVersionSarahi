@@ -32,6 +32,8 @@ export default function Hero() {
 
   return (
     <div id="top">
+      {/* Hide the touch "choose a letter" picker for this instance only — GlyphPortal is shared. */}
+      <style>{`#gp-asher [data-gp-touch-picker]{display:none!important;}`}</style>
       <GlyphPortal
         word={brand.name.toUpperCase()}
         focusChar="S"
