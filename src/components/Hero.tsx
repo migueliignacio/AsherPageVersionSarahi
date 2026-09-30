@@ -48,8 +48,11 @@ export default function Hero() {
         front={
           <>
             <p
-              className="absolute left-1/2 -translate-x-1/2 text-center font-mono text-[10px] uppercase tracking-[0.25em] sm:text-xs"
-              style={{ top: "calc(var(--gp-word-top, 30%) - 40px)", color: "var(--color-ink-soft)" }}
+              className="absolute left-1/2 w-full max-w-xs -translate-x-1/2 text-center font-mono text-[10px] uppercase leading-relaxed tracking-[0.25em] sm:max-w-none sm:text-xs"
+              style={{
+                bottom: "calc(var(--gp-height, 100vh) - var(--gp-word-top, 30%) + 16px)",
+                color: "var(--color-ink-soft)",
+              }}
             >
               {brand.disciplines}
             </p>
